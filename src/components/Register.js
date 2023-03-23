@@ -9,6 +9,7 @@ export const register = (onNavigate) => {
   const title = document.createElement("h2");
   const buttonRegister = document.createElement("button");
   const inputEmail = document.createElement("input");
+  const emailError = document.createElement("span"); //agregado
   const inputPass = document.createElement("input");
   const inputCreate = document.createElement("input");
 
@@ -24,6 +25,7 @@ export const register = (onNavigate) => {
   inputPass.className = "password";
   inputCreate.className = "username";
   fondo.id = "fondo";
+  emailError.id = "email-error"; //agregado
 
   buttonRegister.textContent = "REGISTER";
 
@@ -35,10 +37,14 @@ export const register = (onNavigate) => {
 
   buttonRegister.addEventListener("click", async (e) => {
     e.preventDefault();
-    // const auth = getAuth(onNavigate);
+
     const username = inputCreate.value;
     const email = inputEmail.value;
     const password = inputPass.value;
+
+    inputEmail.after(emailError); // agregar el elemento después del input
+    emailError.style.display = "none"; // ocultar el mensaje por defecto
+
     try {
       const userinfo = await createUserWithEmailAndPassword(
         auth,
@@ -49,18 +55,15 @@ export const register = (onNavigate) => {
       onNavigate("/wall");
     } catch (error) {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      if (error.code === "auth/email-already-in-use") {
-       
-        //document.getElementById('password').innerHTML = "Todos los campos son obligatorios ";
-      } else if (error.code === "auth/invalid-email") {
-        alert("correo invalido");
-        // document.getElementById('username').innerHTML = "aaaaaaaaa";
+      if (errorCode === "auth/email-already-in-use") {
+        emailError.textContent = "Este correo ya está registrado.";
+        emailError.style.display = "block"; // mostrar el mensaje
+      } else if (errorCode === "auth/invalid-email") {
+        emailError.textContent = "Correo inválido.";
+        emailError.style.display = "block"; // mostrar el mensaje
       }
     }
   });
-
-  // onNavigate('/login');
 
   div.append(
     title,

@@ -2,6 +2,9 @@ html{
     display: flex;
     justify-content: center;
 }
+#email-error{
+    color: red;
+}
 .section{
     display: flex;
     flex-direction: column;
