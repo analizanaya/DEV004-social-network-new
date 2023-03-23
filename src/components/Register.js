@@ -51,7 +51,7 @@ export const register = (onNavigate) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       if (error.code === "auth/email-already-in-use") {
-        document.querySelector('.password').innerHTML = "correo registrado";
+       
         //document.getElementById('password').innerHTML = "Todos los campos son obligatorios ";
       } else if (error.code === "auth/invalid-email") {
         alert("correo invalido");
