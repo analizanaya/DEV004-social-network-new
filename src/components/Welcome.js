@@ -28,7 +28,7 @@ export const Welcome = (onNavigate) => {
   buttonCreate.className = 'buttonCreate';
 
   buttonGetinto.textContent = 'LOGIN';
-  buttonCreate.textContent = 'CREATEACCOUNT';
+  buttonCreate.textContent = 'CREATE ACCOUNT';
 
   logo.src = './imagenes/logo.png';
   logo.alt = 'Logo';
