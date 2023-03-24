@@ -1,0 +1,86 @@
+html{
+    display: flex;
+    justify-content: center;
+}
+.section{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 137% 0 0 0;
+}
+#fondo{
+    display: flex;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; 
+}
+
+#root{
+    display: flex;
+    justify-content: center;
+}
+img{
+    width: 61%;
+    position: absolute;
+    right: 18%;
+    top: 6%;
+    
+}
+.title{
+    background-color: blueviolet;
+}
+h2{
+    background-image: url(./imagenes/logo.png);
+}
+.E-mail{
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 1% 0 4% 0;
+    color: gray;
+    flex-direction: column;
+    margin: 14% 0 0 0;
+}
+#password {
+    
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 1% 0 4% 0;
+    color: gray;
+    flex-direction: column;
+    margin: 14% 0 0 0;
+}
+#username{
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 1% 0 4% 0;
+    color: gray;
+    flex-direction: column;
+    margin: 14% 0 0 0;
+}
+.buttonGetinto{
+    margin: 16% 0 0 0;
+    width: 38%;
+    position: absolute;
+    top: 60%;
+    left: 31%;
+    background-color: #FE5E89;
+    border-radius: 35px;
+}
+.buttonCreate{
+    margin: 16% 0 0 0;
+    width: 38%;
+    position: absolute;
+    top: 77%;
+    left: 31%;
+}
+.buttonRegister{
+    margin: 16% 0 0 0;
+    width: 38%;
+    position: absolute;
+    top: 58%;
+    left: 31%;
+}
