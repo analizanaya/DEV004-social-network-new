@@ -7,10 +7,12 @@ export const Welcome = (onNavigate) => {
   const fondo = document.createElement('img');
   const title = document.createElement('h2');
   const buttonGetinto = document.createElement('button');
+  const line = document.createElement("img");
+  const goggle = document.createElement("img");
   const buttonCreate = document.createElement('button');
   const inputPassword = document.createElement('input');
   const inputUsername = document.createElement('input');
-
+  //console.log(goggle);
   // inputUsername.className.type = "username", "e-mail" ;
   // inputUsername.pattern = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$";
   inputUsername.type = 'email';
@@ -26,15 +28,23 @@ export const Welcome = (onNavigate) => {
   inputUsername.id = 'username';
   buttonGetinto.className = 'buttonGetinto';
   buttonCreate.className = 'buttonCreate';
+  goggle.className = "goggle";
+  line.className = "line";
 
   buttonGetinto.textContent = 'LOGIN';
   buttonCreate.textContent = 'CREATE ACCOUNT';
 
-  logo.src = './imagenes/logo.png';
+  logo.src = "./imagenes/logo.png";
   logo.alt = 'Logo';
 
   fondo.src = './imagenes/fondo-cel.png';
   fondo.alt = 'Fondo';
+
+  line.src = "./imagenes/rayita2-05.png";
+  line.alt = 'line';
+
+  goggle.src = "./imagenes/goggle.png";
+  goggle.alt = 'goggle';
 
   buttonGetinto.addEventListener('click', async (e) => {
     e.preventDefault();
@@ -64,6 +74,8 @@ export const Welcome = (onNavigate) => {
     fondo,
     inputUsername,
     inputPassword,
+    line,
+    goggle,
     buttonGetinto,
     buttonCreate,
   );
