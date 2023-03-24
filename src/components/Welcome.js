@@ -74,9 +74,9 @@ export const Welcome = (onNavigate) => {
     fondo,
     inputUsername,
     inputPassword,
+    buttonGetinto,
     line,
     goggle,
-    buttonGetinto,
     buttonCreate,
   );
 
