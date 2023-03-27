@@ -1,12 +1,7 @@
 import { Welcome } from './components/welcome.js';
-
 import { wall } from './components/wall.js';
-
 import { register } from './components/Register.js';
-
-import { app } from './Firebase/firebase.js';
-// import { auth } from './Firebase/firebase.js'
-import { db } from './Firebase/firebase.js';
+import { app, db } from './Firebase/firebase.js';
 
 const root = document.getElementById('root');
 
@@ -15,12 +10,8 @@ const routes = {
   '/wall': wall,
   '/register': register,
 };
-const onNavigate = (pathname) => {
-  window.history.pushState(
-    {},
-    pathname,
-    window.location.origin + pathname,
-  );
+export const onNavigate = (pathname) => {
+  window.history.pushState({}, pathname, window.location.origin + pathname);
   root.removeChild(root.firstChild);
   root.appendChild(routes[pathname](onNavigate));
 };
