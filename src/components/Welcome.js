@@ -1,6 +1,6 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../Firebase/firebase.js";
 
+import { auth, loginGoogle } from "../Firebase/firebase.js";
+import {loginWithEmailAndPassword} from "../Firebase/firebase.js"
 export const Welcome = (onNavigate) => {
   const div = document.createElement("div");
   const logo = document.createElement("img");
@@ -8,7 +8,7 @@ export const Welcome = (onNavigate) => {
   const title = document.createElement("h2");
   const buttonGetinto = document.createElement("button");
   const line = document.createElement("img");
-  const buttonGoogle = document.createElement("img", "input");
+  const buttonGoogle = document.createElement("img","input");
   const buttonCreate = document.createElement("button");
   const inputPassword = document.createElement("input");
   const inputUsername = document.createElement("input");
@@ -28,7 +28,7 @@ export const Welcome = (onNavigate) => {
   inputUsername.id = "username";
   buttonGetinto.className = "buttonGetinto";
   buttonCreate.className = "buttonCreate";
-  buttonGoogle.className = "Google";
+  buttonGoogle.className = "buttonGoogle";
   line.className = "line";
 
   buttonGetinto.textContent = "LOGIN";
@@ -53,7 +53,7 @@ export const Welcome = (onNavigate) => {
     const password = inputPassword.value;
 
     try {
-      const userCredenciales = await signInWithEmailAndPassword(
+      const userCredenciales = await loginWithEmailAndPassword(
         auth,
         email,
         password
@@ -64,16 +64,20 @@ export const Welcome = (onNavigate) => {
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorMessage);
+      console.error(errorMessage);
     }
   });
   // onNavigate('/login');
   buttonCreate.addEventListener("click", () => {
     onNavigate("/register");
   });
-  buttongoggle.addEventListener("click", () => {
-    onNavigate("/wall");
-  });
+
+ buttonGoogle.addEventListener("click", () => {
+    loginGoogle().then(()=>{
+      onNavigate("/wall");
+    });
+   
+  }); 
 
   div.append(
     title,
