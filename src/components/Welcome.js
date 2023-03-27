@@ -57,9 +57,24 @@ export const Welcome = (onNavigate) => {
     });
     
   });
+<<<<<<< HEAD
   // onNavigate('/login');
   buttonCreate.addEventListener("click", () => {
     onNavigate("/register");
+=======
+
+  buttonGoogle.addEventListener('click', () => {
+    try {
+      const userCredential = await signInWithPopup(auth, googleAuthProvider);
+      alert('Bienvenido');
+      onNavigate('/wall');
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error(errorMessage);
+    }
+    onNavigate('/wall');
+>>>>>>> bb3810ee6cdbbf77689980bf0f05a8b2757a6719
   });
 
  buttonGoogle.addEventListener("click", () => {
