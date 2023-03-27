@@ -45,27 +45,23 @@ export const Welcome = (onNavigate) => {
 
   buttonGoogle.src = "./imagenes/buttonGoogle.png";
   buttonGoogle.alt = "buttonGoogle";
+  
+ 
+  /*  */
 
-  buttonGetinto.addEventListener("click", async (e) => {
-    e.preventDefault();
-    //const auth = getAuth(onNavigate);
-    const email = inputUsername.value;
-    const password = inputPassword.value;
-
-    try {
-      const userCredenciales = await loginWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      alert("bienvenido");
-      onNavigate("/wall");
-      // ...
-    } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error(errorMessage);
+  buttonGetinto.addEventListener("click", () => {
+    if(inputUsername.value === '' || inputPassword.value === ''){
+      
+swal("Hello world!");
+    }else{
+      loginWithEmailAndPassword(inputPassword.value, inputUsername.value).then(()=>{
+        onNavigate("/wall");
+     
+      });
     }
+    
+
+    
   });
   // onNavigate('/login');
   buttonCreate.addEventListener("click", () => {
