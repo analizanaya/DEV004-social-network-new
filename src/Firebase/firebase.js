@@ -1,89 +1,56 @@
-// Import the functions you need from the SDKs you need
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDGcIilwnSYWgKmBHUYlbTMNw8tcVNdSZo",
-  authDomain: "social-network-e1b86.firebaseapp.com",
-  projectId: "social-network-e1b86",
-  storageBucket: "social-network-e1b86.appspot.com",
-  messagingSenderId: "413132530610",
-  appId: "1:413132530610:web:b552df6dff190969123aab",
-  measurementId: "G-XRY864RG09",
+  apiKey: 'AIzaSyDGcIilwnSYWgKmBHUYlbTMNw8tcVNdSZo',
+  authDomain: 'social-network-e1b86.firebaseapp.com',
+  projectId: 'social-network-e1b86',
+  storageBucket: 'social-network-e1b86.appspot.com',
+  messagingSenderId: '413132530610',
+  appId: '1:413132530610:web:b552df6dff190969123aab',
+  measurementId: 'G-XRY864RG09',
 };
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
-const inputPassword = document.createElement("input");
-const inputUsername = document.createElement("input");
-const email = inputUsername.value;
-const password = inputPassword.value;
+export const logincreateUserWithEmailAndPassword = (email, password) => createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    console.log(user);
+  })
+  .catch((error) => {
 
-/* const inputEmail = document.createElement("input");
-const inputPass = document.createElement("input"); */
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+  });
 
+export const loginWithEmailAndPassword = (password, email) =>
 
-export const logincreateUserWithEmailAndPassword = (email, password) => {
-return createUserWithEmailAndPassword(auth, email, password)
-.then((userCredential) => {
-  const user = userCredential.user;
-  console.log(user);
-})
-.catch((error) => {
-  // Manejo de errores
-  const errorCode = error.code;
-  const errorMessage = error.message;
-  console.log(errorCode, errorMessage);
-});
-}
-
-export const loginWithEmailAndPassword = (password, email) => {
-  //return signInWithEmailAndPassword(auth,email,password) */
-  return signInWithEmailAndPassword(auth, email, password)
+  signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in successfully
       const user = userCredential.user;
       console.log(user);
     })
     .catch((error) => {
-      // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode, errorMessage);
     });
-};
-
-export const loginGoogle = () => {
-  return signInWithPopup(auth, provider)
-    .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-    });
-};
+export const loginGoogle = () => signInWithPopup(auth, provider)
+  .then((result) => {
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const user = result.user;
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    const email = error.customData.email;
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });

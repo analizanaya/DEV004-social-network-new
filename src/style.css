@@ -5,7 +5,7 @@ html{
 #email-error{
     color: red;
 }
-.section{
+#section{
     display: flex;
     flex-direction: column;
     width: 100%;
