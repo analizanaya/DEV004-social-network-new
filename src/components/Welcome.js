@@ -8,11 +8,11 @@ export const Welcome = (onNavigate) => {
   const title = document.createElement('h2');
   const buttonGetinto = document.createElement('button');
   const line = document.createElement("img");
-  const goggle = document.createElement("img");
+  const buttongoggle = document.createElement("img");
   const buttonCreate = document.createElement('button');
   const inputPassword = document.createElement('input');
   const inputUsername = document.createElement('input');
-  //console.log(goggle);
+  //console.log(button);
   // inputUsername.className.type = "username", "e-mail" ;
   // inputUsername.pattern = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$";
   inputUsername.type = 'email';
@@ -28,7 +28,7 @@ export const Welcome = (onNavigate) => {
   inputUsername.id = 'username';
   buttonGetinto.className = 'buttonGetinto';
   buttonCreate.className = 'buttonCreate';
-  goggle.className = "goggle";
+  buttongoggle.className = "goggle";
   line.className = "line";
 
   buttonGetinto.textContent = 'LOGIN';
@@ -43,8 +43,8 @@ export const Welcome = (onNavigate) => {
   line.src = "./imagenes/rayita2-05.png";
   line.alt = 'line';
 
-  goggle.src = "./imagenes/goggle.png";
-  goggle.alt = 'goggle';
+  buttongoggle.src = "./imagenes/goggle.png";
+  buttongoggle.alt = 'goggle';
 
   buttonGetinto.addEventListener('click', async (e) => {
     e.preventDefault();
@@ -66,6 +66,9 @@ export const Welcome = (onNavigate) => {
     // onNavigate('/login');
   buttonCreate.addEventListener('click', () => {
     onNavigate('/register');
+  });
+  buttongoggle.addEventListener('click', () => {
+    onNavigate('/wall');
   });
 
   div.append(
