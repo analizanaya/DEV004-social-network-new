@@ -69,6 +69,15 @@ export const Welcome = (onNavigate) => {
   });
 
   buttonGoogle.addEventListener('click', () => {
+    try {
+      const userCredential = await signInWithPopup(auth, googleAuthProvider);
+      alert('Bienvenido');
+      onNavigate('/wall');
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error(errorMessage);
+    }
     onNavigate('/wall');
   });
 console.log(buttonGoogle)
