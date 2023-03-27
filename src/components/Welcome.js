@@ -1,4 +1,5 @@
 
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, loginGoogle } from "../Firebase/firebase.js";
 import {loginWithEmailAndPassword} from "../Firebase/firebase.js"
 export const Welcome = (onNavigate) => {
@@ -46,26 +47,15 @@ export const Welcome = (onNavigate) => {
   buttonGoogle.src = "./imagenes/buttonGoogle.png";
   buttonGoogle.alt = "buttonGoogle";
 
-  buttonGetinto.addEventListener("click", async (e) => {
-    e.preventDefault();
+  buttonGetinto.addEventListener("click",  () => {
+
     //const auth = getAuth(onNavigate);
     const email = inputUsername.value;
     const password = inputPassword.value;
-
-    try {
-      const userCredenciales = await loginWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      alert("bienvenido");
+    signInWithEmailAndPassword().then(()=>{
       onNavigate("/wall");
-      // ...
-    } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error(errorMessage);
-    }
+    });
+    
   });
   // onNavigate('/login');
   buttonCreate.addEventListener("click", () => {

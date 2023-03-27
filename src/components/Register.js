@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {loginWithEmailAndPassword} from "../Firebase/firebase.js"
 //import { async } from 'regenerator-runtime';
 import { auth } from "../Firebase/firebase.js";
 
