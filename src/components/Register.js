@@ -1,4 +1,4 @@
-import {loginWithEmailAndPassword} from "../Firebase/firebase.js"
+import { logincreateUserWithEmailAndPassword } from "../Firebase/firebase.js";
 //import { async } from 'regenerator-runtime';
 import { auth } from "../Firebase/firebase.js";
 
@@ -35,34 +35,18 @@ export const register = (onNavigate) => {
   fondo.src = "./imagenes/fondo-cel.png";
   fondo.alt = "Fondo";
 
-  buttonRegister.addEventListener("click", async (e) => {
-    e.preventDefault();
+  buttonRegister.addEventListener("click", () => {
+    logincreateUserWithEmailAndPassword(inputEmail.value, inputPass.value).then(()=>{
+      onNavigate("/wall");
+   
+    });
 
-    const username = inputCreate.value;
-    const email = inputEmail.value;
-    const password = inputPass.value;
+    
 
     inputEmail.after(emailError); // agregar el elemento después del input
     emailError.style.display = "none"; // ocultar el mensaje por defecto
 
-    try {
-      const userinfo = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      alert("correo valido");
-      onNavigate("/wall");
-    } catch (error) {
-      const errorCode = error.code;
-      if (errorCode === "auth/email-already-in-use") {
-        emailError.textContent = "Este correo ya está registrado.";
-        emailError.style.display = "block"; // mostrar el mensaje
-      } else if (errorCode === "auth/invalid-email") {
-        emailError.textContent = "Correo inválido.";
-        emailError.style.display = "block"; // mostrar el mensaje
-      }
-    }
+
   });
 
   div.append(
