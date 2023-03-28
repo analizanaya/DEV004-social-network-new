@@ -1,10 +1,9 @@
-<<<<<<< HEAD
-// aqui exportaras las funciones que necesites
+import { Welcome } from '../components/Welcome.js';
+import { wall } from '../components/wall.js';
+import { register } from '../components/Register.js';
 
-export const myFunction = () => {
-  // aqui tu codigo
-  // eslint-disable-next-line indent
-  /*  console.log('Hola mundo!'); */
+export const routes = {
+  '/': Welcome,
+  '/wall': wall,
+  '/register': register,
 };
-=======
->>>>>>> f6010d6ab48927b68245d67549699cefea4cbd90
