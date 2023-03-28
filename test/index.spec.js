@@ -4,8 +4,8 @@ import { onNavigate } from '../src/main.js';
 //mock
 describe("Pruebas de login", () => {
   beforeEach(() => {
-    authentication.signInWithEmailAndPassword = jest.fn();
-    authentication.signInWithPopup = jest.fn();
+    authentication.loginWithEmailAndPassword = jest.fn();
+    authentication.loginGoogl = jest.fn();
     routes.onNavigate = jest.fn(() => console.log("mock de onNavigate usado"));
   });
   it.only("Autenticación con correo electrónico y contraseña correcta, debería redireccionar a /wall", () => {
