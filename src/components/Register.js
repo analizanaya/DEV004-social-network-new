@@ -1,5 +1,4 @@
-import { logincreateUserWithEmailAndPassword } from '../Firebase/firebase.js';
-import { auth } from '../Firebase/firebase.js';
+import { logincreateUserWithEmailAndPassword, auth } from '../Firebase/firebase.js';
 
 export const register = (onNavigate) => {
   const div = document.createElement('div');

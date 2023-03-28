@@ -1,4 +1,10 @@
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
@@ -23,24 +29,21 @@ export const logincreateUserWithEmailAndPassword = (email, password) => createUs
     console.log(user);
   })
   .catch((error) => {
-
     const errorCode = error.code;
     const errorMessage = error.message;
     console.log(errorCode, errorMessage);
   });
 
-export const loginWithEmailAndPassword = (password, email) =>
-
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log(user);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
-    });
+export const loginWithEmailAndPassword = (password, email) => signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    console.log(user);
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+  });
 export const loginGoogle = () => signInWithPopup(auth, provider)
   .then((result) => {
     const credential = GoogleAuthProvider.credentialFromResult(result);
