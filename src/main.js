@@ -1,4 +1,4 @@
-import { Welcome } from './components/welcome.js';
+import { Welcome } from './components/Welcome.js';
 import { wall } from './components/wall.js';
 import { register } from './components/Register.js';
 import { app, db } from './Firebase/firebase.js';
