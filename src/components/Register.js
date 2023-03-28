@@ -40,13 +40,9 @@ export const register = (onNavigate) => {
       onNavigate("/wall");
    
     });
-
-    
-
+  
     inputEmail.after(emailError); // agregar el elemento después del input
     emailError.style.display = "none"; // ocultar el mensaje por defecto
-
-
   });
 
   div.append(
