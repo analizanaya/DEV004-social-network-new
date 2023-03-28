@@ -1,5 +1,4 @@
 
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, loginGoogle } from "../Firebase/firebase.js";
 import {loginWithEmailAndPassword} from "../Firebase/firebase.js"
 export const Welcome = (onNavigate) => {
@@ -13,9 +12,7 @@ export const Welcome = (onNavigate) => {
   const buttonCreate = document.createElement("button");
   const inputPassword = document.createElement("input");
   const inputUsername = document.createElement("input");
-  //console.log(buttonGoogle);
-  // inputUsername.className.type = "username", "e-mail" ;
-  // inputUsername.pattern = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$";
+ 
   inputUsername.type = "email";
   inputPassword.type = "password";
 
@@ -47,34 +44,30 @@ export const Welcome = (onNavigate) => {
   buttonGoogle.src = "./imagenes/buttonGoogle.png";
   buttonGoogle.alt = "buttonGoogle";
 
-  buttonGetinto.addEventListener("click",  () => {
-
-    //const auth = getAuth(onNavigate);
+  buttonGetinto.addEventListener("click", async (e) => {
+    e.preventDefault();
+ 
     const email = inputUsername.value;
     const password = inputPassword.value;
-    signInWithEmailAndPassword().then(()=>{
-      onNavigate("/wall");
-    });
-    
-  });
-<<<<<<< HEAD
-  // onNavigate('/login');
-  buttonCreate.addEventListener("click", () => {
-    onNavigate("/register");
-=======
 
-  buttonGoogle.addEventListener('click', () => {
     try {
-      const userCredential = await signInWithPopup(auth, googleAuthProvider);
-      alert('Bienvenido');
-      onNavigate('/wall');
+      const userCredenciales = await loginWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      alert("bienvenido");
+      onNavigate("/wall");
+      // ...
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.error(errorMessage);
     }
-    onNavigate('/wall');
->>>>>>> bb3810ee6cdbbf77689980bf0f05a8b2757a6719
+  });
+  // onNavigate('/login');
+  buttonCreate.addEventListener("click", () => {
+    onNavigate("/register");
   });
 
  buttonGoogle.addEventListener("click", () => {
