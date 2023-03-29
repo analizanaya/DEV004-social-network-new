@@ -11,15 +11,20 @@ const firebaseConfig = {
   appId: '1:413132530610:web:b552df6dff190969123aab',
   measurementId: 'G-XRY864RG09',
 };
-export const initFirebase = () => {
+
+let app;
+let auth; 
+let db;
+
+const initFirebase = () => {
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+   app = initializeApp(firebaseConfig);
 
   // Initialize Firebase Authentication and get a reference to the service
-  const auth = getAuth(app);
+   auth = getAuth(app);
 
   // Initialize Cloud Firestore and get a reference to the service
-  const db = getFirestore(app);
+   db = getFirestore(app);
 
   return {
     app,
@@ -29,4 +34,6 @@ export const initFirebase = () => {
   };
 };
 
-
+export {
+  initFirebase, app, auth, db
+}

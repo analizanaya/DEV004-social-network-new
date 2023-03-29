@@ -49,7 +49,7 @@ export const Welcome = () => {
 
   buttonGetinto.addEventListener('click', () => {
     if (inputUsername.value === '' || inputPassword.value === '') {
-      swal('Hello world!');
+      swal('Ingresa tus datos');
     } else {
       loginWithEmailAndPassword(inputPassword.value, inputUsername.value).then(
         () => {
