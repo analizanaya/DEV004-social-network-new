@@ -122,3 +122,43 @@ h2{
     flex-direction: column;
     margin: 14% 0 0 0;
 }
+#logo2{
+width: 20%;
+position: absolute;
+top: 2%;
+left: 5%;
+}
+.send{
+
+}
+.edit{
+
+}
+.delete{
+width: 4%;
+}
+.like1{
+width: 6%;
+}
+.like2{
+width: 6%;
+}
+.iconComment{
+width: 6%;
+}
+#post{
+    width: 66%;
+    display: flex;
+    height: 11%;
+    border-color: #EF104C;
+    position: absolute;
+    top: 19%;
+    left: 18%;
+    border-radius: 10px;
+}
+#comment{
+
+}
+.buttonSingOff{
+
+}
