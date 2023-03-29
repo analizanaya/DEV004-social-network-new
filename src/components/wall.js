@@ -12,6 +12,10 @@ export const wall = (onNavigate) => {
   const inputComment = document.createElement("input");
 
 
+  inputPost.type = 'texto';
+  inputComment.type = 'texto';
+
+
   fondo.id = 'fondo';
   div.id = 'section';
   buttonSend.className = 'send';
