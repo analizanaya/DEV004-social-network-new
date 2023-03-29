@@ -16,7 +16,7 @@
       authentication.signInWithEmailAndPassword .mockResolvedValueOnce({ user: { email: 'p@gmail.com' } });
 
       //Paso 1: Visualizar el formulario de login.
-      const divLogin = Login();
+      const divLogin = Welcome();
 
       //Paso 2: Completamos el formulario con un correo electrónico y contraseña correctos.
       loginDiv.querySelector('#username').value = 'p@gmail.com';
