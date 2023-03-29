@@ -1,26 +1,9 @@
-import { Welcome } from './components/Welcome.js';
-import { wall } from './components/wall.js';
-import { register } from './components/Register.js';
-import { app, db } from './Firebase/firebase.js';
+import { initFirebase } from "../src/Firebase/firebase.js";
+import { initRouter } from "../src/router.js";
+import { ROUTES } from "../src/lib/routes.js";
 
-const root = document.getElementById('root');
+// Initialize Firebase
+initFirebase();
 
-const routes = {
-  '/': Welcome,
-  '/wall': wall,
-  '/register': register,
-};
-export const onNavigate = (pathname) => {
-  window.history.pushState({}, pathname, window.location.origin + pathname);
-  root.removeChild(root.firstChild);
-  root.appendChild(routes[pathname](onNavigate));
-};
-
-const component = routes[window.location.pathname];
-
-window.onpopstate = () => {
-  root.removeChild(root.firstChild);
-  root.append(component(onNavigate));
-};
-
-root.appendChild(component(onNavigate));
+// Initialize Router
+initRouter(ROUTES);

@@ -1,10 +1,10 @@
 import {
-  auth,
-  loginGoogle,
-  loginWithEmailAndPassword,
-} from '../Firebase/firebase.js';
+   loginGoogle,
+   loginWithEmailAndPassword,
+} from '../Firebase/authentication.js';
+import { onNavigate } from '../router.js';
 
-export const Welcome = (onNavigate) => {
+export const Welcome = () => {
   const div = document.createElement('div');
   const logo = document.createElement('img');
   const fondo = document.createElement('img');
