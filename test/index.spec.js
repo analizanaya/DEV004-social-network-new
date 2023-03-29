@@ -2,9 +2,10 @@
   import * as router from "../src/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
   import { Welcome } from '../src/components/Welcome.js';
+import { TestWatcher } from "jest";
 
   describe('Pruebas de login', () => {
-
+    /*
     beforeEach(() => {
       //authentication.signInWithGoogle = jest.fn();
       
@@ -16,10 +17,19 @@ import { signInWithEmailAndPassword } from "firebase/auth";
       }))
       router.onNavigate = jest.fn(() => console.log('mock de onNavigate usado'));
     });  
+    */
 
-    it('Autenticación con correo electrónico y contraseña correcta, debería redireccionar a /wall', () => {
+    it('Autenticación con correo electrónico y contraseña correcta, debería redireccionar a /wall', async () => {
+      //mocks
+      const mockSignInWithEmailAndPassword =jest.fn(() => Promise.resolve({ user: { email: 'd@gmail.com' } }))
+      jest.mock("../src/Firebase/firebase", ()=>({
+        auth: {
+          signInWithEmailAndPassword:mockSignInWithEmailAndPassword
+        }
+      }))
+      router.onNavigate = jest.fn(() => console.log('mock de onNavigate usado'));
       //preparamos el mock
-      signInWithEmailAndPassword.mockResolvedValue({ user: { email: 'd@gmail.com' } });
+      signInWithEmailAndPassword.mockResolvedValueOnce({ user: { email: 'd@gmail.com' } });
 
       //Paso 1: Visualizar el formulario de login.
       const divLogin = Welcome();
@@ -32,6 +42,6 @@ import { signInWithEmailAndPassword } from "firebase/auth";
       divLogin.querySelector('.buttonGetinto').dispatchEvent(new Event('click'));
 
       //Paso 4: Verificamos visualmente que la aplicación redija a `/home`.
-      return Promise.resolve().then(() => expect(router.onNavigate).toHaveBeenCalledWith('/wall'));
+      await Promise.resolve().then(() => expect(router.onNavigate).toHaveBeenCalledWith('/wall'));
     });
   });
