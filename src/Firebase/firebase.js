@@ -1,11 +1,5 @@
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-} from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
+import { getAuth } from "firebase/auth";
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -17,43 +11,22 @@ const firebaseConfig = {
   appId: '1:413132530610:web:b552df6dff190969123aab',
   measurementId: 'G-XRY864RG09',
 };
+export const initFirebase = () => {
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
 
-export const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-const provider = new GoogleAuthProvider();
+  // Initialize Firebase Authentication and get a reference to the service
+  const auth = getAuth(app);
 
-export const logincreateUserWithEmailAndPassword = (email, password) => createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    const user = userCredential.user;
-    console.log(user);
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode, errorMessage);
-  });
+  // Initialize Cloud Firestore and get a reference to the service
+  const db = getFirestore(app);
 
-export const loginWithEmailAndPassword = (password, email) => signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    const user = userCredential.user;
-    console.log(user);
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode, errorMessage);
-  });
-export const loginGoogle = () => signInWithPopup(auth, provider)
-  .then((result) => {
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    const user = result.user;
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    const email = error.customData.email;
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-  });
+  return {
+    app,
+    auth,
+    db,
+
+  };
+};
+
+
