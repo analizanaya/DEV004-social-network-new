@@ -39,7 +39,7 @@ img{
 h2{
     background-image: url(./imagenes/logo.png);
 }
-.E-mail{
+.email{
     border: none;
     border-bottom: 1px solid black;
     margin: 1% 0 4% 0;
@@ -105,5 +105,20 @@ h2{
     top: 67.5%;
     width: 63%;
     left: 18%;
-
+}
+.username{
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 1% 0 4% 0;
+    color: gray;
+    flex-direction: column;
+    margin: 14% 0 0 0;
+}
+.password{
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 1% 0 4% 0;
+    color: gray;
+    flex-direction: column;
+    margin: 14% 0 0 0;
 }
