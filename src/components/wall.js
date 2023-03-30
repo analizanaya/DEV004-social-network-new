@@ -16,6 +16,7 @@ export const wall = (onNavigate) => {
   fondo.id = 'fondo';
   div.id = 'section';
   logo2.id = 'logo2';
+  buttonSend.textContent = 'SEND';
   buttonSend.className = 'send';
   buttonEdit.className = 'edit';
   deleteIcon.className = 'delete';
