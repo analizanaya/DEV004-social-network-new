@@ -6,14 +6,15 @@ import { Welcome } from '../src/components/Welcome.js';
 
     it('Autenticación con correo electrónico y contraseña correcta, debería redireccionar a /wall', async () => {
       //mocks
-      const mockSignInWithEmailAndPassword =jest.fn(() => Promise.resolve({ user: { email: 'd@gmail.com' } }))
-      jest.mock("firebase/auth", ()=>({
-        auth: {
+      const mockSignInWithEmailAndPassword =jest.fn();
+      jest.mock('firebase/auth', ()=>({
+          getAut: jest.fn(),
           signInWithEmailAndPassword:mockSignInWithEmailAndPassword
-        }
+       
       }))
       router.onNavigate = jest.fn(() => console.log('mock de onNavigate usado'));
-      signInWithEmailAndPassword.mockResolvedValueOnce({ user: { email: 'd@gmail.com' } });
+      //preparamos el mock
+      mockSignInWithEmailAndPassword.mockResolvedValueOnce({ user: { email: 'd@gmail.com' } });
 
       const divLogin = Welcome();
 

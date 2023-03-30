@@ -20,6 +20,10 @@ export const wall = (onNavigate) => {
   const inputComment = document.createElement("input");
 
 
+  inputPost.type = 'texto';
+  inputComment.type = 'texto';
+
+
   fondo.id = 'fondo';
   div.id = 'section';
   logo2.id = 'logo2';
