@@ -1,5 +1,9 @@
 export const wall = (onNavigate) => {
   const div = document.createElement("div");
+  const dialog = document.createElement('dialog');
+  dialog.innerText = 'Hola mundo';
+  div.append(dialog)
+  
   const logo2 = document.createElement('img');
   const fondo = document.createElement('img');
   const likeEmptyIcon = document.createElement('img', 'input');
@@ -7,6 +11,9 @@ export const wall = (onNavigate) => {
   const commentIcon = document.createElement('img', 'input');
   const deleteIcon = document.createElement('img', 'input');
   const buttonSend = document.createElement("button");
+  buttonSend.addEventListener("click", function(){
+    dialog.showModal()
+  });
   const buttonEdit = document.createElement("button");
   const buttonSingOff = document.createElement("button");
   const inputPost = document.createElement("input");
