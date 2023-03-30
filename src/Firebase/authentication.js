@@ -3,7 +3,7 @@ import {getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithP
 
 const provider = new GoogleAuthProvider();
 
-export const logincreateUserWithEmailAndPassword = (email, password) => createUserWithEmailAndPassword(auth, email, password)
+export const logincreateUserWithEmailAndPassword = (email, password) => createUserWithEmailAndPassword(getAuth, email, password)
   .then((userCredential) => {
     const user = userCredential.user;
     console.log(user);
