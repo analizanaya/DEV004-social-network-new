@@ -21,15 +21,15 @@ import { TestWatcher } from "jest";
 
     it('Autenticación con correo electrónico y contraseña correcta, debería redireccionar a /wall', async () => {
       //mocks
-      const mockSignInWithEmailAndPassword =jest.fn(() => Promise.resolve({ user: { email: 'd@gmail.com' } }))
-      jest.mock("../src/Firebase/firebase", ()=>({
-        auth: {
+      const mockSignInWithEmailAndPassword =jest.fn();
+      jest.mock('firebase/auth', ()=>({
+          getAut: jest.fn(),
           signInWithEmailAndPassword:mockSignInWithEmailAndPassword
-        }
+       
       }))
       router.onNavigate = jest.fn(() => console.log('mock de onNavigate usado'));
       //preparamos el mock
-      signInWithEmailAndPassword.mockResolvedValueOnce({ user: { email: 'd@gmail.com' } });
+      mockSignInWithEmailAndPassword.mockResolvedValueOnce({ user: { email: 'd@gmail.com' } });
 
       //Paso 1: Visualizar el formulario de login.
       const divLogin = Welcome();
