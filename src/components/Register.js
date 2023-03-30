@@ -21,7 +21,7 @@ export const register = () => {
 
   div.id = 'section';
   buttonRegister.className = 'buttonRegister';
-  inputEmail.className = 'E-mail';
+  inputEmail.className = 'email';
   inputPass.className = 'password';
   inputCreate.className = 'username';
   fondo.id = 'fondo';
