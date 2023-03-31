@@ -1,15 +1,20 @@
-export const wall = (onNavigate) => {
-  const div = document.createElement("div");
-  const dialog = document.createElement('dialog');
-  dialog.innerText = 'Hola mundo';
-  div.append(dialog)
+
+  export const wall = (onNavigate) => {
+    const div = document.createElement("div");
+    const dialog = document.createElement('dialog');
+    dialog.innerText = 'Hola mundo';
+  
+    const deleteIcon = document.createElement('img');
+    deleteIcon.src = './imagenes/eliminar.png';
+  
+    dialog.appendChild(deleteIcon);
+    div.appendChild(dialog);
   
   const logo2 = document.createElement('img');
   const fondo = document.createElement('img');
   const likeEmptyIcon = document.createElement('img', 'input');
   const likeFullIcon = document.createElement('img', 'input');
   const commentIcon = document.createElement('img', 'input');
-  const deleteIcon = document.createElement('img', 'input');
   const buttonSend = document.createElement("button");
   buttonSend.addEventListener("click", function(){
     dialog.showModal()
@@ -19,10 +24,8 @@ export const wall = (onNavigate) => {
   const inputPost = document.createElement("input");
   const inputComment = document.createElement("input");
 
-
   inputPost.type = 'texto';
   inputComment.type = 'texto';
-
 
   fondo.id = 'fondo';
   div.id = 'section';
@@ -37,8 +40,6 @@ export const wall = (onNavigate) => {
   inputPost.id = 'post';
   inputComment.id = 'comment';
   buttonSingOff.className = 'buttonSingOff';
-
-
 
   logo2.src = './imagenes/logo.png';
   logo2.alt = 'Logo';
@@ -55,22 +56,11 @@ export const wall = (onNavigate) => {
   commentIcon.src = './imagenes/comentario.png';
   commentIcon.alt = 'comentario';
 
-  deleteIcon.src = './imagenes/eliminar.png';
-  deleteIcon.alt = 'eliminar';
-
   buttonEdit.textContent = "Editar";
   buttonSingOff.textContent = "Cerrar Sesión";
 
-  /*buttonBack.addEventListener("click", () => {
-    onNavigate("/");
-  });
- 
-  button.addEventListener("click", () => {
-    onNavigate("/");
-  });*/
 
-
-  div.append(logo2, fondo, inputPost, buttonSend, buttonEdit, likeEmptyIcon, likeFullIcon, deleteIcon, commentIcon, inputComment, buttonSingOff);
+  div.append(logo2, fondo, inputPost, buttonSend, buttonEdit, likeEmptyIcon, likeFullIcon, commentIcon, inputComment, buttonSingOff);
 
   return div;
 };
