@@ -1,17 +1,20 @@
-html{
+html {
     display: flex;
     justify-content: center;
 }
-#email-error{
+
+#email-error {
     color: red;
 }
-#section{
+
+#section {
     display: flex;
     flex-direction: column;
     width: 100%;
     margin: 137% 0 0 0;
 }
-#fondo{
+
+#fondo {
     display: flex;
     width: 100%;
     position: absolute;
@@ -19,27 +22,31 @@ html{
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: -1; 
+    z-index: -1;
 }
 
-#root{
+#root {
     display: flex;
     justify-content: center;
 }
-img{
+
+img {
     width: 61%;
     position: absolute;
     right: 18%;
     top: 6%;
-    
+
 }
-.title{
+
+.title {
     background-color: blueviolet;
 }
-h2{
+
+h2 {
     background-image: url(./imagenes/logo.png);
 }
-.email{
+
+.email {
     border: none;
     border-bottom: 1px solid black;
     margin: 1% 0 4% 0;
@@ -47,8 +54,9 @@ h2{
     flex-direction: column;
     margin: 14% 0 0 0;
 }
+
 #password {
-    
+
     border: none;
     border-bottom: 1px solid black;
     margin: 1% 0 4% 0;
@@ -56,7 +64,8 @@ h2{
     flex-direction: column;
     margin: 14% 0 0 0;
 }
-#username{
+
+#username {
     border: none;
     border-bottom: 1px solid black;
     margin: 1% 0 4% 0;
@@ -64,6 +73,7 @@ h2{
     flex-direction: column;
     margin: 14% 0 0 0;
 }
+
 .buttonGetinto {
     margin: 16% 0 0 0;
     width: 38%;
@@ -76,7 +86,8 @@ h2{
     border-color: #f8f5f500;
     color: white;
 }
-.buttonCreate{
+
+.buttonCreate {
     margin: 16% 0 0 0;
     width: 49%;
     height: 5%;
@@ -87,26 +98,30 @@ h2{
     border-radius: 42px;
     background-color: #ffffff0a;
 }
-.buttonRegister{
+
+.buttonRegister {
     margin: 16% 0 0 0;
     width: 38%;
     position: absolute;
     top: 58%;
     left: 31%;
 }
-.buttonGoogle{
+
+.buttonGoogle {
     position: absolute;
     top: 73%;
     width: 46%;
     left: 26%;
 }
-.line{
+
+.line {
     position: absolute;
     top: 67.5%;
     width: 63%;
     left: 18%;
 }
-.username{
+
+.username {
     border: none;
     border-bottom: 1px solid black;
     margin: 1% 0 4% 0;
@@ -114,7 +129,8 @@ h2{
     flex-direction: column;
     margin: 14% 0 0 0;
 }
-.password{
+
+.password {
     border: none;
     border-bottom: 1px solid black;
     margin: 1% 0 4% 0;
@@ -122,13 +138,15 @@ h2{
     flex-direction: column;
     margin: 14% 0 0 0;
 }
-#logo2{
-width: 20%;
-position: absolute;
-top: 2%;
-left: 5%;
+
+#logo2 {
+    width: 20%;
+    position: absolute;
+    top: 2%;
+    left: 5%;
 }
-.send{
+
+.send {
     position: absolute;
     top: 72%;
     width: 18%;
@@ -139,7 +157,8 @@ left: 5%;
     font-weight: bold;
     left: 75%;
 }
-.edit{
+
+.edit {
     position: absolute;
     top: 31.5%;
     right: 25%;
@@ -148,23 +167,32 @@ left: 5%;
     color: #EF104C;
     font-size: 97%;
 }
-.delete{
+
+.delete {
     width: 4%;
     top: 31%;
 }
-.like1{
-width: 6%;
-top: 34.5%;
+
+.like1 {
+    width: 6%;
+    top: 31.5%;
+    left: 22%;
 }
-.like2{
-width: 6%;
-top: 37%;
+
+.like2 {
+    width: 6%;
+    top: 31.5%;
+    left: 22%;
+    display: none;
 }
-.iconComment{
-width: 6%;
-top: 40%;
+
+.iconComment {
+    width: 6%;
+    top: 31.5%;
+    left: 33%;
 }
-#post{
+
+#post {
     width: 66%;
     display: flex;
     height: 11%;
@@ -174,10 +202,8 @@ top: 40%;
     left: 18%;
     border-radius: 10px;
 }
-#comment{
 
-}
-.buttonSingOff{
+.buttonSingOff {
     position: absolute;
     top: 5%;
     left: 68%;
@@ -186,11 +212,8 @@ top: 40%;
     border-radius: 8px;
     font-weight: bold;
 }
-.ShowModal{
 
-    border: none;
-}
-.dialog{
+#dialog {
     width: 73%;
     height: 11%;
     border-radius: 10px;
@@ -199,4 +222,16 @@ top: 40%;
     left: 3%;
     top: -51%;
 
+}
+#ShowModal {
+    border: none;
+    display: inline-block;
+    min-width: 100px;
+
+}
+.adjustmentButtonsIcon {
+    width: 2%;
+    top: 3%;
+    transform: rotate(90deg);
+    left: 88%;
 }
