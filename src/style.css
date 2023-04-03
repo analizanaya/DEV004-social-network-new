@@ -130,13 +130,14 @@ left: 5%;
 }
 .send{
     position: absolute;
-    top: 34%;
+    top: 72%;
     width: 18%;
-    height: 3%;
+    height: 21%;
     background: #14EDDD;
     border-radius: 5px;
     border: none;
     font-weight: bold;
+    left: 75%;
 }
 .edit{
     position: absolute;
@@ -184,4 +185,18 @@ top: 40%;
     border-color: #14EDDD;
     border-radius: 8px;
     font-weight: bold;
+}
+.ShowModal{
+
+    border: none;
+}
+.dialog{
+    width: 73%;
+    height: 11%;
+    border-radius: 10px;
+    border: none;
+    background: #fcf7f7;
+    left: 3%;
+    top: -51%;
+
 }
