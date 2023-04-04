@@ -47,6 +47,7 @@ export const wall = (onNavigate) => {
   buttonSingOff.className = 'buttonSingOff';
   adjustmentButtons.className = 'adjustmentButtonsIcon';
   buttonsShowModal.className = 'ButtonsShowModal';
+  dialogAjustes.className = "dialogAjustes";
 
   adjustmentButtons.src = './imagenes/adjustmentButtonsIcon.png';
   adjustmentButtons.alt = 'adjustmentButtons';
