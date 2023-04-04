@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from "firebase/auth";
 import { getFirestore } from 'firebase/firestore';
 
+
 const firebaseConfig = {
   apiKey: 'AIzaSyDGcIilwnSYWgKmBHUYlbTMNw8tcVNdSZo',
   authDomain: 'social-network-e1b86.firebaseapp.com',
