@@ -2,68 +2,65 @@
 export const wall = (onNavigate) => {
   const div = document.createElement("div");
   const dialog = document.createElement('dialog');
-  dialog.id = "dialog";
   const inputShowModal = document.createElement("input");
   inputShowModal.placeholder = "¿ Qué estás pensando ... ?"
   const buttonSend = document.createElement("button");
+  const dialogAjustes = document.createElement('dialog');
+  const deleteIcon = document.createElement('img');
+  const buttonEdit = document.createElement("button");
+  const buttonsShowModal = document.createElement('img','button');
+  
+
 
   dialog.appendChild(inputShowModal);
   dialog.appendChild(buttonSend);
+  dialogAjustes.appendChild(buttonsShowModal);
+  dialogAjustes.appendChild(buttonEdit);
+  dialogAjustes.appendChild(deleteIcon);
 
 
-  
-  const dialog2 = document.createElement('dialog');
-  dialog2.id = "dialog2";
-  const deleteIcon = document.createElement('img');
-  const buttonEdit = document.createElement("button");
-  dialog2.appendChild(deleteIcon);
-  dialog2.appendChild(buttonEdit);
-
-  
-
-  const adjustmentButtons = document.createElement('img','dialog');
-  adjustmentButtons.className = 'adjustmentButtonsIcon';
-  /* adjustmentButtons.addEventListener("click", function () {
-    dialog.showModal()
-  }); */
-  adjustmentButtons.addEventListener('click', function() {
-    dialog2.showModal();
-  });
-
-
-  div.appendChild(dialog, dialog2);
+  div.appendChild(dialog);
+  div.appendChild( dialogAjustes);
 
   const logo2 = document.createElement('img');
   const fondo = document.createElement('img');
-  
+
   const likeEmptyIcon = document.createElement('img', 'input');
   const likeFullIcon = document.createElement('img', 'input');
   const commentIcon = document.createElement('img', 'input');
-  
+
   deleteIcon.src = './imagenes/eliminar.png';
 
- 
-  
+
+
   const buttonSingOff = document.createElement("button");
   const inputPost = document.createElement("input");
   inputPost.addEventListener("click", function () {
     dialog.showModal()
   });
   inputPost.placeholder = "¿ Qué estás pensando ... ?"
+  const adjustmentButtons = document.createElement('img','button');
+  adjustmentButtons.addEventListener("click", function () {
+    dialogAjustes.showModal()
+  });
   const inputComment = document.createElement("input");
-  
+
   inputPost.type = 'texto';
   inputComment.type = 'texto';
+  adjustmentButtons.type = 'button';
+  buttonsShowModal.type = 'button';
 
   fondo.id = 'fondo';
   div.id = 'section';
   logo2.id = 'logo2';
 
-  
-  inputShowModal.id= "ShowModal";
+  dialog.id = "dialog";
+  dialogAjustes.className = "dialogAjustes";
+  inputShowModal.id = "ShowModal";
   buttonSend.textContent = 'SEND';
   buttonSend.className = 'send';
-  
+  adjustmentButtons.className = 'adjustmentButtonsIcon';
+  buttonsShowModal.className = 'ButtonsShowModal';
   buttonEdit.className = 'edit';
   deleteIcon.className = 'delete';
   likeEmptyIcon.className = 'like1';
@@ -95,7 +92,7 @@ export const wall = (onNavigate) => {
   buttonSingOff.textContent = "Cerrar Sesión";
 
 
-  div.append(logo2, fondo, inputPost,adjustmentButtons, likeEmptyIcon, likeFullIcon, commentIcon,  inputComment, buttonSingOff);
+  div.append(logo2, fondo, inputPost, adjustmentButtons, likeEmptyIcon, likeFullIcon, commentIcon, inputComment, buttonSingOff);
 
   return div;
 };
