@@ -5,6 +5,7 @@ export const wall = (onNavigate) => {
   const dialog = document.createElement('dialog');
   const inputShowModal = document.createElement("input");
   const buttonSend = document.createElement("button");
+  const buttonxIcon = document.createElement('img','button');
   const dialogAjustes = document.createElement('dialog');
   const deleteIcon = document.createElement('img');
   const buttonEdit = document.createElement("button");
@@ -18,6 +19,7 @@ export const wall = (onNavigate) => {
   const inputPost = document.createElement("input");
   const inputComment = document.createElement("input");
   const buttonsShowModal = document.createElement('img','button');
+ 
 
   inputShowModal.placeholder = "¿ Qué estás pensando ... ?"
   inputPost.placeholder = "¿ Qué estás pensando ... ?"
@@ -26,6 +28,7 @@ export const wall = (onNavigate) => {
   inputComment.type = 'texto';
   adjustmentButtons.type = 'button';
   buttonsShowModal.type = 'button';
+  buttonxIcon.type = 'button';
 
   fondo.id = 'fondo';
   div.id = 'section';
@@ -40,6 +43,7 @@ export const wall = (onNavigate) => {
   buttonSingOff.textContent = "Cerrar Sesión";
 
   buttonSend.className = 'send';
+  buttonxIcon.className = 'buttonX';
   adjustmentButtons.className = 'adjustmentButtonsIcon';
   buttonsShowModal.className = 'ButtonsShowModal';
   buttonEdit.className = 'edit';
@@ -72,12 +76,16 @@ export const wall = (onNavigate) => {
   commentIcon.src = './imagenes/comentario.png';
   commentIcon.alt = 'comentario';
 
+  buttonxIcon.src = './imagenes/x.png';
+  buttonxIcon.alt = 'equis';
+
   adjustmentButtons.addEventListener("click", function () {
     dialogAjustes.showModal()
   });
   inputPost.addEventListener("click", function () {
     dialog.showModal()
     });
+
 
     buttonSend.addEventListener('click', async function   (){
       const docRef = await addDoc(collection(db, "Publicaciones"), {
@@ -87,6 +95,7 @@ export const wall = (onNavigate) => {
     });
   dialog.appendChild(inputShowModal);
   dialog.appendChild(buttonSend);
+  dialog.appendChild(buttonxIcon);
   dialogAjustes.appendChild(buttonsShowModal);
   dialogAjustes.appendChild(buttonEdit);
   dialogAjustes.appendChild(deleteIcon);
