@@ -2,18 +2,15 @@ html {
     display: flex;
     justify-content: center;
 }
-
 #email-error {
     color: red;
 }
-
 #section {
     display: flex;
     flex-direction: column;
     width: 100%;
     margin: 137% 0 0 0;
 }
-
 #fondo {
     display: flex;
     width: 100%;
@@ -24,28 +21,22 @@ html {
     bottom: 0;
     z-index: -1;
 }
-
 #root {
     display: flex;
     justify-content: center;
 }
-
 img {
     width: 61%;
     position: absolute;
     right: 18%;
     top: 6%;
-
 }
-
 .title {
     background-color: blueviolet;
 }
-
 h2 {
     background-image: url(./imagenes/logo.png);
 }
-
 .email {
     border: none;
     border-bottom: 1px solid black;
@@ -54,9 +45,7 @@ h2 {
     flex-direction: column;
     margin: 14% 0 0 0;
 }
-
 #password {
-
     border: none;
     border-bottom: 1px solid black;
     margin: 1% 0 4% 0;
@@ -64,7 +53,6 @@ h2 {
     flex-direction: column;
     margin: 14% 0 0 0;
 }
-
 #username {
     border: none;
     border-bottom: 1px solid black;
@@ -73,7 +61,6 @@ h2 {
     flex-direction: column;
     margin: 14% 0 0 0;
 }
-
 .buttonGetinto {
     margin: 16% 0 0 0;
     width: 38%;
@@ -86,7 +73,6 @@ h2 {
     border-color: #f8f5f500;
     color: white;
 }
-
 .buttonCreate {
     margin: 16% 0 0 0;
     width: 49%;
@@ -98,7 +84,6 @@ h2 {
     border-radius: 42px;
     background-color: #ffffff0a;
 }
-
 .buttonRegister {
     margin: 16% 0 0 0;
     width: 38%;
@@ -106,21 +91,18 @@ h2 {
     top: 58%;
     left: 31%;
 }
-
 .buttonGoogle {
     position: absolute;
     top: 73%;
     width: 46%;
     left: 26%;
 }
-
 .line {
     position: absolute;
     top: 67.5%;
     width: 63%;
     left: 18%;
 }
-
 .username {
     border: none;
     border-bottom: 1px solid black;
@@ -129,7 +111,6 @@ h2 {
     flex-direction: column;
     margin: 14% 0 0 0;
 }
-
 .password {
     border: none;
     border-bottom: 1px solid black;
@@ -138,14 +119,12 @@ h2 {
     flex-direction: column;
     margin: 14% 0 0 0;
 }
-
 #logo2 {
     width: 20%;
     position: absolute;
     top: 2%;
     left: 5%;
 }
-
 .send {
     position: absolute;
     top: 72%;
@@ -157,7 +136,6 @@ h2 {
     font-weight: bold;
     left: 75%;
 }
-
 .edit {
     position: absolute;
     top: 31.5%;
@@ -167,31 +145,26 @@ h2 {
     color: #EF104C;
     font-size: 97%;
 }
-
 .delete {
     width: 4%;
     top: 31%;
 }
-
 .like1 {
     width: 6%;
     top: 31.5%;
     left: 22%;
 }
-
 .like2 {
     width: 6%;
     top: 31.5%;
     left: 22%;
     display: none;
 }
-
 .iconComment {
     width: 6%;
     top: 31.5%;
     left: 33%;
 }
-
 #post {
     width: 66%;
     display: flex;
@@ -202,7 +175,6 @@ h2 {
     left: 18%;
     border-radius: 10px;
 }
-
 .buttonSingOff {
     position: absolute;
     top: 5%;
@@ -212,26 +184,29 @@ h2 {
     border-radius: 8px;
     font-weight: bold;
 }
-
 #dialog {
     width: 73%;
     height: 11%;
     border-radius: 10px;
     border: none;
-    background: #fcf7f7;
+    background: #FCF7F7;
     left: 3%;
     top: -51%;
-
 }
 #ShowModal {
     border: none;
     display: inline-block;
     min-width: 100px;
-
 }
 .adjustmentButtonsIcon {
     width: 2%;
+    transform: rotate(90deg);
+    left: 79%;
+}
+.ButtonsShowModal {
+    width: 2%;
     top: 16%;
+    transform: rotate(90deg);
     transform: rotate(90deg);
     left: 79%;
 }
@@ -240,15 +215,13 @@ h2 {
     top: 16%;
     transform: rotate(90deg);
     left: 88%;
-
 }
 .dialogAjustes{
     width: 64%;
     height: 4%;
     border-radius: 10px;
     border: none;
-    background: #fcf7f7;
+    background: #FCF7F7;
     left: 3%;
     top: -21%;
-
 }
