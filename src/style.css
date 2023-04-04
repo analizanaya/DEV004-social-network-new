@@ -231,7 +231,24 @@ h2 {
 }
 .adjustmentButtonsIcon {
     width: 2%;
-    top: 3%;
+    top: 16%;
     transform: rotate(90deg);
     left: 88%;
+}
+.ButtonsShowModal {
+    width: 2%;
+    top: 16%;
+    transform: rotate(90deg);
+    left: 88%;
+
+}
+.dialogAjustes{
+    width: 64%;
+    height: 4%;
+    border-radius: 10px;
+    border: none;
+    background: #fcf7f7;
+    left: 3%;
+    top: -21%;
+
 }
