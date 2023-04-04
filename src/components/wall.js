@@ -1,14 +1,17 @@
 
-  export const wall = (onNavigate) => {
-    const div = document.createElement("div");
-    const dialog = document.createElement('dialog');
-    dialog.innerText = 'Hola mundo';
-  
-    const deleteIcon = document.createElement('img');
-    deleteIcon.src = './imagenes/eliminar.png';
-  
-    dialog.appendChild(deleteIcon);
-    div.appendChild(dialog);
+export const wall = (onNavigate) => {
+  const div = document.createElement("div");
+  const dialog = document.createElement('dialog');
+
+  const deleteIcon = document.createElement('img');
+  deleteIcon.src = './imagenes/eliminar.png';
+
+  const inputShowmodal = document.createElement('input');
+  inputShowmodal.type = 'text';
+
+  dialog.appendChild(inputShowmodal);
+  dialog.appendChild(deleteIcon);
+  div.appendChild(dialog);
   
   const logo2 = document.createElement('img');
   const fondo = document.createElement('img');
@@ -16,12 +19,12 @@
   const likeFullIcon = document.createElement('img', 'input');
   const commentIcon = document.createElement('img', 'input');
   const buttonSend = document.createElement("button");
-  buttonSend.addEventListener("click", function(){
-    dialog.showModal()
-  });
   const buttonEdit = document.createElement("button");
   const buttonSingOff = document.createElement("button");
-  const inputPost = document.createElement("input");
+  let inputPost = document.createElement("input");
+  inputPost.addEventListener("click", function(){
+    dialog.showModal()
+  });
   const inputComment = document.createElement("input");
 
   inputPost.type = 'texto';
@@ -30,6 +33,8 @@
   fondo.id = 'fondo';
   div.id = 'section';
   logo2.id = 'logo2';
+  inputShowmodal.className = 'Showmodal'
+  dialog.className = 'dialog'
   buttonSend.textContent = 'SEND';
   buttonSend.className = 'send';
   buttonEdit.className = 'edit';

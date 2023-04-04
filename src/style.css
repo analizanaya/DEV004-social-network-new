@@ -185,3 +185,14 @@ top: 40%;
     border-radius: 8px;
     font-weight: bold;
 }
+.Showmodal{
+    width: 85%;
+    display: flex;
+ 
+
+}
+.dialog{
+    display: flex;
+    min-width: 100px;
+    height: 50%;
+}
