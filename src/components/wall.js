@@ -1,6 +1,7 @@
 export const wall = (onNavigate) => {
   const div = document.createElement("div");
   const dialog = document.createElement('dialog');
+   
   const inputShowModal = document.createElement("input");
   inputShowModal.placeholder = "¿ Qué estás pensando ... ?"
   const buttonSend = document.createElement("button");
@@ -8,15 +9,15 @@ export const wall = (onNavigate) => {
   const buttonEdit = document.createElement("button");
   const adjustmentButtons = document.createElement('img','dialog');
   adjustmentButtons.addEventListener("click", function () {
-    dialog.showModal()
+    adjustmentButtons.showModal()
   });
 
 
   dialog.appendChild(inputShowModal);
-  dialog.appendChild(buttonSend);
-  dialog.appendChild(adjustmentButtons);
+  adjustmentButtons.appendChild(deleteIcon,buttonEdit);
+ 
 
-  div.appendChild(dialog);
+  div.appendChild(dialog, adjustmentButtons);
 
   const logo2 = document.createElement('img');
   const fondo = document.createElement('img');
@@ -80,7 +81,7 @@ export const wall = (onNavigate) => {
   buttonSingOff.textContent = "Cerrar Sesión";
 
 
-  div.append(logo2, fondo, inputPost,adjustmentButtons, buttonEdit, likeEmptyIcon, likeFullIcon, commentIcon, deleteIcon, inputComment, buttonSingOff);
+  div.append(logo2, fondo, inputPost,adjustmentButtons, likeEmptyIcon, likeFullIcon, commentIcon,  inputComment, buttonSingOff);
 
   return div;
 };
