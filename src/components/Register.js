@@ -20,13 +20,14 @@ export const register = () => {
   inputPass.type = 'password';
 
   div.id = 'section';
+  fondo.id = 'fondo';
+  emailError.id = 'email-error'; 
+
   buttonRegister.className = 'buttonRegister';
   inputEmail.className = 'email';
   inputPass.className = 'password';
   inputCreate.className = 'username';
-  fondo.id = 'fondo';
-  emailError.id = 'email-error'; // agregado
-
+ 
   buttonRegister.textContent = 'REGISTER';
 
   logo.src = './imagenes/logo.png';
