@@ -4,7 +4,6 @@ export const wall = (onNavigate) => {
   const inputShowModal = document.createElement("input");
   const buttonSend = document.createElement("button");
   const dialogAjustes = document.createElement('dialog');
-  const dialogAjustes = document.createElement('dialog');
   const deleteIcon = document.createElement('img');
   const buttonEdit = document.createElement("button");
   const adjustmentButtons = document.createElement('img');
@@ -84,7 +83,7 @@ export const wall = (onNavigate) => {
   dialogAjustes.appendChild(buttonEdit);
   dialogAjustes.appendChild(deleteIcon);
  
-  div.append(dialog,dialogAjustes, logo2, fondo, inputPost,adjustmentButtons, likeEmptyIcon, likeFullIcon, commentIcon,  inputComment, buttonSingOff);
+  div.append(dialog, dialogAjustes, logo2, fondo, inputPost,adjustmentButtons, likeEmptyIcon, likeFullIcon, commentIcon,  inputComment, buttonSingOff);
 
   return div;
 };

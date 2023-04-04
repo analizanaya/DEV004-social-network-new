@@ -200,13 +200,7 @@ h2 {
 }
 .adjustmentButtonsIcon {
     width: 2%;
-    transform: rotate(90deg);
-    left: 79%;
-}
-.ButtonsShowModal {
-    width: 2%;
     top: 16%;
-    transform: rotate(90deg);
     transform: rotate(90deg);
     left: 79%;
 }
