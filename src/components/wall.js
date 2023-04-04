@@ -1,3 +1,5 @@
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../Firebase/firebase";
 export const wall = (onNavigate) => {
   const div = document.createElement("div");
   const dialog = document.createElement('dialog');
@@ -77,6 +79,12 @@ export const wall = (onNavigate) => {
     dialog.showModal()
     });
 
+    buttonSend.addEventListener('click', async function   (){
+      const docRef = await addDoc(collection(db, "Publicaciones"), {
+        contenido:'publicacion creada desde el this.click',
+        autor : 'Any'
+      });
+    });
   dialog.appendChild(inputShowModal);
   dialog.appendChild(buttonSend);
   dialogAjustes.appendChild(buttonsShowModal);
