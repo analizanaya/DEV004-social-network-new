@@ -1,11 +1,12 @@
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../Firebase/firebase";
+import { db, auth } from "../Firebase/firebase";
+
 export const wall = (onNavigate) => {
   const div = document.createElement("div");
   const dialog = document.createElement('dialog');
-  const inputShowModal = document.createElement("input");
+  const inputShowModal = document.createElement("textarea");
   const buttonSend = document.createElement("button");
-  const buttonxIcon = document.createElement('img','button');
+  const buttonxIcon = document.createElement('img', 'button');
   const dialogAjustes = document.createElement('dialog');
   const deleteIcon = document.createElement('img');
   const buttonEdit = document.createElement("button");
@@ -18,12 +19,12 @@ export const wall = (onNavigate) => {
   const buttonSingOff = document.createElement("button");
   const inputPost = document.createElement("input");
   const inputComment = document.createElement("input");
-  const buttonsShowModal = document.createElement('img','button');
- 
+  const buttonsShowModal = document.createElement('img', 'button');
+
 
   inputShowModal.placeholder = "¿ Qué estás pensando ... ?"
   inputPost.placeholder = "¿ Qué estás pensando ... ?"
-  
+
   inputPost.type = 'texto';
   inputComment.type = 'texto';
   adjustmentButtons.type = 'button';
@@ -34,7 +35,7 @@ export const wall = (onNavigate) => {
   div.id = 'section';
   logo2.id = 'logo2';
   dialog.id = "dialog";
-  inputShowModal.id= "ShowModal";
+  inputShowModal.id = "ShowModal";
   inputPost.id = 'post';
   inputComment.id = 'comment';
 
@@ -84,23 +85,28 @@ export const wall = (onNavigate) => {
   });
   inputPost.addEventListener("click", function () {
     dialog.showModal()
-    });
+  });
 
 
-    buttonSend.addEventListener('click', async function   (){
-      const docRef = await addDoc(collection(db, "Publicaciones"), {
-        contenido:'publicacion creada desde el this.click',
-        autor : 'Any'
-      });
+  buttonSend.addEventListener('click', async function () {
+    const user = auth.currentUser;
+    const docRef = await addDoc(collection(db, "Publicaciones"), {
+      contenido: inputShowModal.value,
+      //autor: auth.current.user
     });
+    dialog.close()
+  });
+  buttonxIcon.addEventListener('click', function () {
+    dialog.close()
+  })
   dialog.appendChild(inputShowModal);
   dialog.appendChild(buttonSend);
   dialog.appendChild(buttonxIcon);
   dialogAjustes.appendChild(buttonsShowModal);
   dialogAjustes.appendChild(buttonEdit);
   dialogAjustes.appendChild(deleteIcon);
- 
-  div.append(dialog, dialogAjustes, logo2, fondo, inputPost,adjustmentButtons, likeEmptyIcon, likeFullIcon, commentIcon,  inputComment, buttonSingOff);
+
+  div.append(dialog, dialogAjustes, logo2, fondo, inputPost, adjustmentButtons, likeEmptyIcon, likeFullIcon, commentIcon, inputComment, buttonSingOff);
 
   return div;
 };
