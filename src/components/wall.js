@@ -90,12 +90,13 @@ export const wall = (onNavigate) => {
 
 
   buttonSend.addEventListener('click',  () => {
-    post(addDoc, collection).then(db, auth)
+    post(inputShowModal.value, 'Maria').then(response =>
+      console.log(response)) 
+    
     dialog.close() 
     });
     
 
-  
   buttonxIcon.addEventListener('click', function () {
     dialog.close()
   })

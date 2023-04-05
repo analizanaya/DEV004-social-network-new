@@ -42,14 +42,10 @@ export const loginGoogle = () => signInWithPopup(getAuth(), provider)
   });
 
 
-  export async function post() {
-  try {
-    const docRef = await addDoc(collection(db, "Publicaciones"), {
-      
-    });
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-}
-    
+  export function post(inputShowModal, usuarioActual) {
+      const document = addDoc(collection(db, "Publicaciones"), {
+        contenido: inputShowModal,
+        autor:usuarioActual,
+      });
+      return document
+    }
