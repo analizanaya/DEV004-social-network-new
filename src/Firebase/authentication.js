@@ -31,8 +31,10 @@ export const loginGoogle = () => signInWithPopup(getAuth(), provider)
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     const user = result.user;
-    console.log(user, token, credential);
+    //console.log(user, token, credential);
+    return result
   })
+
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -42,10 +44,10 @@ export const loginGoogle = () => signInWithPopup(getAuth(), provider)
   });
 
 
-  export function post(inputShowModal, usuarioActual) {
+  export function post(inputShowModal) {
       const document = addDoc(collection(db, "Publicaciones"), {
         contenido: inputShowModal,
-        autor:usuarioActual,
+        //autor:currentUser,
       });
       return document
     }

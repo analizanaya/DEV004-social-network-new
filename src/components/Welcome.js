@@ -3,6 +3,7 @@ import {
    loginWithEmailAndPassword,
 } from '../Firebase/authentication.js';
 import { onNavigate } from '../router.js';
+import {userData} from '../store/userData.js'
 
 export const Welcome = () => {
   const div = document.createElement('div');
@@ -15,6 +16,7 @@ export const Welcome = () => {
   const buttonCreate = document.createElement('button');
   const inputPassword = document.createElement('input');
   const inputUsername = document.createElement('input');
+  
 
   inputUsername.type = 'email';
   inputPassword.type = 'password';
@@ -65,10 +67,13 @@ export const Welcome = () => {
   });
 
   buttonGoogle.addEventListener('click', () => {
-    loginGoogle().then(() => {
+    loginGoogle().then((userCredential) => {
+      userData.userName = userCredential.user.displayName;
+      
       onNavigate('/wall');
     });
   });
+  
 
   div.append(
     title,

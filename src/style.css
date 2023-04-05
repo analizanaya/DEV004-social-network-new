@@ -2,6 +2,25 @@ html {
     display: flex;
     justify-content: center;
 }
+#imgUser{
+    width: 12%;
+    position: absolute;
+    top: 16%;
+    right: 66%;
+}
+#comment{
+    display: none;
+}
+.delete{
+    width: 100%;
+    background: none;
+    border: none;
+    color: #EF104C;
+    font-size: initial;
+    position: absolute;
+    top: 62%;
+    right: 0%;
+}
 #email-error {
     color: red;
 }
@@ -138,16 +157,20 @@ h2 {
 }
 .edit {
     position: absolute;
-    top: 31.5%;
-    right: 25%;
+    top: 21%;
+    right: 4%;
     background: none;
     border: none;
-    color: #EF104C;
-    font-size: 97%;
+    color: gray;
+    font-size: initial;
+    border-bottom: 0.5px solid gray;
+    width: 92%;
+    padding: 1% 3% 7% 1%;
 }
 .delete {
     width: 4%;
-    top: 31%;
+    top: 61%;
+    right: 55%;
 }
 .like1 {
     width: 6%;
@@ -179,7 +202,7 @@ h2 {
     position: absolute;
     top: 5%;
     left: 68%;
-    background: none;
+    background: white;
     border-color: #14EDDD;
     border-radius: 8px;
     font-weight: bold;
@@ -189,14 +212,19 @@ h2 {
     height: 11%;
     border-radius: 10px;
     border: none;
-    background: #FCF7F7;
+    background: white;
     left: 3%;
     top: -51%;
 }
 #ShowModal {
+    height: 42%;
     border: none;
     display: inline-block;
     min-width: 100px;
+    width: 93%;
+    position: absolute;
+    top: 20%;
+    right: 3%;
 }
 .adjustmentButtonsIcon {
     width: 2%;
@@ -212,15 +240,22 @@ h2 {
 }
 .dialogAjustes{
     width: 64%;
-    height: 4%;
+    height: 15%;
     border-radius: 10px;
     border: none;
     background: #FCF7F7;
     left: 3%;
     top: -21%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .buttonX{
+    width: 5%;
+    left: 91%;
+}
+.buttonX2{
     width: 5%;
     left: 91%;
 }
