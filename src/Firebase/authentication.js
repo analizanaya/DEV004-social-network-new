@@ -1,5 +1,7 @@
 import {getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,
     signInWithEmailAndPassword} from 'firebase/auth';
+import { collection, addDoc } from "firebase/firestore";
+import { db } from './firebase';
 
 const provider = new GoogleAuthProvider();
 
@@ -38,3 +40,16 @@ export const loginGoogle = () => signInWithPopup(getAuth(), provider)
     const credential = GoogleAuthProvider.credentialFromError(error);
     console.log(errorCode, errorMessage, email, credential);
   });
+
+
+  export async function post() {
+  try {
+    const docRef = await addDoc(collection(db, "Publicaciones"), {
+      
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
+    

@@ -1,5 +1,6 @@
-import { collection, addDoc } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { db, auth } from "../Firebase/firebase";
+import {post}from "../Firebase/authentication";
 
 export const wall = (onNavigate) => {
   const div = document.createElement("div");
@@ -88,14 +89,13 @@ export const wall = (onNavigate) => {
   });
 
 
-  buttonSend.addEventListener('click', async function () {
-    const user = auth.currentUser;
-    const docRef = await addDoc(collection(db, "Publicaciones"), {
-      contenido: inputShowModal.value,
-      //autor: auth.current.user
+  buttonSend.addEventListener('click',  () => {
+    post(addDoc, collection).then(db, auth)
+    dialog.close() 
     });
-    dialog.close()
-  });
+    
+
+  
   buttonxIcon.addEventListener('click', function () {
     dialog.close()
   })
