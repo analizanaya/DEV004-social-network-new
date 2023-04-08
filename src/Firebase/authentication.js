@@ -1,5 +1,5 @@
 import {getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,
-    signInWithEmailAndPassword} from 'firebase/auth';
+    signInWithEmailAndPassword , onAuthStateChanged} from 'firebase/auth';
 import { collection, addDoc } from "firebase/firestore";
 import { db } from './firebase';
 
@@ -44,10 +44,11 @@ export const loginGoogle = () => signInWithPopup(getAuth(), provider)
   });
 
 
+ 
   export function post(inputShowModal) {
       const document = addDoc(collection(db, "Publicaciones"), {
         contenido: inputShowModal,
-        //autor:currentUser,
+       // autor:displayName,
       });
       return document
     }
