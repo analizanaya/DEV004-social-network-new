@@ -2,7 +2,7 @@ import {getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithP
     signInWithEmailAndPassword , onAuthStateChanged} from 'firebase/auth';
 import { collection, addDoc } from "firebase/firestore";
 import { db } from './firebase';
-
+import {userData} from '../store/userData.js';
 
 const provider = new GoogleAuthProvider();
 
@@ -45,25 +45,20 @@ export const loginGoogle = () => signInWithPopup(getAuth(), provider)
   });
 
 
-  const user = auth.currentUser;
-  if (user) {
-    // Obtener la referencia al documento del usuario en Firestore
-    const userDocRef = doc(db, "usuarios", user.uid);
-  
-    // Actualizar el campo "nombre" del documento con el nombre del usuario
-    updateDoc(userDocRef, { nombre: user.displayName })
-      .then(() => {
-        console.log("Nombre actualizado exitosamente");
-      })
-      .catch((error) => {
-        console.error("Error al actualizar el nombre:", error);
-      });
-  }
-
+ 
   export function post(inputShowModal) {
+    const user = getAuth.currentUser;
+    let autor = userData.userName;
+     if (user) {
+      autor = user.displayName;
+    } 
       const document = addDoc(collection(db, "Publicaciones"), {
+        
         contenido: inputShowModal,
-      // autor: 
+        autor: autor,
       });
+      console.log(document) 
+      //userData.userName = userCredential.user.displayName;
+   
       return document
     }

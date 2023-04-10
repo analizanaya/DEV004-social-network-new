@@ -69,7 +69,7 @@ export const Welcome = () => {
   buttonGoogle.addEventListener('click', () => {
     loginGoogle().then((userCredential) => {
       userData.userName = userCredential.user.displayName;
-      
+
       onNavigate('/wall');
     });
   });
