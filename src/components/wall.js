@@ -73,7 +73,7 @@ export const wall = (onNavigate) => {
   buttonsShowModal.className = 'ButtonsShowModal';
   dialogAjustes.className = "dialogAjustes";
 
-   //agregado
+   //agregado          
   imgUser.src = './imagenes/user.png';
   imgUser.alt = 'imgUser';
 
@@ -117,6 +117,7 @@ export const wall = (onNavigate) => {
     dialog.close() 
     });
     
+
   buttonxIcon.addEventListener('click', function () {
     dialog.close()
   });

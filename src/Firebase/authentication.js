@@ -2,6 +2,7 @@ import {getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithP
     signInWithEmailAndPassword} from 'firebase/auth';
 import { collection, addDoc } from "firebase/firestore";
 import { db } from './firebase';
+import {userData} from '../store/userData.js';
 
 const provider = new GoogleAuthProvider();
 
@@ -45,9 +46,18 @@ export const loginGoogle = () => signInWithPopup(getAuth(), provider)
 
 
   export function post(inputShowModal) {
+    const user = getAuth.currentUser;
+    let autor = userData.userName;
+     if (user) {
+      autor = user.displayName;
+    } 
       const document = addDoc(collection(db, "Publicaciones"), {
+        
         contenido: inputShowModal,
-        //autor:currentUser,
+        autor: autor,
       });
+      console.log(document) 
+      //userData.userName = userCredential.user.displayName;
+   
       return document
     }
