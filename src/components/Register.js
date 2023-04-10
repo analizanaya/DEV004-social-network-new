@@ -1,5 +1,5 @@
 import { logincreateUserWithEmailAndPassword} from '../Firebase/authentication.js';
-
+import { getAuth, updateProfile } from "firebase/auth";
 import { onNavigate } from '../router.js';
 
 export const register = () => {
@@ -35,7 +35,8 @@ export const register = () => {
 
   fondo.src = './imagenes/fondo-cel.png';
   fondo.alt = 'Fondo';
-
+  
+  const auth = getAuth();
   buttonRegister.addEventListener('click', () => {
     logincreateUserWithEmailAndPassword(inputEmail.value, inputPass.value).then(
       () => {
