@@ -1,8 +1,10 @@
-import {getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,
-    signInWithEmailAndPassword , onAuthStateChanged} from 'firebase/auth';
+import {
+  getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,
+  signInWithEmailAndPassword, onAuthStateChanged
+} from 'firebase/auth';
 import { collection, addDoc } from "firebase/firestore";
 import { db } from './firebase';
-import {userData} from '../store/userData.js';
+import { userData } from '../store/userData.js';
 
 const provider = new GoogleAuthProvider();
 
@@ -45,20 +47,22 @@ export const loginGoogle = () => signInWithPopup(getAuth(), provider)
   });
 
 
- 
-  export function post(inputShowModal) {
-    const user = getAuth.currentUser;
-    let autor = userData.userName;
-     if (user) {
-      autor = user.displayName;
-    } 
-      const document = addDoc(collection(db, "Publicaciones"), {
-        
-        contenido: inputShowModal,
-        autor: autor,
-      });
-      console.log(document) 
-      //userData.userName = userCredential.user.displayName;
-   
-      return document
-    }
+
+export function post(inputShowModal) {
+
+  const user = getAuth().currentUser;
+
+  if (user) {
+    const autor = user.email;
+    const document = addDoc(collection(db, "Publicaciones"), {
+
+      contenido: inputShowModal,
+      autor: autor,
+    });
+    console.log(document)
+    //userData.userName = userCredential.user.displayName;
+
+    return document
+  }
+
+}

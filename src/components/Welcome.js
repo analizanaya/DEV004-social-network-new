@@ -66,10 +66,21 @@ export const Welcome = () => {
     onNavigate('/register');
   });
 
+
+  //registro de adtos en firestore
+  buttonGetinto.addEventListener('click', () => {
+   loginWithEmailAndPassword().then((userCredential) => {
+      userData.userName = userCredential.user.email;
+
+      onNavigate('/wall');
+    });
+  });
+
+
   buttonGoogle.addEventListener('click', () => {
     loginGoogle().then((userCredential) => {
-      userData.userName = userCredential.user.displayName;
-
+      userData.userName = userCredential.user.email;
+console.log(userCredential);
       onNavigate('/wall');
     });
   });

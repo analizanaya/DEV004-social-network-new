@@ -39,8 +39,15 @@ export const register = () => {
   buttonRegister.addEventListener('click', () => {
     logincreateUserWithEmailAndPassword(inputEmail.value, inputPass.value).then(
       () => {
+       
+       return  updateProfile(auth.currentUser, {
+          displayName: inputCreate.value,
+        });
+      }).then(
+      () => {
         onNavigate('/wall');
       },
+      
     );
 
     inputEmail.after(emailError); // agregar el elemento después del input
