@@ -1,9 +1,10 @@
 import { addDoc, collection } from "firebase/firestore";
-import { db, auth } from "../Firebase/firebase";
+import { db, auth, getTasks } from "../Firebase/firebase";
 import {post}from "../Firebase/authentication";
-import { getTasks} from './firebase.js'
+//import { getTasks} from './firebase.js'
 
 import { onNavigate } from '../router.js';
+import { async } from "regenerator-runtime";
 
 export const wall = () => {
   const div = document.createElement("div");
@@ -114,13 +115,20 @@ export const wall = () => {
   });
 
   buttonSend.addEventListener('click',  () => {
-    post(inputShowModal.value).then(response =>
-      console.log(response)) 
+    post(inputShowModal.value).then(response =>{
+      return response}) 
     
     dialog.close() 
     });
-    
 
+    window.addEventListener('DOMContentLoaded',async() =>{
+debugger
+      const querySnapshot = await getTasks ()
+      querySnapshot.forEach(doc =>{
+        console.log(doc.data())
+      })
+    })
+   
   buttonxIcon.addEventListener('click', function () {
     dialog.close()
   });

@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from "firebase/auth";
-import { collection, getFirestore } from 'firebase/firestore';
+import { collection, getFirestore, getDocs} from 'firebase/firestore';
 
 
 const firebaseConfig = {
@@ -36,8 +36,8 @@ const initFirebase = () => {
 
   };
 };
-export const getTasks = () => getDocs.collection(db,'Publicaciones');
+ const getTasks = () => getDocs(collection(db,'Publicaciones'));
 
 export {
-  initFirebase, app, auth, db
+  initFirebase, app, auth, db , getTasks
 }
