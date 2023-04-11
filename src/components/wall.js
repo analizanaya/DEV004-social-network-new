@@ -1,8 +1,9 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db, auth } from "../Firebase/firebase";
 import {post}from "../Firebase/authentication";
+import { onNavigate } from '../router.js';
 
-export const wall = (onNavigate) => {
+export const wall = () => {
   const div = document.createElement("div");
   const dialog = document.createElement('dialog');
   const inputShowModal = document.createElement("textarea");
@@ -126,6 +127,9 @@ export const wall = (onNavigate) => {
     dialogAjustes.close()
   });
 
+  buttonSingOff.addEventListener('click', ()=>{
+    onNavigate('/');
+  });
   dialog.appendChild(inputShowModal);
   dialog.appendChild(buttonSend);
   dialog.appendChild(buttonxIcon);

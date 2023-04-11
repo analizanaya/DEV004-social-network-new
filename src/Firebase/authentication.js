@@ -53,11 +53,16 @@ export function post(inputShowModal) {
   const user = getAuth().currentUser;
 
   if (user) {
-    const autor = user.email;
+    const email = user.email;
+    const autor = user.displayName;
+    const id = user.uid;
     const document = addDoc(collection(db, "Publicaciones"), {
 
       contenido: inputShowModal,
       autor: autor,
+      email : email,
+      id : id
+
     });
     console.log(document)
     //userData.userName = userCredential.user.displayName;
