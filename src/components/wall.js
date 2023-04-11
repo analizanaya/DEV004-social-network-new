@@ -6,7 +6,25 @@ import {post}from "../Firebase/authentication";
 import { onNavigate } from '../router.js';
 import { async } from "regenerator-runtime";
 
-export const wall = () => {
+const buttonsShowModal = document.createElement('img', 'button');
+const inputPost = document.createElement("input");
+const taskContainerVar= document.getElementById('taskContainer')
+  window.addEventListener('DOMContentLoaded',async()=>{
+    const querySnapshot= await getTasks()
+    
+    let html = ''
+    querySnapshot.forEach(doc => {
+      console.log(doc.data());
+html += `
+<div>
+<h3>${inputPost}</h3>
+</div>
+`
+    })
+    taskContainerVar.appendChild(html)
+  })
+
+  export const wall = () => {
   const div = document.createElement("div");
   const dialog = document.createElement('dialog');
   const inputShowModal = document.createElement("textarea");
@@ -20,6 +38,7 @@ export const wall = () => {
   const buttonEdit = document.createElement("button");
   const adjustmentButtons = document.createElement('img');
   //agregado
+  const taskContainer = document.createElement("textarea");
   const imgUser = document.createElement('img');
   const logo2 = document.createElement('img');
   const fondo = document.createElement('img');
@@ -27,9 +46,13 @@ export const wall = () => {
   const likeFullIcon = document.createElement('img', 'input');
   const commentIcon = document.createElement('img', 'input');
   const buttonSingOff = document.createElement("button");
-  const inputPost = document.createElement("input");
+  
   const inputComment = document.createElement("input");
-  const buttonsShowModal = document.createElement('img', 'button');
+  
+  
+  
+
+  
 
 
   inputShowModal.placeholder = "¿ Qué estás pensando ... ?"
@@ -53,6 +76,7 @@ export const wall = () => {
   inputComment.id = 'comment';
    //agregado
   imgUser.id= 'imgUser';
+  taskContainer.id= 'taskContainer';
 
   buttonSend.textContent = 'SEND';
   buttonEdit.textContent = "Edit";
@@ -121,13 +145,13 @@ export const wall = () => {
     dialog.close() 
     });
 
-    window.addEventListener('DOMContentLoaded',async() =>{
+    /* window.addEventListener('DOMContentLoaded',async() =>{
 debugger
       const querySnapshot = await getTasks ()
       querySnapshot.forEach(doc =>{
         console.log(doc.data())
       })
-    })
+    }) */
    
   buttonxIcon.addEventListener('click', function () {
     dialog.close()
@@ -151,7 +175,7 @@ debugger
   //dialogAjustes.appendChild(deleteIcon);
 
    //agregado imgUser
-  div.append(dialog, dialogAjustes, logo2, fondo, inputPost, adjustmentButtons, imgUser, likeEmptyIcon, likeFullIcon, commentIcon, inputComment, buttonSingOff);
+  div.append(dialog, dialogAjustes, logo2, fondo, inputPost, adjustmentButtons, taskContainer, imgUser, likeEmptyIcon, likeFullIcon, commentIcon, inputComment, buttonSingOff);
 
   return div;
 };
