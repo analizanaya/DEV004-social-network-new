@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from "firebase/auth";
-import { getFirestore } from 'firebase/firestore';
+import { collection, getFirestore } from 'firebase/firestore';
 
 
 const firebaseConfig = {
@@ -27,6 +27,8 @@ const initFirebase = () => {
   // Initialize Cloud Firestore and get a reference to the service
    db = getFirestore(app);
 
+  
+
   return {
     app,
     auth,
@@ -34,6 +36,7 @@ const initFirebase = () => {
 
   };
 };
+export const getTasks = () => getDocs.collection(db,'Publicaciones');
 
 export {
   initFirebase, app, auth, db
