@@ -1,7 +1,7 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db, auth } from "../Firebase/firebase";
 import {post}from "../Firebase/authentication";
-import { getTasks} from 'firebase.js'
+import { getTasks} from './firebase.js'
 
 import { onNavigate } from '../router.js';
 
