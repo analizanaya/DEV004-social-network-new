@@ -43,7 +43,8 @@ export const register = () => {
        return  updateProfile(auth.currentUser, {
           displayName: inputCreate.value,
         });
-      }).then(
+      })
+      .then(
       () => {
         onNavigate('/wall');
       },
