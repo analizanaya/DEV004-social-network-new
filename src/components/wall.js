@@ -1,33 +1,35 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db, auth, getTasks } from "../Firebase/firebase";
 import {post}from "../Firebase/authentication";
-
 import { onNavigate } from '../router.js';
-
 
 const buttonsShowModal = document.createElement('img', 'button');
 const inputPost = document.createElement("input");
-const taskContainerVar= document.getElementById('taskContainer')
-  window.addEventListener('DOMContentLoaded',async()=>{
-    const querySnapshot= await getTasks()
+
+  const buttonSend = document.createElement("button");
+  const inputShowModal = document.createElement("textarea");
+
+  buttonSend.addEventListener("click", () => {
+    const task = document.createElement("p");
+    task.textContent = inputShowModal.value;
     
-    let html = ''
-    querySnapshot.forEach(doc => {
-      console.log(doc.data());
-html += `
-<div>
-<h3>${inputPost}</h3>
-</div>
-`
-    })
-    taskContainerVar.appendChild(html)
-  })
+    const taskContainer = document.querySelector("#taskContainer"); // Obtener el elemento que contenerá las tareas
+    if (taskContainer) { // Verificar si el elemento existe
+      taskContainer.appendChild(task);
+      console.log(task)
+    } else {
+      console.error("No se encontró el elemento que contiene las tareas");
+    }
+    
+    inputShowModal.value = "";
+  });
+
 
   export const wall = () => {
   const div = document.createElement("div");
   const dialog = document.createElement('dialog');
-  const inputShowModal = document.createElement("textarea");
-  const buttonSend = document.createElement("button");
+ 
+  
   const buttonxIcon = document.createElement('img', 'button');
   const buttonxIcon2 = document.createElement('img', 'button');
   const dialogAjustes = document.createElement('dialog');
@@ -47,12 +49,6 @@ html += `
   const buttonSingOff = document.createElement("button");
   
   const inputComment = document.createElement("input");
-  
-  
-  
-
-  
-
 
   inputShowModal.placeholder = "¿ Qué estás pensando ... ?"
   inputPost.placeholder = "¿ Qué estás pensando ... ?"
@@ -143,8 +139,6 @@ html += `
     
     dialog.close() 
     });
-
-
    
   buttonxIcon.addEventListener('click', function () {
     dialog.close()
