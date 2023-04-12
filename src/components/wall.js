@@ -2,7 +2,7 @@ import { db, auth, getTasks } from "../Firebase/firebase";
 import {post}from "../Firebase/authentication";
 import { onNavigate } from '../router.js';
 import { collection, query, onSnapshot } from "firebase/firestore";
-
+import {userPosts} from '../store/userData.js'
 
  let buttonSend = document.createElement("button");
 let inputShowModal = document.createElement("textarea"); 
@@ -48,21 +48,6 @@ let buttonsShowModal = document.createElement('img', 'button');
 let inputPost = document.createElement("input");
 let buttonSend = document.createElement("button");
 let inputShowModal = document.createElement("textarea"); 
-
-   /*  buttonSend.addEventListener("click", () => {
-    const task = document.createElement("p");
-    task.textContent = inputShowModal.value;
-    
-    const taskContainer = document.querySelector("#taskContainer"); // Obtener el elemento que contenerá las tareas
-    if (taskContainer) { // Verificar si el elemento existe
-      taskContainer.appendChild(task);
-      console.log(task)
-    } else {
-      console.error("No se encontró el elemento que contiene las tareas");
-    }
-    inputShowModal.value = "";
-  });   */ 
-
 
 
   inputShowModal.placeholder = "¿ Qué estás pensando ... ?"
@@ -145,7 +130,8 @@ let inputShowModal = document.createElement("textarea");
 
   buttonSend.addEventListener('click',  () => {
     post(inputShowModal.value).then(response =>{
-      return response}) 
+      return response})
+     
     
     dialog.close() 
     });
@@ -171,21 +157,26 @@ let inputShowModal = document.createElement("textarea");
   //agregado
   dialogAjustes.appendChild(buttonDelete);
   dialogAjustes.appendChild(buttonxIcon2);
-  //dialogAjustes.appendChild(deleteIcon);
 
 
-   //agregado imgUser
+
   div.append(dialog, dialogAjustes, logo2, fondo, inputPost, adjustmentButtons, taskContainer, imgUser, likeEmptyIcon, likeFullIcon, commentIcon, inputComment, buttonSingOff);
+  
 
-  const consulta = query(collection(db, "Publicaciones"));
+const consulta = query(collection(db, "Publicaciones"));
+
 const unsubscribe = onSnapshot(consulta, (querySnapshot) => {
   const posts = [];
   querySnapshot.forEach((doc) => {
-    posts.push(doc.data());
+    const posta = doc.data();
+    posts.push(posta.contenido);
+
+ taskContainer.textContent = posta.contenido;
+ div.appendChild(taskContainer);
+ 
   });
   console.log(posts);
 });
-
-
-  return div;
+  
+return div;
 };

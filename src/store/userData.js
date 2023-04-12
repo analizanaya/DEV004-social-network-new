@@ -4,3 +4,7 @@ export const userData = {
     photo:"",
 }
 
+export const userPosts = {
+    contenido:"",
+    autor:"",
+}
