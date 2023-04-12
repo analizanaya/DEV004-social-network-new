@@ -1,10 +1,9 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db, auth, getTasks } from "../Firebase/firebase";
 import {post}from "../Firebase/authentication";
-//import { getTasks} from './firebase.js'
 
 import { onNavigate } from '../router.js';
-import { async } from "regenerator-runtime";
+
 
 const buttonsShowModal = document.createElement('img', 'button');
 const inputPost = document.createElement("input");
@@ -145,13 +144,7 @@ html += `
     dialog.close() 
     });
 
-    /* window.addEventListener('DOMContentLoaded',async() =>{
-debugger
-      const querySnapshot = await getTasks ()
-      querySnapshot.forEach(doc =>{
-        console.log(doc.data())
-      })
-    }) */
+
    
   buttonxIcon.addEventListener('click', function () {
     dialog.close()
