@@ -1,11 +1,13 @@
+import { addDoc, collection } from "firebase/firestore";
 import { db, auth, getTasks } from "../Firebase/firebase";
 import {post}from "../Firebase/authentication";
 import { onNavigate } from '../router.js';
-import { collection, query, onSnapshot } from "firebase/firestore";
 
+const buttonsShowModal = document.createElement('img', 'button');
+const inputPost = document.createElement("input");
 
- let buttonSend = document.createElement("button");
-let inputShowModal = document.createElement("textarea"); 
+  const buttonSend = document.createElement("button");
+  const inputShowModal = document.createElement("textarea");
 
   buttonSend.addEventListener("click", () => {
     const task = document.createElement("p");
@@ -20,7 +22,7 @@ let inputShowModal = document.createElement("textarea");
     }
     
     inputShowModal.value = "";
-  });   
+  });
 
 
   export const wall = () => {
@@ -29,9 +31,12 @@ let inputShowModal = document.createElement("textarea");
   const buttonxIcon = document.createElement('img', 'button');
   const buttonxIcon2 = document.createElement('img', 'button');
   const dialogAjustes = document.createElement('dialog');
+  //const deleteIcon = document.createElement('img');
+  //agregado
   const buttonDelete = document.createElement("button");
   const buttonEdit = document.createElement("button");
   const adjustmentButtons = document.createElement('img');
+  //agregado
   const taskContainer = document.createElement("textarea");
   const imgUser = document.createElement('img');
   const logo2 = document.createElement('img');
@@ -40,30 +45,8 @@ let inputShowModal = document.createElement("textarea");
   const likeFullIcon = document.createElement('img', 'input');
   const commentIcon = document.createElement('img', 'input');
   const buttonSingOff = document.createElement("button");
+  
   const inputComment = document.createElement("input");
-
-
-
-let buttonsShowModal = document.createElement('img', 'button');
-let inputPost = document.createElement("input");
-let buttonSend = document.createElement("button");
-let inputShowModal = document.createElement("textarea"); 
-
-   /*  buttonSend.addEventListener("click", () => {
-    const task = document.createElement("p");
-    task.textContent = inputShowModal.value;
-    
-    const taskContainer = document.querySelector("#taskContainer"); // Obtener el elemento que contenerá las tareas
-    if (taskContainer) { // Verificar si el elemento existe
-      taskContainer.appendChild(task);
-      console.log(task)
-    } else {
-      console.error("No se encontró el elemento que contiene las tareas");
-    }
-    inputShowModal.value = "";
-  });   */ 
-
-
 
   inputShowModal.placeholder = "¿ Qué estás pensando ... ?"
   inputPost.placeholder = "¿ Qué estás pensando ... ?"
@@ -71,6 +54,7 @@ let inputShowModal = document.createElement("textarea");
   inputPost.type = 'texto';
   inputComment.type = 'texto';
   adjustmentButtons.type = 'button';
+  //agregado
   imgUser.type = 'img';
   buttonsShowModal.type = 'button';
   buttonxIcon.type = 'button';
@@ -83,11 +67,13 @@ let inputShowModal = document.createElement("textarea");
   inputShowModal.id = "ShowModal";
   inputPost.id = 'post';
   inputComment.id = 'comment';
+   //agregado
   imgUser.id= 'imgUser';
-  //publicacionesContainer.id= 'publicacionesContainer';
+  taskContainer.id= 'taskContainer';
 
   buttonSend.textContent = 'SEND';
   buttonEdit.textContent = "Edit";
+  //agregado
   buttonDelete.textContent = "Delete";
   buttonSingOff.textContent = "Cerrar Sesión";
 
@@ -97,7 +83,9 @@ let inputShowModal = document.createElement("textarea");
   adjustmentButtons.className = 'adjustmentButtonsIcon';
   buttonsShowModal.className = 'ButtonsShowModal';
   buttonEdit.className = 'edit';
+  //agregado
   buttonDelete.className = 'delete';
+  //deleteIcon.className = 'delete';
   likeEmptyIcon.className = 'like1';
   likeFullIcon.className = 'like2';
   commentIcon.className = 'iconComment';
@@ -145,43 +133,11 @@ let inputShowModal = document.createElement("textarea");
 
   buttonSend.addEventListener('click',  () => {
     post(inputShowModal.value).then(response =>{
-      return response
-    }) 
+      return response}) 
     
-   /* .then(() => {
-      const publicaciones = document.createElement("p");
-      publicaciones.textContent = inputShowModal.value;
-      
-      const publicacionesContainer = document.querySelector("#publicacionesContainer"); // Obtener el elemento que contenerá las tareas
-      if (publicacionesContainer) { // Verificar si el elemento existe
-        publicacionesContainer.appendChild(publicaciones);
-        console.log(publicaciones)
-      } else {
-        console.error("No se encontró el elemento que contiene las tareas");
-      }
-      
-      inputShowModal.value = "";
-    });*/
-
-  })
     dialog.close() 
+    });
    
-   
-    /* buttonSend.addEventListener("click", () => {
-    const publicaciones = document.createElement("p");
-    publicaciones.textContent = inputShowModal.value;
-    
-    const publicacionesContainer = document.querySelector("#publicacionesContainer"); // Obtener el elemento que contenerá las tareas
-    if (publicacionesContainer) { // Verificar si el elemento existe
-      publicacionesContainer.appendChild(publicaciones);
-      console.log(publicaciones)
-    } else {
-      console.error("No se encontró el elemento que contiene las tareas");
-    }
-    
-    inputShowModal.value = "";
-  });*/
-  
   buttonxIcon.addEventListener('click', function () {
     dialog.close()
   });
@@ -189,25 +145,10 @@ let inputShowModal = document.createElement("textarea");
   buttonxIcon2.addEventListener('click', function () {
     dialogAjustes.close()
   });
- 
- /* const publicacionesContainer = document.createElement("div");
-  publicacionesContainer.id = 'publicacionesContainer';*/
-  
 
-  // Load the publicaciones from Firebase
-  /*getPublicaciones().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      // Create a post element for each document
-      const post = document.createElement("div");
-      post.textContent = doc.data().text;
-      publicacionesContainer.appendChild(post);
-    });
-  });*/
   buttonSingOff.addEventListener('click', ()=>{
     onNavigate('/');
   });
-
-
   dialog.appendChild(inputShowModal);
   dialog.appendChild(buttonSend);
   dialog.appendChild(buttonxIcon);
@@ -218,19 +159,8 @@ let inputShowModal = document.createElement("textarea");
   dialogAjustes.appendChild(buttonxIcon2);
   //dialogAjustes.appendChild(deleteIcon);
 
-
    //agregado imgUser
   div.append(dialog, dialogAjustes, logo2, fondo, inputPost, adjustmentButtons, taskContainer, imgUser, likeEmptyIcon, likeFullIcon, commentIcon, inputComment, buttonSingOff);
-
-  const consulta = query(collection(db, "Publicaciones"));
-const unsubscribe = onSnapshot(consulta, (querySnapshot) => {
-  const posts = [];
-  querySnapshot.forEach((doc) => {
-    posts.push(doc.data());
-  });
-  console.log(posts);
-});
-
 
   return div;
 };
