@@ -3,11 +3,11 @@ import { db, auth, getTasks } from "../Firebase/firebase";
 import {post}from "../Firebase/authentication";
 import { onNavigate } from '../router.js';
 
-const buttonsShowModal = document.createElement('img', 'button');
+let buttonsShowModal = document.createElement('img', 'button');
 const inputPost = document.createElement("input");
 
-  const buttonSend = document.createElement("button");
-  const inputShowModal = document.createElement("textarea");
+  let buttonSend = document.createElement("button");
+  let inputShowModal = document.createElement("textarea");
 
   buttonSend.addEventListener("click", () => {
     const task = document.createElement("p");
@@ -15,7 +15,7 @@ const inputPost = document.createElement("input");
     
     const taskContainer = document.querySelector("#taskContainer"); // Obtener el elemento que contenerá las tareas
     if (taskContainer) { // Verificar si el elemento existe
-      taskContainer.appendChild(task);
+      //taskContainer.appendChild(task);
       console.log(task)
     } else {
       console.error("No se encontró el elemento que contiene las tareas");
@@ -31,6 +31,9 @@ const inputPost = document.createElement("input");
   const buttonxIcon = document.createElement('img', 'button');
   const buttonxIcon2 = document.createElement('img', 'button');
   const dialogAjustes = document.createElement('dialog');
+  inputShowModal = document.createElement("textarea");
+  buttonsShowModal = document.createElement('img', 'button');
+  buttonSend = document.createElement("button");
   //const deleteIcon = document.createElement('img');
   //agregado
   const buttonDelete = document.createElement("button");
