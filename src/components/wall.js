@@ -28,8 +28,6 @@ const inputPost = document.createElement("input");
   export const wall = () => {
   const div = document.createElement("div");
   const dialog = document.createElement('dialog');
- 
-  
   const buttonxIcon = document.createElement('img', 'button');
   const buttonxIcon2 = document.createElement('img', 'button');
   const dialogAjustes = document.createElement('dialog');
