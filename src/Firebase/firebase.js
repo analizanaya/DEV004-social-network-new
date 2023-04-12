@@ -36,8 +36,8 @@ const initFirebase = () => {
 
   };
 };
- const getTasks = () => getDocs(collection(db,'Publicaciones'));
+ const getPublicaciones = () => getDocs(collection(db,'Publicaciones'));
 
 export {
-  initFirebase, app, auth, db , getTasks
+  initFirebase, app, auth, db , getPublicaciones
 }

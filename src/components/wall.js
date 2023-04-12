@@ -1,5 +1,5 @@
 import { addDoc, collection } from "firebase/firestore";
-import { db, auth, getTasks } from "../Firebase/firebase";
+import { db, auth, getPublicaciones } from "../Firebase/firebase";
 import {post}from "../Firebase/authentication";
 import { onNavigate } from '../router.js';
 
@@ -9,20 +9,6 @@ const inputPost = document.createElement("input");
   const buttonSend = document.createElement("button");
   const inputShowModal = document.createElement("textarea");
 
-  buttonSend.addEventListener("click", () => {
-    const task = document.createElement("p");
-    task.textContent = inputShowModal.value;
-    
-    const taskContainer = document.querySelector("#taskContainer"); // Obtener el elemento que contenerá las tareas
-    if (taskContainer) { // Verificar si el elemento existe
-      taskContainer.appendChild(task);
-      console.log(task)
-    } else {
-      console.error("No se encontró el elemento que contiene las tareas");
-    }
-    
-    inputShowModal.value = "";
-  });
 
 
   export const wall = () => {
@@ -39,7 +25,7 @@ const inputPost = document.createElement("input");
   const buttonEdit = document.createElement("button");
   const adjustmentButtons = document.createElement('img');
   //agregado
-  const taskContainer = document.createElement("textarea");
+ // const publicacionesContainer = document.createElement("textarea");
   const imgUser = document.createElement('img');
   const logo2 = document.createElement('img');
   const fondo = document.createElement('img');
@@ -71,7 +57,7 @@ const inputPost = document.createElement("input");
   inputComment.id = 'comment';
    //agregado
   imgUser.id= 'imgUser';
-  taskContainer.id= 'taskContainer';
+  //publicacionesContainer.id= 'publicacionesContainer';
 
   buttonSend.textContent = 'SEND';
   buttonEdit.textContent = "Edit";
@@ -135,11 +121,43 @@ const inputPost = document.createElement("input");
 
   buttonSend.addEventListener('click',  () => {
     post(inputShowModal.value).then(response =>{
-      return response}) 
+      return response
+    }) 
     
+   /* .then(() => {
+      const publicaciones = document.createElement("p");
+      publicaciones.textContent = inputShowModal.value;
+      
+      const publicacionesContainer = document.querySelector("#publicacionesContainer"); // Obtener el elemento que contenerá las tareas
+      if (publicacionesContainer) { // Verificar si el elemento existe
+        publicacionesContainer.appendChild(publicaciones);
+        console.log(publicaciones)
+      } else {
+        console.error("No se encontró el elemento que contiene las tareas");
+      }
+      
+      inputShowModal.value = "";
+    });*/
+
+  })
     dialog.close() 
-    });
    
+   
+    /* buttonSend.addEventListener("click", () => {
+    const publicaciones = document.createElement("p");
+    publicaciones.textContent = inputShowModal.value;
+    
+    const publicacionesContainer = document.querySelector("#publicacionesContainer"); // Obtener el elemento que contenerá las tareas
+    if (publicacionesContainer) { // Verificar si el elemento existe
+      publicacionesContainer.appendChild(publicaciones);
+      console.log(publicaciones)
+    } else {
+      console.error("No se encontró el elemento que contiene las tareas");
+    }
+    
+    inputShowModal.value = "";
+  });*/
+  
   buttonxIcon.addEventListener('click', function () {
     dialog.close()
   });
@@ -147,10 +165,24 @@ const inputPost = document.createElement("input");
   buttonxIcon2.addEventListener('click', function () {
     dialogAjustes.close()
   });
+ 
+ /* const publicacionesContainer = document.createElement("div");
+  publicacionesContainer.id = 'publicacionesContainer';*/
+  
 
+  // Load the publicaciones from Firebase
+  /*getPublicaciones().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      // Create a post element for each document
+      const post = document.createElement("div");
+      post.textContent = doc.data().text;
+      publicacionesContainer.appendChild(post);
+    });
+  });*/
   buttonSingOff.addEventListener('click', ()=>{
     onNavigate('/');
   });
+ // div.appendChild(publicacionesContainer);
   dialog.appendChild(inputShowModal);
   dialog.appendChild(buttonSend);
   dialog.appendChild(buttonxIcon);
@@ -162,7 +194,7 @@ const inputPost = document.createElement("input");
   //dialogAjustes.appendChild(deleteIcon);
 
    //agregado imgUser
-  div.append(dialog, dialogAjustes, logo2, fondo, inputPost, adjustmentButtons, taskContainer, imgUser, likeEmptyIcon, likeFullIcon, commentIcon, inputComment, buttonSingOff);
+  div.append(dialog, dialogAjustes, logo2, fondo, inputPost, adjustmentButtons, imgUser, likeEmptyIcon, likeFullIcon, commentIcon, inputComment, buttonSingOff);
 
   return div;
 };
