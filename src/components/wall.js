@@ -49,21 +49,7 @@ let inputPost = document.createElement("input");
 let buttonSend = document.createElement("button");
 let inputShowModal = document.createElement("textarea"); 
 
-   /*  buttonSend.addEventListener("click", () => {
-    const task = document.createElement("p");
-    task.textContent = inputShowModal.value;
-    
-    const taskContainer = document.querySelector("#taskContainer"); // Obtener el elemento que contenerá las tareas
-    if (taskContainer) { // Verificar si el elemento existe
-      taskContainer.appendChild(task);
-      console.log(task)
-    } else {
-      console.error("No se encontró el elemento que contiene las tareas");
-    }
-    inputShowModal.value = "";
-  });   */ 
-
-
+  
 
   inputShowModal.placeholder = "¿ Qué estás pensando ... ?"
   inputPost.placeholder = "¿ Qué estás pensando ... ?"
@@ -113,8 +99,6 @@ let inputShowModal = document.createElement("textarea");
   adjustmentButtons.src = './imagenes/adjustmentButtonsIcon.png';
   adjustmentButtons.alt = 'adjustmentButtons';
 
-  //deleteIcon.src = './imagenes/eliminar.png';
-
   logo2.src = './imagenes/logo.png';
   logo2.alt = 'Logo';
 
@@ -148,40 +132,11 @@ let inputShowModal = document.createElement("textarea");
       return response
     }) 
     
-   /* .then(() => {
-      const publicaciones = document.createElement("p");
-      publicaciones.textContent = inputShowModal.value;
-      
-      const publicacionesContainer = document.querySelector("#publicacionesContainer"); // Obtener el elemento que contenerá las tareas
-      if (publicacionesContainer) { // Verificar si el elemento existe
-        publicacionesContainer.appendChild(publicaciones);
-        console.log(publicaciones)
-      } else {
-        console.error("No se encontró el elemento que contiene las tareas");
-      }
-      
-      inputShowModal.value = "";
-    });*/
-
+   
   })
     dialog.close() 
    
-   
-    /* buttonSend.addEventListener("click", () => {
-    const publicaciones = document.createElement("p");
-    publicaciones.textContent = inputShowModal.value;
-    
-    const publicacionesContainer = document.querySelector("#publicacionesContainer"); // Obtener el elemento que contenerá las tareas
-    if (publicacionesContainer) { // Verificar si el elemento existe
-      publicacionesContainer.appendChild(publicaciones);
-      console.log(publicaciones)
-    } else {
-      console.error("No se encontró el elemento que contiene las tareas");
-    }
-    
-    inputShowModal.value = "";
-  });*/
-  
+     
   buttonxIcon.addEventListener('click', function () {
     dialog.close()
   });
@@ -190,19 +145,7 @@ let inputShowModal = document.createElement("textarea");
     dialogAjustes.close()
   });
  
- /* const publicacionesContainer = document.createElement("div");
-  publicacionesContainer.id = 'publicacionesContainer';*/
   
-
-  // Load the publicaciones from Firebase
-  /*getPublicaciones().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      // Create a post element for each document
-      const post = document.createElement("div");
-      post.textContent = doc.data().text;
-      publicacionesContainer.appendChild(post);
-    });
-  });*/
   buttonSingOff.addEventListener('click', ()=>{
     onNavigate('/');
   });
@@ -216,21 +159,25 @@ let inputShowModal = document.createElement("textarea");
   //agregado
   dialogAjustes.appendChild(buttonDelete);
   dialogAjustes.appendChild(buttonxIcon2);
-  //dialogAjustes.appendChild(deleteIcon);
+ 
 
 
    //agregado imgUser
   div.append(dialog, dialogAjustes, logo2, fondo, inputPost, adjustmentButtons, taskContainer, imgUser, likeEmptyIcon, likeFullIcon, commentIcon, inputComment, buttonSingOff);
 
   const consulta = query(collection(db, "Publicaciones"));
-const unsubscribe = onSnapshot(consulta, (querySnapshot) => {
-  const posts = [];
-  querySnapshot.forEach((doc) => {
-    posts.push(doc.data());
+
+  const unsubscribe = onSnapshot(consulta, (querySnapshot) => {
+    const posts = [];
+    querySnapshot.forEach((doc) => {
+      posts.push(doc.data());
+      
+    });
+  
+    taskContainer.textContent = post.contenido;
+    console.log(posts);
   });
-  console.log(posts);
-});
-
-
-  return div;
-};
+  
+  
+    return div;
+  };
