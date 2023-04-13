@@ -32,7 +32,7 @@ let inputShowModal = document.createElement("textarea");
   const buttonDelete = document.createElement("button");
   const buttonEdit = document.createElement("button");
   const adjustmentButtons = document.createElement('img');
-  const taskContainer = document.createElement("textarea");
+  const taskContainer = document.createElement("div");
   const imgUser = document.createElement('img');
   const logo2 = document.createElement('img');
   const fondo = document.createElement('img');
@@ -166,17 +166,22 @@ let inputShowModal = document.createElement("textarea");
 const consulta = query(collection(db, "Publicaciones"));
 
 const unsubscribe = onSnapshot(consulta, (querySnapshot) => {
+  taskContainer.innerHTML = ''
   const posts = [];
   querySnapshot.forEach((doc) => {
     const posta = doc.data();
     posts.push(posta.contenido);
-
- taskContainer.textContent = posta.contenido;
- div.appendChild(taskContainer);
- 
+    
   });
-  console.log(posts);
-});
+  const prueba = posts.forEach((publicacion)=>{
+    const input = document.createElement("textarea");
+    input.value = publicacion
+  console.log(publicacion)
+  taskContainer.append(input); 
+  })
   
-return div;
+  })   
+  return div;
 };
+  
+
