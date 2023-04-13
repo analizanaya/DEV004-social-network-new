@@ -180,9 +180,10 @@ const unsubscribe = onSnapshot(consulta, (querySnapshot) => {
    
   });
   
-    taskContainer.textContent = post.contenido;
+    //taskContainer.textContent = post.contenido;
     console.log(posts);
   });
       
   return div;
-  };
+  });
+}
