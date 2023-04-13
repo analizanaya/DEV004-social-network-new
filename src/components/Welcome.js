@@ -80,7 +80,7 @@ export const Welcome = () => {
   buttonGoogle.addEventListener('click', () => {
     loginGoogle().then((userCredential) => {
       userData.userName = userCredential.user.email;
-//console.log(userCredential);
+
       onNavigate('/wall');
     });
   });
