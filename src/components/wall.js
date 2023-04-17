@@ -80,8 +80,8 @@ export const wall = () => {
   buttonsShowModal.className = "ButtonsShowModal";
   buttonEdit.className = "edit";
   buttonDelete.className = "delete";
-  likeEmptyIcon.className = "like1";
-  likeFullIcon.className = "like2";
+  likeEmptyIcon.className = "likeEmptyIcon";
+  likeFullIcon.className = "likeFullIcon";
   commentIcon.className = "iconComment";
   buttonSingOff.className = "buttonSingOff";
   adjustmentButtons.className = "adjustmentButtonsIcon";
@@ -108,6 +108,7 @@ export const wall = () => {
 
   likeFullIcon.src = "./imagenes/likeLleno.png";
   likeFullIcon.alt = "Like2";
+  likeFullIcon.style.display = "none";
 
   commentIcon.src = "./imagenes/comentario.png";
   commentIcon.alt = "comentario";
@@ -117,6 +118,21 @@ export const wall = () => {
 
   buttonxIcon2.src = "./imagenes/x.png";
   buttonxIcon2.alt = "equis";
+
+
+  //agregado
+
+  /* likeEmptyIcon.addEventListener("click", () => {
+    if (likeEmptyIcon.style.display === "none") {
+      likeFullIcon.style.display = "block";
+    } else {
+      likeFullIcon.style.display = "none";
+    }
+  }); */
+
+ 
+
+
 
   adjustmentButtons.addEventListener("click", function () {
     dialogAjustes.showModal();
@@ -150,7 +166,6 @@ export const wall = () => {
   dialog.appendChild(buttonxIcon);
   dialogAjustes.appendChild(buttonsShowModal);
   dialogAjustes.appendChild(buttonEdit);
-  //agregado
   dialogAjustes.appendChild(buttonDelete);
   dialogAjustes.appendChild(buttonxIcon2);
 
@@ -176,6 +191,7 @@ export const wall = () => {
       const posta = doc.data();
       posts.push(posta.contenido);
     });
+
     const prueba = posts.forEach((publicacion) => {
       const padre = document.createElement("div");
       const input = document.createElement("textarea");
@@ -190,6 +206,34 @@ export const wall = () => {
 
       input.value = publicacion;
       console.log(publicacion);
+
+      let liked = false;
+
+      likeEmptyIconClone.addEventListener("click", () => {
+        if (!liked) {
+          likeFullIconClone.src = "./imagenes/likeLleno.png";
+          likeFullIconClone.style.display = "block";
+          likeEmptyIconClone.style.display = "none";
+          liked = true;
+          console.log("no liked")
+
+        } else {
+        }
+      });
+
+
+      likeFullIconClone.addEventListener("click", () => {
+        if (liked) {
+          likeEmptyIconClone.src = "./imagenes/likeVacio.png";
+          likeEmptyIconClone.style.display = "block";
+          likeFullIconClone.style.display = "none";
+          liked = false;
+          console.log("sí liked")
+      
+        } else {
+        }
+      });
+
 
       padre.appendChild(input);
       padre.appendChild(likeEmptyIconClone);

@@ -50,12 +50,7 @@ html {
     display: flex;
     justify-content: center;
 }
-img {
-    width: 61%;
-    position: absolute;
-    right: 18%;
-    top: 6%;
-}
+
 .title {
     background-color: blueviolet;
 }
@@ -178,21 +173,25 @@ h2 {
     top: 61%;
     right: 55%;
 }
-.like1 {
-    width: 6%;
-    top: 31.5%;
-    left: 22%;
+.likeEmptyIcon {
+    width: 15%;
+    position: relative;
+    top: 17%;
+    left: 96%;
+    display: block;
+    margin: -22% 0% 0% 0%;
 }
-.like2 {
-    width: 6%;
-    top: 31.5%;
-    left: 22%;
-    display: none;
+.likeFullIcon {
+    width: 13%;
+    top: 22%;
+    left: 111%;
+    display: block; 
 }
+
 .iconComment {
-    width: 6%;
-    top: 31.5%;
-    left: 33%;
+    width: 13%;
+    top: 37.5px;
+    left: 72%;
 }
 #post {
     width: 66%;
