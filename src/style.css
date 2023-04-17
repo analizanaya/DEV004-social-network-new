@@ -139,6 +139,12 @@ h2 {
     flex-direction: column;
     margin: 14% 0 0 0;
 }
+#logo {
+    width: 55%;
+    position: absolute;
+    top: 6%;
+    left: 24%;
+}
 #logo2 {
     width: 20%;
     position: absolute;
