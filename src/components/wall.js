@@ -95,8 +95,6 @@ export const wall = () => {
   adjustmentButtons.src = "./imagenes/adjustmentButtonsIcon.png";
   adjustmentButtons.alt = "adjustmentButtons";
 
-  //deleteIcon.src = './imagenes/eliminar.png';
-
   logo2.src = "./imagenes/logo.png";
   logo2.alt = "Logo";
 
@@ -118,21 +116,6 @@ export const wall = () => {
 
   buttonxIcon2.src = "./imagenes/x.png";
   buttonxIcon2.alt = "equis";
-
-
-  //agregado
-
-  /* likeEmptyIcon.addEventListener("click", () => {
-    if (likeEmptyIcon.style.display === "none") {
-      likeFullIcon.style.display = "block";
-    } else {
-      likeFullIcon.style.display = "none";
-    }
-  }); */
-
- 
-
-
 
   adjustmentButtons.addEventListener("click", function () {
     dialogAjustes.showModal();
@@ -215,7 +198,7 @@ export const wall = () => {
           likeFullIconClone.style.display = "block";
           likeEmptyIconClone.style.display = "none";
           liked = true;
-          console.log("no liked")
+          console.log("liked")
 
         } else {
         }
@@ -228,7 +211,7 @@ export const wall = () => {
           likeEmptyIconClone.style.display = "block";
           likeFullIconClone.style.display = "none";
           liked = false;
-          console.log("sí liked")
+          console.log("no liked")
       
         } else {
         }
