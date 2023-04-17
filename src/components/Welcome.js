@@ -23,11 +23,13 @@ export const Welcome = () => {
 
   inputUsername.placeholder = 'e-mail';
   inputPassword.placeholder = 'password';
-
+  
+  logo.id = 'logo';
   fondo.id = 'fondo';
   div.id = 'section';
   inputPassword.id = 'password';
   inputUsername.id = 'username';
+  
 
   title.className = 'title';
   buttonGetinto.className = 'buttonGetinto';

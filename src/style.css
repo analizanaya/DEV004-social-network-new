@@ -138,6 +138,12 @@ h2 {
     flex-direction: column;
     margin: 14% 0 0 0;
 }
+#logo {
+    width: 55%;
+    position: absolute;
+    top: 6%;
+    left: 24%;
+}
 #logo2 {
     width: 20%;
     position: absolute;
@@ -172,21 +178,27 @@ h2 {
     top: 61%;
     right: 55%;
 }
-.like1 {
-    width: 6%;
-    top: 31.5%;
-    left: 22%;
+.likeEmptyIcon {
+    width: 15%;
+    position: relative;
+    top: 17%;
+    left: 96%;
+    display: block;
+    margin: -22% 0% 0% 0%;
 }
-.like2 {
-    width: 6%;
-    top: 31.5%;
-    left: 22%;
-    display: none;
+.likeFullIcon {
+    width: 15%;
+    position: relative;
+    left: 96%;
+    display: block;
+    margin: -22% 0% 0% 0%;
 }
+
 .iconComment {
-    width: 6%;
-    top: 31.5%;
-    left: 33%;
+    width: 13%;
+    top: -22.5px;
+    left: 72%;
+    position: relative;
 }
 #post {
     width: 66%;
@@ -216,6 +228,11 @@ h2 {
     left: 3%;
     top: -51%;
 }
+.buttonX{
+    width: 5%;
+    left: 91%;
+    position: absolute;
+}
 #ShowModal {
     height: 42%;
     border: none;
@@ -231,6 +248,7 @@ h2 {
     top: 16%;
     transform: rotate(90deg);
     left: 79%;
+    position: absolute;
 }
 .ButtonsShowModal {
     width: 2%;
@@ -250,14 +268,11 @@ h2 {
     justify-content: space-around;
     align-items: center;
 }
-
-.buttonX{
-    width: 5%;
-    left: 91%;
-}
 .buttonX2{
     width: 5%;
     left: 91%;
+    position: absolute;
+    top: 7%;
 }
 #comments{
     width: 132%;

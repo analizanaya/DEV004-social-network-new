@@ -1,5 +1,5 @@
 import { db, auth, getTasks } from "../Firebase/firebase";
-import { post } from "../Firebase/authentication";
+import { post, getPost } from "../Firebase/authentication";
 import { onNavigate } from "../router.js";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { userPosts } from "../store/userData.js";
@@ -80,8 +80,8 @@ export const wall = () => {
   buttonsShowModal.className = "ButtonsShowModal";
   buttonEdit.className = "edit";
   buttonDelete.className = "delete";
-  /* likeEmptyIcon.className = "like1"; */
-  likeFullIcon.className = "like2";
+  likeEmptyIcon.className = "likeEmptyIcon";
+  likeFullIcon.className = "likeFullIcon";
   commentIcon.className = "iconComment";
   buttonSingOff.className = "buttonSingOff";
   adjustmentButtons.className = "adjustmentButtonsIcon";
@@ -95,8 +95,6 @@ export const wall = () => {
   adjustmentButtons.src = "./imagenes/adjustmentButtonsIcon.png";
   adjustmentButtons.alt = "adjustmentButtons";
 
-  //deleteIcon.src = './imagenes/eliminar.png';
-
   logo2.src = "./imagenes/logo.png";
   logo2.alt = "Logo";
 
@@ -108,6 +106,7 @@ export const wall = () => {
  */
   likeFullIcon.src = "./imagenes/likeLleno.png";
   likeFullIcon.alt = "Like2";
+  likeFullIcon.style.display = "none";
 
   commentIcon.src = "./imagenes/comentario.png";
   commentIcon.alt = "comentario";
@@ -150,7 +149,6 @@ export const wall = () => {
   dialog.appendChild(buttonxIcon);
   dialogAjustes.appendChild(buttonsShowModal);
   dialogAjustes.appendChild(buttonEdit);
-  //agregado
   dialogAjustes.appendChild(buttonDelete);
   dialogAjustes.appendChild(buttonxIcon2);
 
@@ -167,16 +165,13 @@ export const wall = () => {
     buttonSingOff
   );
 
-  const consulta = query(collection(db, "Publicaciones"));
-
-  const unsubscribe = onSnapshot(consulta, (querySnapshot) => {
+  getPost((querySnapshot) => {
     taskContainer.innerHTML = "";
     const posts = [];
     querySnapshot.forEach((doc) => {
       const posta = doc.data();
       posts.push(posta.contenido);
     });
-    let Contador = 0;
     const prueba = posts.forEach((publicacion) => {
       const padre = document.createElement("div");
       Contador = Contador +1;
@@ -194,6 +189,30 @@ export const wall = () => {
       
       input.value = publicacion;
       console.log(publicacion);
+
+      let liked = false;
+
+      likeEmptyIconClone.addEventListener("click", () => {
+        if (!liked) {
+          likeFullIconClone.src = "./imagenes/likeLleno.png";
+          likeFullIconClone.style.display = "block";
+          likeEmptyIconClone.style.display = "none";
+          liked = true;
+          console.log("liked");
+        } else {
+        }
+      });
+
+      likeFullIconClone.addEventListener("click", () => {
+        if (liked) {
+          likeEmptyIconClone.src = "./imagenes/likeVacio.png";
+          likeEmptyIconClone.style.display = "block";
+          likeFullIconClone.style.display = "none";
+          liked = false;
+          console.log("no liked");
+        } else {
+        }
+      });
 
       padre.appendChild(input);
       padre.appendChild(likeEmptyIcon);
