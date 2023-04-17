@@ -50,12 +50,6 @@ html {
     display: flex;
     justify-content: center;
 }
-img {
-    width: 61%;
-    position: absolute;
-    right: 18%;
-    top: 6%;
-}
 .title {
     background-color: blueviolet;
 }

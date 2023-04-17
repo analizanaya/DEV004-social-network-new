@@ -36,7 +36,7 @@ export const wall = () => {
   const imgUser = document.createElement("img");
   const logo2 = document.createElement("img");
   const fondo = document.createElement("img");
-  const likeEmptyIcon = document.createElement("img", "input");
+  //const likeEmptyIcon = document.createElement("img", "input");
   const likeFullIcon = document.createElement("img", "input");
   const commentIcon = document.createElement("img", "input");
   const buttonSingOff = document.createElement("button");
@@ -80,7 +80,7 @@ export const wall = () => {
   buttonsShowModal.className = "ButtonsShowModal";
   buttonEdit.className = "edit";
   buttonDelete.className = "delete";
-  likeEmptyIcon.className = "like1";
+  /* likeEmptyIcon.className = "like1"; */
   likeFullIcon.className = "like2";
   commentIcon.className = "iconComment";
   buttonSingOff.className = "buttonSingOff";
@@ -103,9 +103,9 @@ export const wall = () => {
   fondo.src = "./imagenes/fondo-cel.png";
   fondo.alt = "Fondo";
 
-  likeEmptyIcon.src = "./imagenes/likeVacio.png";
+ /*  likeEmptyIcon.src = "./imagenes/likeVacio.png";
   likeEmptyIcon.alt = "Like1";
-
+ */
   likeFullIcon.src = "./imagenes/likeLleno.png";
   likeFullIcon.alt = "Like2";
 
@@ -176,27 +176,33 @@ export const wall = () => {
       const posta = doc.data();
       posts.push(posta.contenido);
     });
+    let Contador = 0;
     const prueba = posts.forEach((publicacion) => {
       const padre = document.createElement("div");
+      Contador = Contador +1;
       const input = document.createElement("textarea");
-
-      const likeEmptyIconClone = likeEmptyIcon.cloneNode(true);
+      const likeEmptyIcon = document.createElement("img", "input");
+      likeEmptyIcon.src = "./imagenes/likeVacio.png";
+      likeEmptyIcon.alt = "Like1";
+      likeEmptyIcon.className = "like1";
+      /* const likeEmptyIconClone = likeEmptyIcon.cloneNode(true);
       const likeFullIconClone = likeFullIcon.cloneNode(true);
-      const commentIconClone = commentIcon.cloneNode(true);
+      const commentIconClone = commentIcon.cloneNode(true); */
 
       input.id = "comments";
-      padre.id = "padre";
-
+      padre.id = "padre-" + Contador;
+      
       input.value = publicacion;
       console.log(publicacion);
 
       padre.appendChild(input);
-      padre.appendChild(likeEmptyIconClone);
-      padre.appendChild(likeFullIconClone);
-      padre.appendChild(commentIconClone);
+      padre.appendChild(likeEmptyIcon);
+      /* padre.appendChild(likeFullIconClone);
+      padre.appendChild(commentIconClone); */
 
       taskContainer.appendChild(padre);
     });
+
   });
   return div;
 };
