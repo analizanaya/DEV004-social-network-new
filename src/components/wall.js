@@ -1,5 +1,5 @@
 import { db, auth, getTasks } from "../Firebase/firebase";
-import { post } from "../Firebase/authentication";
+import { post, getPost } from "../Firebase/authentication";
 import { onNavigate } from "../router.js";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { userPosts } from "../store/userData.js";
@@ -165,9 +165,7 @@ export const wall = () => {
     buttonSingOff
   );
 
-  const consulta = query(collection(db, "Publicaciones"));
-
-  const unsubscribe = onSnapshot(consulta, (querySnapshot) => {
+  getPost((querySnapshot) => {
     taskContainer.innerHTML = "";
     const posts = [];
     querySnapshot.forEach((doc) => {
@@ -197,12 +195,10 @@ export const wall = () => {
           likeFullIconClone.style.display = "block";
           likeEmptyIconClone.style.display = "none";
           liked = true;
-          console.log("liked")
-
+          console.log("liked");
         } else {
         }
       });
-
 
       likeFullIconClone.addEventListener("click", () => {
         if (liked) {
@@ -210,12 +206,10 @@ export const wall = () => {
           likeEmptyIconClone.style.display = "block";
           likeFullIconClone.style.display = "none";
           liked = false;
-          console.log("no liked")
-      
+          console.log("no liked");
         } else {
         }
       });
-
 
       padre.appendChild(input);
       padre.appendChild(likeEmptyIconClone);
