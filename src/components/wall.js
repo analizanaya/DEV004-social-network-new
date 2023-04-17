@@ -183,6 +183,7 @@ export const wall = () => {
       const likeEmptyIconClone = likeEmptyIcon.cloneNode(true);
       const likeFullIconClone = likeFullIcon.cloneNode(true);
       const commentIconClone = commentIcon.cloneNode(true);
+      
 
       input.id = "comments";
       padre.id = "padre";
