@@ -1,13 +1,16 @@
 import { db, auth, getTasks } from "../Firebase/firebase";
-import { post, getPost } from "../Firebase/authentication";
+import { post, getPost,deletePosta } from "../Firebase/authentication";
 import { onNavigate } from "../router.js";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { userPosts } from "../store/userData.js";
-let buttonSend = document.createElement("button");
+
+let buttonSend = document.createElement("btn");
 let inputShowModal = document.createElement("textarea");
+
 buttonSend.addEventListener("click", () => {
   const task = document.createElement("p");
   task.textContent = inputShowModal.value;
+
   const taskContainer = document.querySelector("#taskContainer"); // Obtener el elemento que contenerá las tareas
   if (taskContainer) {
     // Verificar si el elemento existe
@@ -21,11 +24,11 @@ buttonSend.addEventListener("click", () => {
 export const wall = () => {
   const div = document.createElement("div");
   const dialog = document.createElement("dialog");
-  const buttonxIcon = document.createElement("img", "button");
-  const buttonxIcon2 = document.createElement("img", "button");
+  const buttonxIcon = document.createElement("img", "btn");
+  const buttonxIcon2 = document.createElement("img", "btn");
   const dialogAjustes = document.createElement("dialog");
-  const buttonDelete = document.createElement("button");
-  const buttonEdit = document.createElement("button");
+  const buttonDeleteIcon = document.createElement("img", "btn");
+  const buttonEditIcon = document.createElement("img", "btn");
   const adjustmentButtons = document.createElement("img");
   const taskContainer = document.createElement("div");
   const imgUser = document.createElement("img");
@@ -34,21 +37,21 @@ export const wall = () => {
   const likeEmptyIcon = document.createElement("img", "input");
   const likeFullIcon = document.createElement("img", "input");
   const commentIcon = document.createElement("img", "input");
-  const buttonSingOff = document.createElement("button");
+  const buttonSingOff = document.createElement("btn");
   const inputComment = document.createElement("input");
-  let buttonsShowModal = document.createElement("img", "button");
+  let buttonsShowModal = document.createElement("img", "btn");
   let inputPost = document.createElement("input");
-  let buttonSend = document.createElement("button");
+  let buttonSend = document.createElement("btn");
   let inputShowModal = document.createElement("textarea");
   inputShowModal.placeholder = "¿ Qué estás pensando ... ?";
   inputPost.placeholder = "¿ Qué estás pensando ... ?";
   inputPost.type = "texto";
   inputComment.type = "texto";
-  adjustmentButtons.type = "button";
+  adjustmentButtons.type = "btn";
   imgUser.type = "img";
-  buttonsShowModal.type = "button";
-  buttonxIcon.type = "button";
-  buttonxIcon2.type = "button";
+  buttonsShowModal.type = "btn";
+  buttonxIcon.type = "btn";
+  buttonxIcon2.type = "btn";
   fondo.id = "fondo";
   div.id = "section";
   logo2.id = "logo2";
@@ -59,16 +62,17 @@ export const wall = () => {
   imgUser.id = "imgUser";
   taskContainer.id = "taskContainer";
   buttonSend.textContent = "SEND";
-  buttonEdit.textContent = "Edit";
-  buttonDelete.textContent = "Delete";
+  /* buttonEditIcon.textContent = "Edit";
+   buttonDeleteIcon.textContent = "Delete";*/
   buttonSingOff.textContent = "Cerrar Sesión";
   buttonSend.className = "send";
   buttonxIcon.className = "buttonX";
   buttonxIcon2.className = "buttonX2";
   adjustmentButtons.className = "adjustmentButtonsIcon";
   buttonsShowModal.className = "ButtonsShowModal";
-  buttonEdit.className = "edit";
-  buttonDelete.className = "delete";
+  buttonEditIcon.className = "edit";
+  buttonDeleteIcon.className = "delete";
+
   likeEmptyIcon.className = "likeEmptyIcon";
   likeFullIcon.className = "likeFullIcon";
   commentIcon.className = "iconComment";
@@ -90,6 +94,10 @@ export const wall = () => {
   likeFullIcon.src = "./imagenes/likeLleno.png";
   likeFullIcon.alt = "Like2";
   likeFullIcon.style.display = "none";
+  buttonDeleteIcon.src = "./imagenes/buttonDeleteIcon.png";
+  buttonDeleteIcon.alt = "Delete";
+  buttonEditIcon.src = "./imagenes/buttonEditIcon.png";
+  buttonEditIcon.alt = "Edit";
   commentIcon.src = "./imagenes/comentario.png";
   commentIcon.alt = "comentario";
   buttonxIcon.src = "./imagenes/x.png";
@@ -121,8 +129,8 @@ export const wall = () => {
   dialog.appendChild(buttonSend);
   dialog.appendChild(buttonxIcon);
   dialogAjustes.appendChild(buttonsShowModal);
-  dialogAjustes.appendChild(buttonEdit);
-  dialogAjustes.appendChild(buttonDelete);
+  dialogAjustes.appendChild(buttonEditIcon);
+  dialogAjustes.appendChild(buttonDeleteIcon);
   dialogAjustes.appendChild(buttonxIcon2);
   div.append(
     dialog,
@@ -142,22 +150,32 @@ export const wall = () => {
     querySnapshot.forEach((doc) => {
       const posta = doc.data();
       posts.push(posta.contenido);
+      buttonDeleteIcon.setAttribute("data-id", doc.id);
     });
     const prueba = posts.forEach((publicacion) => {
       const padre = document.createElement("div");
       const input = document.createElement("textarea");
-         
+
+
       const likeEmptyIconClone = likeEmptyIcon.cloneNode(true);
       const likeFullIconClone = likeFullIcon.cloneNode(true);
       const commentIconClone = commentIcon.cloneNode(true);
-      
+      const buttonDeleteIconClone = buttonDeleteIcon.cloneNode(true);
+      const buttonEditIconClone = buttonEditIcon.cloneNode(true);
 
       input.id = "comments";
       input.rows = 1; // Valor inicial
       padre.id = "padre";
       
+      const btnDelete = taskContainer.querySelectorAll(".delete")
+      btnDelete.forEach(btn => {
+        btn.addEventListener('click', ({target:{dataset}}) => {
+          deletePosta(dataset.id)
+        })
+      })
+
       input.value = publicacion;
-    
+
       console.log(publicacion);
       let liked = false;
       likeEmptyIconClone.addEventListener("click", () => {
@@ -184,8 +202,10 @@ export const wall = () => {
       padre.appendChild(likeEmptyIconClone);
       padre.appendChild(likeFullIconClone);
       padre.appendChild(commentIconClone);
+      padre.appendChild(buttonDeleteIconClone);
+      padre.appendChild(buttonEditIconClone);
       taskContainer.appendChild(padre);
-      
+
       input.addEventListener("input", () => { // añadir listener revisarlo al final
         input.style.height = "auto";
         /* input.style.height = `${input.scrollHeight}px`; */
@@ -194,7 +214,7 @@ export const wall = () => {
 
   });
 
- 
+
 
   return div;
 };
