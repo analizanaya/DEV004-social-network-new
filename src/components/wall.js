@@ -176,6 +176,7 @@ export const wall = () => {
     const prueba = posts.forEach((publicacion) => {
       const padre = document.createElement("div");
       const input = document.createElement("textarea");
+         
 
       const likeEmptyIconClone = likeEmptyIcon.cloneNode(true);
       const likeFullIconClone = likeFullIcon.cloneNode(true);
@@ -184,7 +185,7 @@ export const wall = () => {
 
       input.id = "comments";
       padre.id = "padre";
-
+      
       input.value = publicacion;
       console.log(publicacion);
 
