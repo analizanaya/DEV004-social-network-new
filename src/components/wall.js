@@ -40,7 +40,7 @@ export const wall = () => {
   const likeFullIcon = document.createElement("img", "input");
   const commentIcon = document.createElement("img", "input");
   const buttonSingOff = document.createElement("button");
-  const inputComment = document.createElement("input");
+  let inputComment = document.createElement("input");
 
   let buttonsShowModal = document.createElement("img", "button");
   let inputPost = document.createElement("input");
@@ -64,7 +64,7 @@ export const wall = () => {
   dialog.id = "dialog";
   inputShowModal.id = "ShowModal";
   inputPost.id = "post";
-  inputComment.id = "comment";
+  //inputComment.id = "comment";
   imgUser.id = "imgUser";
   taskContainer.id = "taskContainer";
 
@@ -144,6 +144,8 @@ export const wall = () => {
     onNavigate("/");
   });
 
+  
+
   dialog.appendChild(inputShowModal);
   dialog.appendChild(buttonSend);
   dialog.appendChild(buttonxIcon);
@@ -172,10 +174,17 @@ export const wall = () => {
       const posta = doc.data();
       posts.push(posta.contenido);
     });
+    
+    
+   
+   
+   
 
     const prueba = posts.forEach((publicacion) => {
       const padre = document.createElement("div");
       const input = document.createElement("textarea");
+
+      
 
       const likeEmptyIconClone = likeEmptyIcon.cloneNode(true);
       const likeFullIconClone = likeFullIcon.cloneNode(true);
@@ -218,6 +227,19 @@ export const wall = () => {
 
       taskContainer.appendChild(padre);
     });
+    
   });
+  
+
   return div;
 };
+
+/* //let inputComment = document.createElement("textarea");
+inputComment.id = "comment";
+inputComment = document.querySelector("#comment");
+inputComment.addEventListener("input", autoResize, false);
+
+function autoResize() {
+  this.style.height = "auto";
+  this.style.height = this.scrollHeight + "px";
+} */
