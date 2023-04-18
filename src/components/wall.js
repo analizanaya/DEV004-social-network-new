@@ -40,7 +40,6 @@ export const wall = () => {
   let inputPost = document.createElement("input");
   let buttonSend = document.createElement("button");
   let inputShowModal = document.createElement("textarea");
-  
   inputShowModal.placeholder = "¿ Qué estás pensando ... ?";
   inputPost.placeholder = "¿ Qué estás pensando ... ?";
   inputPost.type = "texto";
@@ -56,7 +55,7 @@ export const wall = () => {
   dialog.id = "dialog";
   inputShowModal.id = "ShowModal";
   inputPost.id = "post";
-  //inputComment.id = "comment";
+  inputComment.id = "comment";
   imgUser.id = "imgUser";
   taskContainer.id = "taskContainer";
   buttonSend.textContent = "SEND";
@@ -154,7 +153,6 @@ export const wall = () => {
       input.rows = 1; // Valor inicial
       padre.id = "padre";
       input.value = publicacion;
-    
       console.log(publicacion);
       let liked = false;
       likeEmptyIconClone.addEventListener("click", () => {
@@ -182,16 +180,11 @@ export const wall = () => {
       padre.appendChild(likeFullIconClone);
       padre.appendChild(commentIconClone);
       taskContainer.appendChild(padre);
-      
       input.addEventListener("input", () => { // añadir listener revisarlo al final
         input.style.height = "auto";
         /* input.style.height = `${input.scrollHeight}px`; */
       });
     });
-
   });
-
- 
-
   return div;
 };
