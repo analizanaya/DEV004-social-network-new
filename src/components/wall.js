@@ -1,11 +1,12 @@
 import { db, auth, getTasks } from "../Firebase/firebase";
-import { post, getPost,deletePosta } from "../Firebase/authentication";
+import { post, getPost,deletePosta,getTask } from "../Firebase/authentication";
 import { onNavigate } from "../router.js";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { userPosts } from "../store/userData.js";
 
 let buttonSend = document.createElement("btn");
 let inputShowModal = document.createElement("textarea");
+let editStatus = false ;
 
 buttonSend.addEventListener("click", () => {
   const task = document.createElement("p");
@@ -150,7 +151,9 @@ export const wall = () => {
     querySnapshot.forEach((doc) => {
       const posta = doc.data();
       posts.push(posta.contenido);
+
       buttonDeleteIcon.setAttribute("data-id", doc.id);
+      buttonEditIcon.setAttribute("data-id", doc.id);
     });
     const prueba = posts.forEach((publicacion) => {
       const padre = document.createElement("div");
@@ -174,6 +177,17 @@ export const wall = () => {
         })
       })
 
+      const btnEdit = taskContainer.querySelectorAll(".edit")
+      btnEdit.forEach(btn => {
+        btn.addEventListener('click',async (e) => {
+          const doc= await getTask(e.target.dataset.id)
+         // console.log(doc.data)
+          const task = doc.data()
+          post['inputShowModal'].value = task.contenido
+
+          let editStatus = true ;
+        })
+      })
       input.value = publicacion;
 
       console.log(publicacion);
