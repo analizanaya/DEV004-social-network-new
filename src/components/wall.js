@@ -1,5 +1,5 @@
 import { db, auth, getTasks } from "../Firebase/firebase";
-import { post, getPost,deletePosta, getTask  } from "../Firebase/authentication";
+import { post, getPost,deletePosta} from "../Firebase/authentication";
 import { onNavigate } from "../router.js";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { userPosts } from "../store/userData.js";
@@ -40,16 +40,16 @@ export const wall = () => {
   const buttonSingOff = document.createElement("btn");
  
   let buttonsShowModal = document.createElement("img", "btn");
-  let inputPost = document.createElement("input");
+  
   let buttonSend = document.createElement("btn");
   
 
 
   inputShowModal.placeholder = "¿ Qué estás pensando ... ?";
-  inputPost.placeholder = "¿ Qué estás pensando ... ?";
+  //inputPost.placeholder = "¿ Qué estás pensando ... ?";
 
 
-  inputPost.type = "texto";
+  //inputPost.type = "texto";
  
   adjustmentButtons.type = "btn";
   imgUser.type = "img";
@@ -63,7 +63,7 @@ export const wall = () => {
   logo2.id = "logo2";
   dialog.id = "dialog";
   inputShowModal.id = "ShowModal";
-  inputPost.id = "post";
+  //inputPost.id = "post";
  
   imgUser.id = "imgUser";
   taskContainer.id = "taskContainer";
@@ -112,9 +112,9 @@ export const wall = () => {
   adjustmentButtons.addEventListener("click", function () {
     dialogAjustes.showModal();
   });
-  inputPost.addEventListener("click", function () {
+  /* inputPost.addEventListener("click", function () {
     dialog.showModal();
-  });
+  }); */
   buttonSend.addEventListener("click", () => {
     post(inputShowModal.value).then((response) => {
       return response;
@@ -142,7 +142,7 @@ export const wall = () => {
     dialogAjustes,
     logo2,
     fondo,
-    inputPost,
+    
     adjustmentButtons,
     taskContainer,
     imgUser,
@@ -159,8 +159,10 @@ export const wall = () => {
       const buttonDeleteIcon = document.createElement("img", "btn");
       const buttonEditIcon = document.createElement("img", "btn");
       const inputComment = document.createElement("input");
+      
       buttonDeleteIcon.setAttribute('data-id', doc.id)
       buttonEditIcon.setAttribute('data-id', doc.id)
+      pruebaPost.id = "comment";
       buttonEditIcon.className = "edit";
       buttonDeleteIcon.src = "./imagenes/buttonDeleteIcon.png";
       buttonDeleteIcon.alt = "Delete";
@@ -169,6 +171,7 @@ export const wall = () => {
       buttonEditIcon.alt = "Edit";
       inputComment.id = "comment";
       inputComment.type = "texto";
+      
       listPost.append(pruebaPost, buttonDeleteIcon, buttonEditIcon)
       taskContainer.append(listPost)
     });
