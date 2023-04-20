@@ -182,17 +182,7 @@ export const wall = () => {
         
         })
       })
-      /* const btnEdit = taskContainer.querySelectorAll(".edit")
-      btnEdit.forEach( (btn) => {
-        btn.addEventListener('click',  async(e) => {
-          console.log(e.target.dataset.id);
-          const doc = await getTask(e.target.dataset.id)
-          const task = doc.data()
 
-          //pruebaPost['inputComment'].value = task.contenido
-          pruebaPost(comment.id)
-        })
-      }) */
       const btnEdit = taskContainer.querySelectorAll(".edit")
       btnEdit.forEach( (btn) => {
         btn.addEventListener('click', (e)=> {
