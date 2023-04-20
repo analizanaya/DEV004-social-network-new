@@ -2,7 +2,7 @@ import {
   getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,
   signInWithEmailAndPassword, onAuthStateChanged
 } from 'firebase/auth';
-import { collection, addDoc, query, onSnapshot } from "firebase/firestore";
+import { collection, addDoc, query, onSnapshot, doc, deleteDoc ,getDoc} from "firebase/firestore";
 import { db } from './firebase';
 import { userData } from '../store/userData.js';
 import { doc, deleteDoc } from "firebase/firestore";
@@ -76,6 +76,5 @@ export function getPost(callBack){
   const consulta = query(collection(db, "Publicaciones"));
   onSnapshot(consulta, callBack)
 }
-//borrar documentos 
-
-await deleteDoc(doc(db, "Publicaciones", "DC"));
+export const deletePosta = id => deleteDoc(doc ( db,'Publicaciones',id));
+export const getTask = id => getDoc(doc(db,'Publicaciones',id));
