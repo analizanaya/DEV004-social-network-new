@@ -5,6 +5,7 @@ import {
 import { collection, addDoc, query, onSnapshot } from "firebase/firestore";
 import { db } from './firebase';
 import { userData } from '../store/userData.js';
+import { doc, deleteDoc } from "firebase/firestore";
 
 const provider = new GoogleAuthProvider();
 
@@ -75,3 +76,6 @@ export function getPost(callBack){
   const consulta = query(collection(db, "Publicaciones"));
   onSnapshot(consulta, callBack)
 }
+//borrar documentos 
+
+await deleteDoc(doc(db, "Publicaciones", "DC"));
