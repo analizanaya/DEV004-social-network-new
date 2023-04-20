@@ -1,8 +1,9 @@
 import { db, auth, getTasks } from "../Firebase/firebase";
-import { post, getPost,deletePosta,getTask } from "../Firebase/authentication";
+import { post, getPost,deletePosta} from "../Firebase/authentication";
 import { onNavigate } from "../router.js";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { userPosts } from "../store/userData.js";
+import { async } from "regenerator-runtime";
 
 let buttonSend = document.createElement("btn");
 let inputShowModal = document.createElement("textarea");
@@ -28,8 +29,7 @@ export const wall = () => {
   const buttonxIcon = document.createElement("img", "btn");
   const buttonxIcon2 = document.createElement("img", "btn");
   const dialogAjustes = document.createElement("dialog");
-  const buttonDeleteIcon = document.createElement("img", "btn");
-  const buttonEditIcon = document.createElement("img", "btn");
+  let inputShowModal = document.createElement("textarea");
   const adjustmentButtons = document.createElement("img");
   const taskContainer = document.createElement("div");
   const imgUser = document.createElement("img");
@@ -39,29 +39,37 @@ export const wall = () => {
   const likeFullIcon = document.createElement("img", "input");
   const commentIcon = document.createElement("img", "input");
   const buttonSingOff = document.createElement("btn");
-  const inputComment = document.createElement("input");
+ 
   let buttonsShowModal = document.createElement("img", "btn");
-  let inputPost = document.createElement("input");
+  
   let buttonSend = document.createElement("btn");
-  let inputShowModal = document.createElement("textarea");
+  
+
+
   inputShowModal.placeholder = "¿ Qué estás pensando ... ?";
-  inputPost.placeholder = "¿ Qué estás pensando ... ?";
-  inputPost.type = "texto";
-  inputComment.type = "texto";
+  //inputPost.placeholder = "¿ Qué estás pensando ... ?";
+
+
+  //inputPost.type = "texto";
+ 
   adjustmentButtons.type = "btn";
   imgUser.type = "img";
   buttonsShowModal.type = "btn";
   buttonxIcon.type = "btn";
   buttonxIcon2.type = "btn";
+
+
   fondo.id = "fondo";
   div.id = "section";
   logo2.id = "logo2";
   dialog.id = "dialog";
   inputShowModal.id = "ShowModal";
-  inputPost.id = "post";
-  inputComment.id = "comment";
+  //inputPost.id = "post";
+ 
   imgUser.id = "imgUser";
   taskContainer.id = "taskContainer";
+
+
   buttonSend.textContent = "SEND";
   /* buttonEditIcon.textContent = "Edit";
    buttonDeleteIcon.textContent = "Delete";*/
@@ -71,8 +79,8 @@ export const wall = () => {
   buttonxIcon2.className = "buttonX2";
   adjustmentButtons.className = "adjustmentButtonsIcon";
   buttonsShowModal.className = "ButtonsShowModal";
-  buttonEditIcon.className = "edit";
-  buttonDeleteIcon.className = "delete";
+  
+  
 
   likeEmptyIcon.className = "likeEmptyIcon";
   likeFullIcon.className = "likeFullIcon";
@@ -95,10 +103,7 @@ export const wall = () => {
   likeFullIcon.src = "./imagenes/likeLleno.png";
   likeFullIcon.alt = "Like2";
   likeFullIcon.style.display = "none";
-  buttonDeleteIcon.src = "./imagenes/buttonDeleteIcon.png";
-  buttonDeleteIcon.alt = "Delete";
-  buttonEditIcon.src = "./imagenes/buttonEditIcon.png";
-  buttonEditIcon.alt = "Edit";
+ 
   commentIcon.src = "./imagenes/comentario.png";
   commentIcon.alt = "comentario";
   buttonxIcon.src = "./imagenes/x.png";
@@ -108,9 +113,9 @@ export const wall = () => {
   adjustmentButtons.addEventListener("click", function () {
     dialogAjustes.showModal();
   });
-  inputPost.addEventListener("click", function () {
+  /* inputPost.addEventListener("click", function () {
     dialog.showModal();
-  });
+  }); */
   buttonSend.addEventListener("click", () => {
     post(inputShowModal.value).then((response) => {
       return response;
@@ -130,103 +135,145 @@ export const wall = () => {
   dialog.appendChild(buttonSend);
   dialog.appendChild(buttonxIcon);
   dialogAjustes.appendChild(buttonsShowModal);
-  dialogAjustes.appendChild(buttonEditIcon);
-  dialogAjustes.appendChild(buttonDeleteIcon);
+  // dialogAjustes.appendChild(buttonEditIcon);
+  // dialogAjustes.appendChild(buttonDeleteIcon);
   dialogAjustes.appendChild(buttonxIcon2);
   div.append(
     dialog,
     dialogAjustes,
     logo2,
     fondo,
-    inputPost,
+    
     adjustmentButtons,
     taskContainer,
     imgUser,
-    inputComment,
     buttonSingOff
   );
   getPost((querySnapshot) => {
-    taskContainer.innerHTML = "";
-    const posts = [];
-    querySnapshot.forEach((doc) => {
-      const posta = doc.data();
-      posts.push(posta.contenido);
-
-      buttonDeleteIcon.setAttribute("data-id", doc.id);
-      buttonEditIcon.setAttribute("data-id", doc.id);
-    });
-    const prueba = posts.forEach((publicacion) => {
-      const padre = document.createElement("div");
-      const input = document.createElement("textarea");
-
-
-      const likeEmptyIconClone = likeEmptyIcon.cloneNode(true);
-      const likeFullIconClone = likeFullIcon.cloneNode(true);
-      const commentIconClone = commentIcon.cloneNode(true);
-      const buttonDeleteIconClone = buttonDeleteIcon.cloneNode(true);
-      const buttonEditIconClone = buttonEditIcon.cloneNode(true);
-
-      input.id = "comments";
-      input.rows = 1; // Valor inicial
-      padre.id = "padre";
+    const listPost = document.createElement('article')
+    listPost.innerHTML = ''
+    taskContainer.innerHTML = ''
+    querySnapshot.forEach(doc => {
+      console.log(doc.data());
+      let pruebaPost = document.createElement("p");
+      pruebaPost.textContent = doc.data().contenido;
+      const buttonDeleteIcon = document.createElement("img", "btn");
+      const buttonEditIcon = document.createElement("img", "btn");
+      const inputComment = document.createElement("input");
       
-      const btnDelete = taskContainer.querySelectorAll(".delete")
+      buttonDeleteIcon.setAttribute('data-id', doc.id)
+      buttonEditIcon.setAttribute('data-id', doc.id)
+      pruebaPost.id = "comment";
+      buttonEditIcon.className = "edit";
+      buttonDeleteIcon.src = "./imagenes/buttonDeleteIcon.png";
+      buttonDeleteIcon.alt = "Delete";
+      buttonDeleteIcon.className = "delete";
+      buttonEditIcon.src = "./imagenes/buttonEditIcon.png";
+      buttonEditIcon.alt = "Edit";
+      inputComment.id = "comment";
+      inputComment.type = "texto";
+      
+      listPost.append(pruebaPost, buttonDeleteIcon, buttonEditIcon)
+      taskContainer.append(listPost)
+    });
+    const btnDelete = taskContainer.querySelectorAll(".delete")
       btnDelete.forEach(btn => {
         btn.addEventListener('click', ({target:{dataset}}) => {
           deletePosta(dataset.id)
+        
         })
       })
 
       const btnEdit = taskContainer.querySelectorAll(".edit")
-      btnEdit.forEach(btn => {
-        btn.addEventListener('click',async (e) => {
-          const doc= await getTask(e.target.dataset.id)
-         // console.log(doc.data)
-          const task = doc.data()
-          post['inputShowModal'].value = task.contenido
-
-          let editStatus = true ;
+      btnEdit.forEach( (btn) => {
+        btn.addEventListener('click', (e)=> {
+          document.getElementById(e.target.dataset.id)
+          
+          console.log(e.target.dataset.id);
+          
         })
       })
-      input.value = publicacion;
+  })
+  // getPost((querySnapshot) => {
+  //   taskContainer.innerHTML = "";
+  //   const posts = [];
+  //   querySnapshot.forEach((doc) => {
+  //     const posta = doc.data();
+  //     posts.push(posta.contenido);
+  //     buttonDeleteIcon.setAttribute("data-id", doc.id);
+  //     buttonEditIcon.setAttribute("data-id", doc.id);
+  //   });
+  //   const prueba = posts.forEach((publicacion) => {
+  //     const padre = document.createElement("div");
+  //     const input = document.createElement("textarea");
 
-      console.log(publicacion);
-      let liked = false;
-      likeEmptyIconClone.addEventListener("click", () => {
-        if (!liked) {
-          likeFullIconClone.src = "./imagenes/likeLleno.png";
-          likeFullIconClone.style.display = "block";
-          likeEmptyIconClone.style.display = "none";
-          liked = true;
-          console.log("liked");
-        } else {
-        }
-      });
-      likeFullIconClone.addEventListener("click", () => {
-        if (liked) {
-          likeEmptyIconClone.src = "./imagenes/likeVacio.png";
-          likeEmptyIconClone.style.display = "block";
-          likeFullIconClone.style.display = "none";
-          liked = false;
-          console.log("no liked");
-        } else {
-        }
-      });
-      padre.appendChild(input);
-      padre.appendChild(likeEmptyIconClone);
-      padre.appendChild(likeFullIconClone);
-      padre.appendChild(commentIconClone);
-      padre.appendChild(buttonDeleteIconClone);
-      padre.appendChild(buttonEditIconClone);
-      taskContainer.appendChild(padre);
 
-      input.addEventListener("input", () => { // añadir listener revisarlo al final
-        input.style.height = "auto";
-        /* input.style.height = `${input.scrollHeight}px`; */
-      });
-    });
+  //     const likeEmptyIconClone = likeEmptyIcon.cloneNode(true);
+  //     const likeFullIconClone = likeFullIcon.cloneNode(true);
+  //     const commentIconClone = commentIcon.cloneNode(true);
+  //     const buttonDeleteIconClone = buttonDeleteIcon.cloneNode(true);
+  //     const buttonEditIconClone = buttonEditIcon.cloneNode(true);
 
-  });
+  //     input.id = "comments";
+  //     input.rows = 1; // Valor inicial
+  //     padre.id = "padre";
+      
+  //     const btnDelete = taskContainer.querySelectorAll(".delete")
+  //     btnDelete.forEach(btn => {
+  //       btn.addEventListener('click', ({target:{dataset}}) => {
+  //        // deletePosta(dataset.id)
+  //        console.log(dataset.id)
+  //       })
+  //     })
+
+  //     const btnEdit = taskContainer.querySelectorAll(".edit")
+  //     btnEdit.forEach( (btn) => {
+  //       btn.addEventListener('click', async (e) => {
+  //         const doc = await getTask(e.target.dataset.id)
+  //         const task = doc.data()
+
+  //         inputShowModal['inputComment'].value = task.contenido
+  //       })
+  //     })
+
+
+
+  //     input.value = publicacion;
+  //     console.log(publicacion);
+  //     let liked = false;
+  //     likeEmptyIconClone.addEventListener("click", () => {
+  //       if (!liked) {
+  //         likeFullIconClone.src = "./imagenes/likeLleno.png";
+  //         likeFullIconClone.style.display = "block";
+  //         likeEmptyIconClone.style.display = "none";
+  //         liked = true;
+  //         console.log("liked");
+  //       } else {
+  //       }
+  //     });
+  //     likeFullIconClone.addEventListener("click", () => {
+  //       if (liked) {
+  //         likeEmptyIconClone.src = "./imagenes/likeVacio.png";
+  //         likeEmptyIconClone.style.display = "block";
+  //         likeFullIconClone.style.display = "none";
+  //         liked = false;
+  //         console.log("no liked");
+  //       } else {
+  //       }
+  //     });
+  //     padre.appendChild(input);
+  //     padre.appendChild(likeEmptyIconClone);
+  //     padre.appendChild(likeFullIconClone);
+  //     padre.appendChild(commentIconClone);
+  //     padre.appendChild(buttonDeleteIconClone);
+  //     padre.appendChild(buttonEditIconClone);
+  //     taskContainer.appendChild(padre);
+  //     input.addEventListener("input", () => { // añadir listener revisarlo al final
+  //       input.style.height = "auto";
+  //       /* input.style.height = `${input.scrollHeight}px`; */
+  //     });
+  //   });
+  // });
 
 
 

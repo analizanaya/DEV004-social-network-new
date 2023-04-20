@@ -150,6 +150,11 @@ h2 {
     top: 2%;
     left: 5%;
 }
+#autoresizing{
+    display: block;
+    overflow: hidden;
+    resize: none;
+}
 .send {
     position: absolute;
     top: 72%;
@@ -274,7 +279,7 @@ h2 {
     position: absolute;
     top: 7%;
 }
-#comments{
+#comment{
     width: 132%;
     display: flex;
     height: 11%;
