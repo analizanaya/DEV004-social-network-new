@@ -2,7 +2,7 @@ import {
   getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup,
   signInWithEmailAndPassword, onAuthStateChanged
 } from 'firebase/auth';
-import { collection, addDoc, query, onSnapshot, doc, deleteDoc } from "firebase/firestore";
+import { collection, addDoc, query, onSnapshot, doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { db } from './firebase';
 import { userData } from '../store/userData.js';
 
@@ -77,7 +77,11 @@ export function getPost(callBack){
 }
 export const deletePosta = id => deleteDoc(doc ( db,'Publicaciones',id));
 
+export const postRef = doc(db, 'Publicaciones', id);
 
+await updateDoc(postRef, {
+  contenido: inputShowModal,
+});
 
 
  
