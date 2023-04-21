@@ -76,7 +76,8 @@ export function getPost(callBack){
   onSnapshot(consulta, callBack)
 }
 export const deletePosta = id => deleteDoc(doc ( db,'Publicaciones',id));
-export const getTask = id => getDoc(doc(db,'Publicaciones',id));
-export const updatePost = (id, updatedContent) => {
-  return db.collection("posts").doc(id).update({ contenido: updatedContent });
-} 
+
+
+
+
+ 
