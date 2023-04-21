@@ -1,5 +1,5 @@
 import { db, auth, getTasks } from "../Firebase/firebase";
-import { post, getPost,deletePosta} from "../Firebase/authentication";
+import { post, getPost, deletePosta, updatePost } from "../Firebase/authentication";
 import { onNavigate } from "../router.js";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { userPosts } from "../store/userData.js";
@@ -7,7 +7,7 @@ import { async } from "regenerator-runtime";
 
 let buttonSend = document.createElement("btn");
 let inputShowModal = document.createElement("textarea");
-let editStatus = false ;
+let editStatus = false;
 
 buttonSend.addEventListener("click", () => {
   const task = document.createElement("p");
@@ -39,11 +39,11 @@ export const wall = () => {
   const likeFullIcon = document.createElement("img", "input");
   const commentIcon = document.createElement("img", "input");
   const buttonSingOff = document.createElement("btn");
- 
+
   let buttonsShowModal = document.createElement("img", "btn");
-  
+
   let buttonSend = document.createElement("btn");
-  
+
 
 
   inputShowModal.placeholder = "¿ Qué estás pensando ... ?";
@@ -51,7 +51,7 @@ export const wall = () => {
 
 
   //inputPost.type = "texto";
- 
+
   adjustmentButtons.type = "btn";
   imgUser.type = "img";
   buttonsShowModal.type = "btn";
@@ -65,7 +65,7 @@ export const wall = () => {
   dialog.id = "dialog";
   inputShowModal.id = "ShowModal";
   //inputPost.id = "post";
- 
+
   imgUser.id = "imgUser";
   taskContainer.id = "taskContainer";
 
@@ -79,8 +79,8 @@ export const wall = () => {
   buttonxIcon2.className = "buttonX2";
   adjustmentButtons.className = "adjustmentButtonsIcon";
   buttonsShowModal.className = "ButtonsShowModal";
-  
-  
+
+
 
   likeEmptyIcon.className = "likeEmptyIcon";
   likeFullIcon.className = "likeFullIcon";
@@ -103,7 +103,7 @@ export const wall = () => {
   likeFullIcon.src = "./imagenes/likeLleno.png";
   likeFullIcon.alt = "Like2";
   likeFullIcon.style.display = "none";
- 
+
   commentIcon.src = "./imagenes/comentario.png";
   commentIcon.alt = "comentario";
   buttonxIcon.src = "./imagenes/x.png";
@@ -143,7 +143,7 @@ export const wall = () => {
     dialogAjustes,
     logo2,
     fondo,
-    
+
     adjustmentButtons,
     taskContainer,
     imgUser,
@@ -160,7 +160,7 @@ export const wall = () => {
       const buttonDeleteIcon = document.createElement("img", "btn");
       const buttonEditIcon = document.createElement("img", "btn");
       const inputComment = document.createElement("input");
-      
+
       buttonDeleteIcon.setAttribute('data-id', doc.id)
       buttonEditIcon.setAttribute('data-id', doc.id)
       pruebaPost.id = "comment";
@@ -172,27 +172,28 @@ export const wall = () => {
       buttonEditIcon.alt = "Edit";
       inputComment.id = "comment";
       inputComment.type = "texto";
-      
+
       listPost.append(pruebaPost, buttonDeleteIcon, buttonEditIcon)
       taskContainer.append(listPost)
     });
-    const btnDelete = taskContainer.querySelectorAll(".delete")
-      btnDelete.forEach(btn => {
-        btn.addEventListener('click', ({target:{dataset}}) => {
-          deletePosta(dataset.id)
-        
-        })
-      })
 
-      const btnEdit = taskContainer.querySelectorAll(".edit")
-      btnEdit.forEach( (btn) => {
-        btn.addEventListener('click', (e)=> {
-          document.getElementById(e.target.dataset.id)
-          
-          console.log(e.target.dataset.id);
-          
-        })
+    const btnDelete = taskContainer.querySelectorAll(".delete")
+    btnDelete.forEach(btn => {
+      btn.addEventListener('click', ({ target: { dataset } }) => {
+        deletePosta(dataset.id)
+
       })
+    })
+    
+    const btnEdit = taskContainer.querySelectorAll(".edit")
+    btnEdit.forEach( (btn) => {
+      btn.addEventListener('click', (e)=> {
+        document.getElementById(e.target.dataset.id)
+        
+        console.log(e.target.dataset.id);
+        
+      })
+    }) 
   })
   // getPost((querySnapshot) => {
   //   taskContainer.innerHTML = "";
@@ -217,7 +218,7 @@ export const wall = () => {
   //     input.id = "comments";
   //     input.rows = 1; // Valor inicial
   //     padre.id = "padre";
-      
+
   //     const btnDelete = taskContainer.querySelectorAll(".delete")
   //     btnDelete.forEach(btn => {
   //       btn.addEventListener('click', ({target:{dataset}}) => {
