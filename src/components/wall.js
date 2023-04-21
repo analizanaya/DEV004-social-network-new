@@ -1,5 +1,5 @@
 import { db, auth, getTasks } from "../Firebase/firebase";
-import { post, getPost,deletePosta } from "../Firebase/authentication";
+import { post, getPost,deletePosta, postRef } from "../Firebase/authentication";
 import { onNavigate } from "../router.js";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { userPosts } from "../store/userData.js";
@@ -179,10 +179,12 @@ export const wall = () => {
      const inputUpdate = document.createElement('input')
       inputUpdate.setAttribute('value', doc.data().contenido)
       inputUpdate.setAttribute('style', 'display:none')
+      inputUpdate.className= 'inputUpdate';
       inputUpdate.id= doc.id
       const btnUpdate = document.createElement('button')
       btnUpdate.textContent = 'Guardar'
       btnUpdate.setAttribute('style', 'display:none')
+      btnUpdate.className = 'btnUpdate';
       btnUpdate.value= doc.id
 
       
@@ -236,10 +238,6 @@ export const wall = () => {
             }
           });
          
-        
-        
-
-
 
       listPost.append(input, likeEmptyIconClone, likeFullIconClone, pruebaPost, inputUpdate, btnUpdate, buttonDeleteIcon, buttonEditIcon)
       taskContainer.append(listPost)
@@ -261,7 +259,7 @@ export const wall = () => {
           document.querySelector(`button[value = ${e.target.dataset.id}]`).addEventListener('click', ()=>{
             console.log('Guardando...',document.getElementById(e.target.dataset.id).value);
           })
-          //updatePost(e.target.dataset.id, textoEditado)
+          postRef(e.target.dataset.id, textoEditado)
         })
       })
 
