@@ -76,3 +76,21 @@ export function getPost(callBack){
   onSnapshot(consulta, callBack)
 }
 export const deletePosta = id => deleteDoc(doc ( db,'Publicaciones',id));
+
+
+export const updatePost = async (postId, updatedData) => {
+  try {
+    // Obtener referencia al documento del post a actualizar en Firebase
+    const postRef = db.collection("Publicaciones").doc(postId);
+
+    // Actualizar los datos del post con los nuevos valores
+    await postRef.update(updatedData);
+
+    console.log("Post actualizado exitosamente");
+
+    return true;
+  } catch (error) {
+    console.error("Error actualizando post:", error);
+    return false;
+  }
+};
