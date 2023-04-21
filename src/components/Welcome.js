@@ -19,7 +19,9 @@ export const Welcome = () => {
   
 
   inputUsername.type = 'email';
+  inputUsername.required = 'true';
   inputPassword.type = 'password';
+  inputPassword.required= 'true';
 
   inputUsername.placeholder = 'e-mail';
   inputPassword.placeholder = 'password';
@@ -67,18 +69,6 @@ export const Welcome = () => {
   buttonCreate.addEventListener('click', () => {
     onNavigate('/register');
   });
-
-
-  //registro de adtos en firestore
-  buttonGetinto.addEventListener('click', () => {
-   loginWithEmailAndPassword().then((userCredential) => {
-      userData.userName = userCredential.user.email;
-
-      onNavigate('/wall');
-    });
-  });
-
-
   buttonGoogle.addEventListener('click', () => {
     loginGoogle().then((userCredential) => {
       userData.userName = userCredential.user.email;

@@ -60,8 +60,8 @@ export function post(inputShowModal) {
 
       contenido: inputShowModal,
       autor: autor,
-      email : email,
-      id : id
+      email: email,
+      id: id
 
     });
     //console.log(document)
@@ -71,19 +71,18 @@ export function post(inputShowModal) {
   }
 
 }
-export function getPost(callBack){
+export function getPost(callBack) {
   const consulta = query(collection(db, "Publicaciones"));
   onSnapshot(consulta, callBack)
 }
-export const deletePosta = id => deleteDoc(doc ( db,'Publicaciones',id));
+export const deletePosta = id => deleteDoc(doc(db, 'Publicaciones', id));
 
 
-export function editPost(postId){
-const postRef = doc(db, 'Publicaciones', postId);
-//await 
-updateDoc(postRef, {
-  contenido: inputShowModal,
-}); 
+export async function  editPost(postId, contenido) {
+   const postRef = doc(db, 'Publicaciones', postId);
+  await updateDoc(postRef, {
+    contenido
+  });
 }
 
- 
+
