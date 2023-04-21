@@ -1,5 +1,5 @@
 import { db, auth, getTasks } from "../Firebase/firebase";
-import { post, getPost,deletePosta, postRef } from "../Firebase/authentication";
+import { post, getPost,deletePosta, editPost } from "../Firebase/authentication";
 import { onNavigate } from "../router.js";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { userPosts } from "../store/userData.js";
@@ -154,10 +154,10 @@ export const wall = () => {
       btnEdit.forEach( (btn) => {
         btn.addEventListener('click',  async(e) => {
           console.log(e.target.dataset.id);
-          const doc = await getTask(e.target.dataset.id)
+          const doc = await getTasks(e.target.dataset.id)
           const task = doc.data()
           //pruebaPost['inputComment'].value = task.contenido
-          pruebaPost(comment.id)
+          editPost(e.target.dataset.id)
         })
       })
 
