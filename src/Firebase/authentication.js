@@ -77,11 +77,11 @@ export function getPost(callBack){
 }
 export const deletePosta = id => deleteDoc(doc ( db,'Publicaciones',id));
 
-export const postRef = doc(db, 'Publicaciones', id);
+/* export const postRef = doc(db, 'Publicaciones', id);
 
 await updateDoc(postRef, {
   contenido: inputShowModal,
 });
-
+ */
 
  
