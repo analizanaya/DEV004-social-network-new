@@ -1,9 +1,5 @@
-import { db, auth, getTasks } from "../Firebase/firebase";
 import { post, getPost, deletePosta, editPost } from "../Firebase/authentication";
 import { onNavigate } from "../router.js";
-import { collection, query, onSnapshot } from "firebase/firestore";
-import { userPosts } from "../store/userData.js";
-import { async } from "regenerator-runtime";
 
 export const wall = () => {
   const buttonSend = document.createElement("btn");
@@ -69,54 +65,6 @@ export const wall = () => {
   buttonxIcon.alt = "equis";
   buttonxIcon2.src = "./imagenes/x.png";
   buttonxIcon2.alt = "equis";
-
-  buttonSend.addEventListener("click", () => {
-    post(inputShowModal.value).then((response) => {
-      return response;
-    });
-    dialog.close();
-    const task = document.createElement("p");
-    task.textContent = inputShowModal.value;
-    const taskContainer = document.querySelector("#taskContainer"); // Obtener el elemento que contenerá las tareas
-    if (taskContainer) {
-
-      taskContainer.appendChild(task);
-      console.log(taskContainer);
-    } else {
-      console.error("No se encontró el elemento que contiene las tareas");
-    }
-    inputShowModal.value = "";
-  });
-
-  inputPost.addEventListener("click", function () {
-    dialog.showModal();
-  }); 
-
-  buttonxIcon.addEventListener("click", function () {
-    dialog.close();
-  });
-  buttonxIcon2.addEventListener("click", function () {
-    dialogAjustes.close();
-  });
-  buttonSingOff.addEventListener("click", () => {
-    onNavigate("/");
-  });
-  dialog.appendChild(inputShowModal);
-  dialog.appendChild(buttonSend);
-  dialog.appendChild(buttonxIcon);
-  dialogAjustes.appendChild(buttonsShowModal);
-
-  dialogAjustes.appendChild(buttonxIcon2);
-  div.append(
-    dialog,
-    dialogAjustes,
-    logo2,
-    fondo,
-    inputPost,
-    taskContainer,
-    imgUser,
-    buttonSingOff
-  );
   getPost((querySnapshot) => {
     const listPost = document.createElement('article')
     listPost.innerHTML = ''
@@ -196,6 +144,7 @@ export const wall = () => {
         console.log('Guardando...', textoEditado);
         editPost(e.target.dataset.id, textoEditado)
       })
+      
     });
 
     const btnDelete = taskContainer.querySelectorAll(".delete")
@@ -205,8 +154,55 @@ export const wall = () => {
       })
     })
 
-
-
   });
+
+  buttonSend.addEventListener("click", () => {
+    post(inputShowModal.value).then((response) => {
+      return response;
+    });
+    dialog.close();
+    const task = document.createElement("p");
+    task.textContent = inputShowModal.value;
+    const taskContainer = document.querySelector("#taskContainer"); // Obtener el elemento que contenerá las tareas
+    if (taskContainer) {
+
+      taskContainer.appendChild(task);
+      console.log(taskContainer);
+    } else {
+      console.error("No se encontró el elemento que contiene las tareas");
+    }
+    inputShowModal.value = "";
+  });
+
+  inputPost.addEventListener("click", function () {
+    dialog.showModal();
+  }); 
+
+  buttonxIcon.addEventListener("click", function () {
+    dialog.close();
+  });
+  buttonxIcon2.addEventListener("click", function () {
+    dialogAjustes.close();
+  });
+  buttonSingOff.addEventListener("click", () => {
+    onNavigate("/");
+  });
+
+  dialog.appendChild(inputShowModal);
+  dialog.appendChild(buttonSend);
+  dialog.appendChild(buttonxIcon);
+  dialogAjustes.appendChild(buttonsShowModal);
+
+  dialogAjustes.appendChild(buttonxIcon2);
+  div.append(
+    dialog,
+    dialogAjustes,
+    logo2,
+    fondo,
+    inputPost,
+    taskContainer,
+    imgUser,
+    buttonSingOff
+  );
   return div;
 };
