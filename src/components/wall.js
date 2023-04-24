@@ -1,6 +1,7 @@
 import { post, getPost, deletePosta, editPost } from "../Firebase/authentication";
 import { onNavigate } from "../router.js";
 
+
 export const wall = () => {
   const buttonSend = document.createElement("btn");
   const inputShowModal = document.createElement("textarea");
@@ -144,7 +145,6 @@ export const wall = () => {
         console.log('Guardando...', textoEditado);
         editPost(e.target.dataset.id, textoEditado)
       })
-      
     });
 
     const btnDelete = taskContainer.querySelectorAll(".delete")
@@ -187,7 +187,8 @@ export const wall = () => {
   buttonSingOff.addEventListener("click", () => {
     onNavigate("/");
   });
-
+  
+  
   dialog.appendChild(inputShowModal);
   dialog.appendChild(buttonSend);
   dialog.appendChild(buttonxIcon);
