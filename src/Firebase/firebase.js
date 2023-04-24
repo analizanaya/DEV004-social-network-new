@@ -1,12 +1,8 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth } from "firebase/auth";
+import { collection, getFirestore, getDocs} from 'firebase/firestore';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
   apiKey: 'AIzaSyDGcIilwnSYWgKmBHUYlbTMNw8tcVNdSZo',
   authDomain: 'social-network-e1b86.firebaseapp.com',
@@ -17,7 +13,31 @@ const firebaseConfig = {
   measurementId: 'G-XRY864RG09',
 };
 
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const db = getFirestore(app);
+let app;
+let auth; 
+let db;
+
+const initFirebase = () => {
+  // Initialize Firebase
+   app = initializeApp(firebaseConfig);
+
+  // Initialize Firebase Authentication and get a reference to the service
+   auth = getAuth(app);
+
+  // Initialize Cloud Firestore and get a reference to the service
+   db = getFirestore(app);
+
+  
+
+  return {
+    app,
+    auth,
+    db,
+
+  };
+};
+ const getTasks = () => getDocs(collection(db,'Publicaciones'));
+
+export {
+  initFirebase, app, auth, db , getTasks
+}
