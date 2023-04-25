@@ -1,9 +1,9 @@
-import { Welcome } from '../components/Welcome.js';
+import { welcome } from '../components/welcome.js';
 import { wall } from '../components/wall.js';
 import { register } from '../components/Register.js';
 
 export const ROUTES = {
-    '/': Welcome,
+    '/': welcome,
     '/wall': wall,
     '/register': register,
   };

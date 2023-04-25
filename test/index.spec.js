@@ -1,6 +1,6 @@
 import * as router from "../src/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Welcome } from '../src/components/Welcome.js';
+import { welcome } from '../src/components/welcome.js';
 import {loginWithEmailAndPassword} from '../src/Firebase/authentication.js';
 
 //const mockSignInWithEmailAndPassword =jest.fn();
@@ -24,7 +24,7 @@ jest.mock('../src/Firebase/authentication.js', ()=>({
       //preparamos el mock
       //signInWithEmailAndPassword.mockResolvedValueOnce({ user: { email: 'd@gmail.com' } })
 
-      const divLogin = Welcome();
+      const divLogin = welcome();
 
       divLogin.querySelector('#username').value = 'd@gmail.com';
       divLogin.querySelector('#password').value = '123456';  

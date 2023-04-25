@@ -141,7 +141,8 @@ export const wall = () => {
       const btnEdit = document.getElementById("edit" + doc.id);
 
       btnEdit.addEventListener('click', (e) => {
-        const textoEditado = document.getElementById("comments").value;
+        // const textoEditado = document.getElementById("comments").value;
+        const textoEditado = input.value;
         console.log('Guardando...', textoEditado);
         editPost(e.target.dataset.id, textoEditado)
       })

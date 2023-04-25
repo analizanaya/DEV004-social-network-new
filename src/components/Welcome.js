@@ -5,7 +5,7 @@ import {
 import { onNavigate } from '../router.js';
 import {userData} from '../store/userData.js'
 
-export const Welcome = () => {
+export const welcome = () => {
   const div = document.createElement('div');
   const logo = document.createElement('img');
   const fondo = document.createElement('img');
