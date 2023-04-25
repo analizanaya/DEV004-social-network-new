@@ -27,11 +27,7 @@
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
-<<<<<<< HEAD
-    "jest/valid-expect": "error"
-=======
     "jest/valid-expect": "error",
->>>>>>> ed9529a837df0a291cbd8b002b97819d523b6e1b
     "import/no-cycle":"off"
   }
 }
