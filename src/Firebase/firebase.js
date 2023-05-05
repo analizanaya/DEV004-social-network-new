@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from "firebase/auth";
-import { collection, getFirestore, getDocs} from 'firebase/firestore';
-
+import { getAuth } from 'firebase/auth';
+import { collection, getFirestore, getDocs } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDGcIilwnSYWgKmBHUYlbTMNw8tcVNdSZo',
@@ -14,30 +13,27 @@ const firebaseConfig = {
 };
 
 let app;
-let auth; 
+let auth;
 let db;
 
 const initFirebase = () => {
   // Initialize Firebase
-   app = initializeApp(firebaseConfig);
+  app = initializeApp(firebaseConfig);
 
   // Initialize Firebase Authentication and get a reference to the service
-   auth = getAuth(app);
+  auth = getAuth(app);
 
   // Initialize Cloud Firestore and get a reference to the service
-   db = getFirestore(app);
-
-  
+  db = getFirestore(app);
 
   return {
     app,
     auth,
     db,
-
   };
 };
- const getTasks = () => getDocs(collection(db,'Publicaciones'));
+const getTasks = () => getDocs(collection(db, 'Publicaciones'));
 
 export {
-  initFirebase, app, auth, db , getTasks
-}
+  initFirebase, app, auth, db, getTasks,
+};

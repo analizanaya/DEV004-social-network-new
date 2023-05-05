@@ -1,9 +1,9 @@
-import { logincreateUserWithEmailAndPassword} from '../Firebase/authentication.js';
-import { getAuth, updateProfile } from "firebase/auth";
-import { onNavigate } from '../router.js';
+import { getAuth, updateProfile } from 'firebase/auth';
+import { logincreateUserWithEmailAndPassword } from '../Firebase/authentication';
+import { onNavigate } from '../router';
 
 export const register = () => {
-  const div = document.createElement('div');
+  const section = document.createElement('section');
   const logo = document.createElement('img');
   const fondo = document.createElement('img');
   const title = document.createElement('h2');
@@ -19,15 +19,16 @@ export const register = () => {
 
   inputPass.type = 'password';
 
-  div.id = 'section';
+  section.id = 'registerStyle';
   fondo.id = 'fondo';
-  emailError.id = 'email-error'; 
+  emailError.id = 'email-error';
+  logo.id = 'logoRegister';
 
   buttonRegister.className = 'buttonRegister';
   inputEmail.className = 'email';
   inputPass.className = 'password';
   inputCreate.className = 'username';
- 
+
   buttonRegister.textContent = 'REGISTER';
 
   logo.src = './imagenes/logo.png';
@@ -35,36 +36,35 @@ export const register = () => {
 
   fondo.src = './imagenes/fondo-cel.png';
   fondo.alt = 'Fondo';
-  
+
   const auth = getAuth();
   buttonRegister.addEventListener('click', () => {
-    logincreateUserWithEmailAndPassword(inputEmail.value, inputPass.value).then(
-      () => {
-       
-       return  updateProfile(auth.currentUser, {
+    logincreateUserWithEmailAndPassword(inputEmail.value, inputPass.value)
+      .then(() =>
+        updateProfile(auth.currentUser, {
           displayName: inputCreate.value,
-        });
-      })
+        })
+      )
       .then(
-      () => {
-        onNavigate('/wall');
-      },
-      
-    );
+        () => {
+          onNavigate('/wall');
+        }
+        // Aquí debería ir catch
+      );
 
     inputEmail.after(emailError); // agregar el elemento después del input
     emailError.style.display = 'none'; // ocultar el mensaje por defecto
   });
 
-  div.append(
+  section.append(
     title,
     logo,
     fondo,
     inputCreate,
     inputEmail,
     inputPass,
-    buttonRegister,
+    buttonRegister
   );
 
-  return div;
+  return section;
 };

@@ -1,12 +1,12 @@
 import {
-   loginGoogle,
-   loginWithEmailAndPassword,
-} from '../Firebase/authentication.js';
-import { onNavigate } from '../router.js';
-import {userData} from '../store/userData.js'
+  loginGoogle,
+  loginWithEmailAndPassword,
+} from '../Firebase/authentication';
+import { onNavigate } from '../router';
+import { userData } from '../store/userData';
 
 export const welcome = () => {
-  const div = document.createElement('div');
+  const section = document.createElement('section');
   const logo = document.createElement('img');
   const fondo = document.createElement('img');
   const title = document.createElement('h2');
@@ -16,22 +16,20 @@ export const welcome = () => {
   const buttonCreate = document.createElement('button');
   const inputPassword = document.createElement('input');
   const inputUsername = document.createElement('input');
-  
 
   inputUsername.type = 'email';
   inputUsername.required = 'true';
   inputPassword.type = 'password';
-  inputPassword.required= 'true';
+  inputPassword.required = 'true';
 
   inputUsername.placeholder = 'e-mail';
   inputPassword.placeholder = 'password';
-  
+
   logo.id = 'logo';
   fondo.id = 'fondo';
-  div.id = 'section';
+  section.id = 'emailAndPassword';
   inputPassword.id = 'password';
   inputUsername.id = 'username';
-  
 
   title.className = 'title';
   buttonGetinto.className = 'buttonGetinto';
@@ -76,9 +74,8 @@ export const welcome = () => {
       onNavigate('/wall');
     });
   });
-  
 
-  div.append(
+  section.append(
     title,
     logo,
     fondo,
@@ -90,5 +87,5 @@ export const welcome = () => {
     buttonCreate,
   );
 
-  return div;
+  return section;
 };

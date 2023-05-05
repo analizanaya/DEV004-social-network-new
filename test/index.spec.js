@@ -1,39 +1,37 @@
-import * as router from "../src/router";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import * as router from '../src/router';
 import { welcome } from '../src/components/welcome.js';
-import {loginWithEmailAndPassword} from '../src/Firebase/authentication.js';
+import { loginWithEmailAndPassword } from '../src/Firebase/authentication.js';
 
-//const mockSignInWithEmailAndPassword =jest.fn();
-jest.mock('firebase/auth', ()=>({
-    getAuth: jest.fn(),
-    signInWithEmailAndPassword:jest.fn(),
-    GoogleAuthProvider:jest.fn(),
-}))
+// const mockSignInWithEmailAndPassword =jest.fn();
+jest.mock('firebase/auth', () => ({
+  getAuth: jest.fn(),
+  signInWithEmailAndPassword: jest.fn(),
+  GoogleAuthProvider: jest.fn(),
+}));
 
-jest.mock('../src/Firebase/authentication.js', ()=>({
-  loginWithEmailAndPassword:jest.fn(() => Promise.resolve())
-}))
+jest.mock('../src/Firebase/authentication.js', () => ({
+  loginWithEmailAndPassword: jest.fn(() => Promise.resolve()),
+}));
 
-  describe('Pruebas de login', () => {
+describe('Pruebas de login', () => {
+  it('Autenticación con correo electrónico y contraseña correcta, debería redireccionar a /wall', (done) => {
+    // mocks
 
-    it('Autenticación con correo electrónico y contraseña correcta, debería redireccionar a /wall', (done) => {
-      //mocks
+    // loginWithEmailAndPassword = jest.fn(() => Promise.resolve())
+    router.onNavigate = jest.fn((route) => console.log(route, 'mock de onNavigate usado'));
+    // preparamos el mock
+    // signInWithEmailAndPassword.mockResolvedValueOnce({ user: { email: 'd@gmail.com' } })
 
-      //loginWithEmailAndPassword = jest.fn(() => Promise.resolve())
-      router.onNavigate = jest.fn((route) => console.log(route,'mock de onNavigate usado'));
-      //preparamos el mock
-      //signInWithEmailAndPassword.mockResolvedValueOnce({ user: { email: 'd@gmail.com' } })
+    const divLogin = welcome();
 
-      const divLogin = welcome();
+    divLogin.querySelector('#username').value = 'd@gmail.com';
+    divLogin.querySelector('#password').value = '123456';
+    divLogin.querySelector('.buttonGetinto').click();
 
-      divLogin.querySelector('#username').value = 'd@gmail.com';
-      divLogin.querySelector('#password').value = '123456';  
-      divLogin.querySelector('.buttonGetinto').click();
-
-      setTimeout(() => {
-        expect(router.onNavigate).toHaveBeenCalledWith('/wall');
-        done();
-      }, 0);
-      
-    });
+    setTimeout(() => {
+      expect(router.onNavigate).toHaveBeenCalledWith('/wall');
+      done();
+    }, 0);
   });
+});
