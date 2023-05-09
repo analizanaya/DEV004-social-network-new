@@ -1,0 +1,329 @@
+* {
+    font-family: Futura, Helvetica, sans-serif;
+  }
+  html {
+    display: flex;
+    justify-content: center;
+  }
+  #taskContainer {
+    top: 38%;
+    position: absolute;
+    width: 50%;
+    right: 22%;
+  }
+  #imgUser {
+    width: 12%;
+    position: absolute;
+    top: 16%;
+    right: 66%;
+  }
+  #comment {
+    display: none;
+  }
+  .delete {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #ef104c;
+    font-size: initial;
+    top: 62%;
+    right: 0%;
+  }
+  #email-error {
+    color: red;
+  }
+  
+  #fondo {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  #root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 137% 0 0 0;
+    display: flex;
+    justify-content: center;
+  }
+  #emailAndPassword {
+    display: contents;
+  }
+  .title {
+    background-color: blueviolet;
+  }
+  #registerStyle {
+    display: contents;
+  }
+  #logoRegister {
+    position: absolute;
+    top: 9%;
+    right: 22%;
+    width: 58%;
+  }
+  h2 {
+    background-image: url(./imagenes/logo.png);
+  }
+  .email {
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 1% 0 4% 0;
+    color: gray;
+    flex-direction: column;
+    margin: 14% 0 0 0;
+  }
+  #password {
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 1% 0 4% 0;
+    color: gray;
+    flex-direction: column;
+    margin: 14% 0 0 0;
+  }
+  #username {
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 1% 0 4% 0;
+    color: gray;
+    flex-direction: column;
+    margin: 14% 0 0 0;
+  }
+  .buttonGetinto {
+    margin: 16% 0 0 0;
+    width: 38%;
+    height: 5%;
+    position: absolute;
+    top: 50%;
+    left: 31%;
+    background-color: #fe5e89;
+    border-radius: 51px;
+    border-color: #f8f5f500;
+    color: white;
+  }
+  .buttonCreate {
+    margin: 16% 0 0 0;
+    width: 49%;
+    height: 5%;
+    position: absolute;
+    top: 77%;
+    border-color: #14eddd;
+    left: 26%;
+    border-radius: 42px;
+    background-color: #ffffff0a;
+  }
+  .buttonRegister {
+    margin: 16% 0 0 0;
+    width: 38%;
+    position: absolute;
+    top: 58%;
+    left: 31%;
+  }
+  .buttonGoogle {
+    position: absolute;
+    top: 73%;
+    width: 46%;
+    left: 26%;
+  }
+  .line {
+    position: absolute;
+    top: 67.5%;
+    width: 63%;
+    left: 18%;
+  }
+  .username {
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 1% 0 4% 0;
+    color: gray;
+    flex-direction: column;
+    margin: 14% 0 0 0;
+  }
+  .password {
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 1% 0 4% 0;
+    color: gray;
+    flex-direction: column;
+    margin: 14% 0 0 0;
+  }
+  #logo {
+    width: 55%;
+    position: absolute;
+    top: 6%;
+    left: 24%;
+  }
+  #logo2 {
+    width: 20%;
+    position: absolute;
+    top: 2%;
+    left: 5%;
+  }
+  #autoresizing {
+    display: block;
+    overflow: hidden;
+    resize: none;
+  }
+  .send {
+    position: absolute;
+    top: 74%;
+    width: 15%;
+    height: 14%;
+    background: #14eddd;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    left: 75%;
+    font-size: 0.8rem;
+    padding: 1% 2% 0% 5%;
+  }
+  .edit {
+    position: relative;
+    top: 16%;
+    right: 32%;
+    background: none;
+    border: none;
+    font-size: initial;
+    width: 10%;
+    padding: 0% 3% 7% 1%;
+    margin: -17% 1% 9% 1%;
+    z-index: -1;
+  }
+  .delete {
+    width: 13%;
+    margin: -13% -3% 16% 2%;
+  }
+  .likeEmptyIcon {
+    width: 15%;
+    position: relative;
+    top: 17%;
+    left: 96%;
+    display: block;
+    margin: -22% 0% 0% 0%;
+  }
+  .likeFullIcon {
+    width: 15%;
+    position: relative;
+    left: 96%;
+    display: block;
+    margin: -22% 0% 0% 0%;
+  }
+  
+  .iconComment {
+    width: 13%;
+    top: -22.5px;
+    left: 72%;
+    position: relative;
+  }
+  #post {
+    width: 66%;
+    display: flex;
+    height: 11%;
+    background-color: #ebebeb;
+    border: none;
+    position: absolute;
+    top: 19%;
+    left: 16%;
+    border-radius: 10px;
+    padding: 1% 1% 1% 4%;
+  }
+  
+  .buttonSingOff {
+    position: absolute;
+    top: 5%;
+    left: 64%;
+    border-radius: 20px;
+    padding: 1% 0% 1% 5%;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border: 2px solid #14eddd;
+    width: 26%;
+    background-color: white;
+    color: #646464;
+  }
+  #dialog {
+    width: 73%;
+    height: 11%;
+    border-radius: 10px;
+    border: none;
+    background: white;
+    left: 3%;
+    top: -51%;
+  }
+  .buttonX {
+    width: 5%;
+    left: 91%;
+    position: absolute;
+  }
+  #ShowModal {
+    height: 42%;
+    border: none;
+    display: inline-block;
+    min-width: 100px;
+    width: 93%;
+    position: absolute;
+    top: 20%;
+    right: 3%;
+  }
+  .adjustmentButtonsIcon {
+    width: 2%;
+    top: 16%;
+    transform: rotate(90deg);
+    left: 79%;
+    position: absolute;
+  }
+  .ButtonsShowModal {
+    width: 2%;
+    top: 16%;
+    transform: rotate(90deg);
+    left: 88%;
+  }
+  .dialogAjustes {
+    width: 64%;
+    height: 15%;
+    border-radius: 10px;
+    border: none;
+    background: #fcf7f7;
+    left: 3%;
+    top: -21%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .buttonX2 {
+    width: 5%;
+    left: 91%;
+    position: absolute;
+    top: 7%;
+  }
+  #comments {
+    width: 132%;
+    display: flex;
+    height: 11%;
+    border-color: #ef104c;
+    border-radius: 10px;
+    margin: -4% 25% 30% -22%;
+    position: relative;
+    top: 30%;
+  }
+  .inputUpdate {
+    background: #f3f1f1;
+    border: none;
+    border-radius: 10px;
+    width: 107%;
+    height: 5%;
+    position: absolute;
+    left: -22%;
+    top: 8%;
+  }
+  .btnUpdate {
+    position: absolute;
+    top: 15%;
+    right: 74%;
+    left: -20%;
+  }
+  
