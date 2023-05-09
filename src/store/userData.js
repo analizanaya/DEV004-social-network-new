@@ -1,10 +1,10 @@
 export const userData = {
-    userName:"",
-    userId:"",
-    photo:"",
-}
+    userName: '',
+    userId: '',
+    photo: '',
+};
 
 export const userPosts = {
-    contenido:"",
-    autor:"",
-}
+    contenido: '',
+    autor: '',
+};
