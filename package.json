@@ -2,6 +2,7 @@
   "name": "social-network",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "description": "Social Network @ Laboratoria",
   "main": "src/index.html",
   "keywords": [
