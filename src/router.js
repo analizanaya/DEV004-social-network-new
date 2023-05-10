@@ -1,8 +1,6 @@
-
-/* import { app, db } from './Firebase/firebase.js'; */
 const LOCAL_ROUTES = {};
 
-export const onNavigate= (pathname, updateHistory = true) => {
+export const onNavigate = (pathname, updateHistory = true) => {
 
   // If the path is not found, redirect to the home page
   const path = typeof LOCAL_ROUTES[pathname] !== 'function' ? pathname : '/';
@@ -32,9 +30,9 @@ export const initRouter = (routes) => {
   window.addEventListener('popstate', (e) => {
     onNavigate(window.location.pathname, false);
   });
-  
+
   // Add event listener to handle page load
-  window.addEventListener('load', () =>{
+  window.addEventListener('load', () => {
     onNavigate(window.location.pathname, false);
   });
 }
