@@ -54,6 +54,7 @@ export const welcome = () => {
 
   buttonGetinto.addEventListener('click', () => {
     if (inputUsername.value === '' || inputPassword.value === '') {
+      // eslint-disable-next-line no-undef
       swal('Ingresa tus datos');
     } else {
       loginWithEmailAndPassword(inputPassword.value, inputUsername.value).then(

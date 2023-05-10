@@ -40,15 +40,13 @@ export const register = () => {
   const auth = getAuth();
   buttonRegister.addEventListener('click', () => {
     logincreateUserWithEmailAndPassword(inputEmail.value, inputPass.value)
-      .then(() =>
-        updateProfile(auth.currentUser, {
-          displayName: inputCreate.value,
-        })
-      )
+      .then(() => updateProfile(auth.currentUser, {
+        displayName: inputCreate.value,
+      }))
       .then(
         () => {
           onNavigate('/wall');
-        }
+        },
         // Aquí debería ir catch
       );
 
@@ -63,7 +61,7 @@ export const register = () => {
     inputCreate,
     inputEmail,
     inputPass,
-    buttonRegister
+    buttonRegister,
   );
 
   return section;
