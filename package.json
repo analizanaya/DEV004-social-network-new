@@ -12,7 +12,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "deploy": "gh-pages -d src",
+    "deploy": "master -d src",
     "htmlhint": "htmlhint dist/*.html ",
     "eslint": "eslint --ext .js src/ test/",
     "stylelint": "stylelint --aei src/**/*.css",
