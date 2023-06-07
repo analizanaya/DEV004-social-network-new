@@ -5,7 +5,7 @@ import {
   editPost,
 } from '../Firebase/authentication';
 import { onNavigate } from '../router';
-import userIcon from '../imagenes/user.png'
+import userIcon from '../imagenes/user.png';
 
 export const wall = () => {
   const buttonSend = document.createElement('btn');
