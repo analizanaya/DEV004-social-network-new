@@ -5,6 +5,7 @@ import {
   editPost,
 } from '../Firebase/authentication';
 import { onNavigate } from '../router';
+import userIcon from '../imagenes/user.png'
 
 export const wall = () => {
   const buttonSend = document.createElement('btn');
@@ -49,7 +50,7 @@ export const wall = () => {
   buttonSingOff.className = 'buttonSingOff';
   buttonsShowModal.className = 'ButtonsShowModal';
 
-  imgUser.src = './imagenes/user.png';
+  imgUser.src = userIcon;
   imgUser.alt = 'imgUser';
   logo2.src = './imagenes/logo.png';
   logo2.alt = 'Logo';
