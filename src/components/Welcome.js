@@ -21,6 +21,11 @@ export const welcome = () => {
   const inputPassword = document.createElement('input');
   const inputUsername = document.createElement('input');
 
+  logo.src = logoImage;
+  fondo.src = fondoImage;
+  line.src = lineImage;
+  buttonGoogle.src = buttonGoogleImage;
+
   inputUsername.type = 'email';
   inputUsername.required = 'true';
   inputPassword.type = 'password';
@@ -44,16 +49,10 @@ export const welcome = () => {
   buttonGetinto.textContent = 'LOGIN';
   buttonCreate.textContent = 'CREATE ACCOUNT';
 
-  logo.src = logoImage;
   logo.alt = 'Logo';
-
-  fondo.src = fondoImage;
   fondo.alt = 'Fondo';
-
-  line.src = lineImage;
   line.alt = 'line';
 
-  buttonGoogle.src = buttonGoogleImage;
   buttonGoogle.alt = 'buttonGoogle';
 
   buttonGetinto.addEventListener('click', () => {
