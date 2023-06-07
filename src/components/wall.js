@@ -6,6 +6,14 @@ import {
 } from '../Firebase/authentication';
 import { onNavigate } from '../router';
 import userIcon from '../imagenes/user.png';
+import logo2Icon from '../imagenes/logo.png';
+import fondoWallImage from '../imagenes/fondo-cel.png';
+import likeImage from '../imagenes/likeVacio.png';
+import likeFullImage from '../imagenes/likeLleno.png';
+import xImage from '../imagenes/x.png';
+import buttonEditImage from '../imagenes/buttonEditIcon.png';
+import buttonDeleteImage from '../imagenes/buttonDeleteIcon.png';
+
 
 export const wall = () => {
   const buttonSend = document.createElement('btn');
@@ -22,6 +30,13 @@ export const wall = () => {
   const buttonSingOff = document.createElement('btn');
   const buttonsShowModal = document.createElement('img', 'btn');
   const inputPost = document.createElement('input');
+
+  imgUser.src = userIcon;
+  logo2.src = logo2Icon;
+  fondo.src = fondoWallImage;
+  likeEmptyIcon.src = likeImage;
+  likeFullIcon.src = likeFullImage;
+  buttonxIcon.src = xImage;
 
   inputShowModal.placeholder = '¿ Qué estás pensando ... ?';
   inputPost.placeholder = '¿ Qué estás pensando ... ?';
@@ -50,18 +65,12 @@ export const wall = () => {
   buttonSingOff.className = 'buttonSingOff';
   buttonsShowModal.className = 'ButtonsShowModal';
 
-  imgUser.src = userIcon;
   imgUser.alt = 'imgUser';
-  logo2.src = './imagenes/logo.png';
   logo2.alt = 'Logo';
-  fondo.src = './imagenes/fondo-cel.png';
   fondo.alt = 'Fondo';
-  likeEmptyIcon.src = './imagenes/likeVacio.png';
   likeEmptyIcon.alt = 'Like1';
-  likeFullIcon.src = './imagenes/likeLleno.png';
   likeFullIcon.alt = 'Like2';
   likeFullIcon.style.display = 'none';
-  buttonxIcon.src = './imagenes/x.png';
   buttonxIcon.alt = 'equis';
 
   getPost((querySnapshot) => {
@@ -79,9 +88,9 @@ export const wall = () => {
       postContent.id = 'comments';
       buttonEditIcon.className = 'edit';
       buttonEditIcon.id = `edit${doc.id}`;
-      buttonEditIcon.src = './imagenes/buttonEditIcon.png';
+      buttonEditIcon.src = buttonEditImage;
       buttonEditIcon.alt = 'Edit';
-      buttonDeleteIcon.src = './imagenes/buttonDeleteIcon.png';
+      buttonDeleteIcon.src = buttonDeleteImage;
       buttonDeleteIcon.alt = 'Delete';
       buttonDeleteIcon.className = 'delete';
 
@@ -93,7 +102,7 @@ export const wall = () => {
       let liked = false;
       likeEmptyIconClone.addEventListener('click', () => {
         if (!liked) {
-          likeFullIconClone.src = './imagenes/likeLleno.png';
+          likeFullIconClone.src = likeFullImage;
           likeFullIconClone.style.display = 'block';
           likeEmptyIconClone.style.display = 'none';
           liked = true;
@@ -102,7 +111,7 @@ export const wall = () => {
       });
       likeFullIconClone.addEventListener('click', () => {
         if (liked) {
-          likeEmptyIconClone.src = './imagenes/likeVacio.png';
+          likeEmptyIconClone.src = likeImage;
           likeEmptyIconClone.style.display = 'block';
           likeFullIconClone.style.display = 'none';
           liked = false;

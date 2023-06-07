@@ -49,15 +49,13 @@ export const welcome = () => {
   buttonGetinto.textContent = 'LOGIN';
   buttonCreate.textContent = 'CREATE ACCOUNT';
 
+  buttonGoogle.alt = 'buttonGoogle';
   logo.alt = 'Logo';
   fondo.alt = 'Fondo';
   line.alt = 'line';
 
-  buttonGoogle.alt = 'buttonGoogle';
-
   buttonGetinto.addEventListener('click', () => {
     if (inputUsername.value === '' || inputPassword.value === '') {
-      // eslint-disable-next-line no-undef
       swal('Ingresa tus datos');
     } else {
       loginWithEmailAndPassword(inputPassword.value, inputUsername.value).then(
