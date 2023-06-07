@@ -4,6 +4,7 @@ import {
 } from '../Firebase/authentication';
 import { onNavigate } from '../router';
 import { userData } from '../store/userData';
+import fondoImage from '../imagenes/fondo-cel.png';
 
 export const welcome = () => {
   const section = document.createElement('section');
@@ -43,7 +44,7 @@ export const welcome = () => {
   logo.src = './imagenes/logo.png';
   logo.alt = 'Logo';
 
-  fondo.src = './imagenes/fondo-cel.png';
+  fondo.src = fondoImage;
   fondo.alt = 'Fondo';
 
   line.src = './imagenes/rayita2-05.png';
