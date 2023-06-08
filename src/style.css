@@ -327,3 +327,42 @@
     left: -20%;
   }
   
+  @media screen and (min-device-width:1024px) {
+    #logo {
+      width: 30%;
+      position: absolute;
+      top: 20%;
+      left: 15%;
+    }
+    #root {
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      margin: 60% 0 50% 75%;
+    }
+    .line {
+        position: absolute;
+        top: 55%;
+        width: 25%;
+        left: 50%;
+    }
+    .buttonGetinto {
+      margin: 0% 0% 0% 21.5%;
+      width: 20%;
+      height: 5%;
+      position: absolute;
+      top: 45%;
+      left: 31%;
+      background-color: #fe5e89;
+      border-radius: 51px;
+      border-color: #f8f5f500;
+      color: white;
+    }
+    .buttonGoogle {
+      position: absolute;
+      top: 62%;
+      width: 15%;
+      left: 55%;
+    } 
+
+  }
