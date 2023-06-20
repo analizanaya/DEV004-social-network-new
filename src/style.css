@@ -469,7 +469,9 @@
     .likeFullIcon {
       width: 3%;
       position: relative;
+      top:20%;
       left: 75%;
+      margin: 2%;
     }
 
     #dialog {
