@@ -72,7 +72,6 @@ export const welcome = () => {
   buttonGoogle.addEventListener('click', () => {
     loginGoogle().then((userCredential) => {
       userData.userName = userCredential.user.email;
-
       onNavigate('/wall');
     });
   });
