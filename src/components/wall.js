@@ -78,6 +78,10 @@ export const wall = () => {
     taskContainer.innerHTML = '';
     querySnapshot.forEach((doc) => {
       // console.log(doc.data());
+      const span = document.createElement('span');
+      const spanButtons = document.createElement('span');
+      spanButtons.classList = 'span-buttons';
+
       const postContent = document.createElement('textarea');
       postContent.textContent = doc.data().contenido;
       const buttonDeleteIcon = document.createElement('img');
@@ -118,7 +122,8 @@ export const wall = () => {
           // console.log('no liked');
         }
       });
-      listPost.append(
+
+      span.append(
         postContent,
         likeEmptyIconClone,
         likeFullIconClone,
@@ -127,6 +132,7 @@ export const wall = () => {
         buttonDeleteIcon,
         buttonEditIcon,
       );
+      listPost.appendChild(span);
       taskContainer.append(listPost);
 
       const btnEdit = document.getElementById(`edit${doc.id}`);

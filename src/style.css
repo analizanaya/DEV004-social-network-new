@@ -328,6 +328,9 @@
   }
   
   @media screen and (min-device-width:1024px) {
+    span{
+      padding: 10%;
+    }
     #logo {
       width: 30%;
       position: absolute;
@@ -493,4 +496,8 @@
       top: 20%;
       right: 3%;
     }
+    span{
+      
+    }
   }
+  
