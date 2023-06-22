@@ -182,42 +182,20 @@
     padding: 1% 2% 0% 5%;
   }
   .edit {
-    position: relative;
-    top: 16%;
-    right: 32%;
-    background: none;
-    border: none;
-    font-size: initial;
-    width: 10%;
-    padding: 0% 3% 7% 1%;
-    margin: -17% 1% 9% 1%;
-    z-index: -1;
+  
   }
   .delete {
-    width: 13%;
-    margin: -13% -3% 16% 2%;
+   
   }
   .likeEmptyIcon {
-    width: 15%;
-    position: relative;
-    top: 17%;
-    left: 96%;
-    display: block;
-    margin: -22% 0% 0% 0%;
+    
   }
   .likeFullIcon {
-    width: 15%;
-    position: relative;
-    left: 96%;
-    display: block;
-    margin: -22% 0% 0% 0%;
+   
   }
   
   .iconComment {
-    width: 13%;
-    top: -22.5px;
-    left: 72%;
-    position: relative;
+ 
   }
   #post {
     width: 66%;
@@ -326,10 +304,25 @@
     right: 74%;
     left: -20%;
   }
+  .icons{
+    width: 32px;
+    margin: 0 3% 0 0;
+  }
+.span-buttons{
+  display: flex;
+  align-items: center;
+  width: 80%;
+}
+.likeEmptyIcon{
+  margin-left: auto;
+}
+.likeFullIcon{
+  margin-left: auto;
+} 
   
   @media screen and (min-device-width:1024px) {
     span{
-      padding: 10%;
+      
     }
     #logo {
       width: 30%;
@@ -434,46 +427,18 @@
       right: 63%;
     }
     #comments {
-      position:relative;
-      margin:0 0 0 0;
-      width: 80%;
-      border-color: #ef104c;
-      border-radius: 10px;
+      position: relative;
+    margin: 4% 0 2% 0;
+    width: 80%;
+    border-color: #ef104c;
+    border-radius: 18px;
+    padding: 1%;
     }
     article{
       position:absolute;
       margin:10% 0% 0% 0%;
       width:112%;
     }
-    .edit {
-      position: relative;
-      right: 2%;
-      background: none;
-      left:-4%;
-      width: 2.5%;
-    }
-    .delete {
-      position:relative;
-      width:3%;
-      left:7%;
-      padding: 10% 0% 0% 0%;
-    }
-    .likeEmptyIcon {
-      width: 3%;
-      position: relative;
-      top:20%;
-      left: 75%;
-      margin: 2%;
-
-    }
-    .likeFullIcon {
-      width: 3%;
-      position: relative;
-      top:20%;
-      left: 75%;
-      margin: 2%;
-    }
-
     #dialog {
       width: 42%;
       height: 20%;
@@ -498,8 +463,20 @@
       top: 20%;
       right: 3%;
     }
-    span{
-      
+    .icons{
+      width: 32px;
+      margin: 0 3% 0 0;
     }
+  .span-buttons{
+    display: flex;
+    align-items: center;
+    width: 80%;
   }
+  .likeEmptyIcon{
+    margin-left: auto;
+  }
+  .likeFullIcon{
+    margin-left: auto;
+  } 
+  };
   

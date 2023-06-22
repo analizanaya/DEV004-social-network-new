@@ -6,13 +6,13 @@ import {
 } from '../Firebase/authentication';
 import { onNavigate } from '../router';
 import userIcon from '../imagenes/user.png';
+import buttonEditImage from '../imagenes/buttonEditIcon.png';
+import buttonDeleteImage from '../imagenes/buttonDeleteIcon.png';
 import logo2Icon from '../imagenes/logo.png';
-import fondoWallImage from '../imagenes/fondo-cel.png';
 import likeImage from '../imagenes/likeVacio.png';
 import likeFullImage from '../imagenes/likeLleno.png';
 import xImage from '../imagenes/x.png';
-import buttonEditImage from '../imagenes/buttonEditIcon.png';
-import buttonDeleteImage from '../imagenes/buttonDeleteIcon.png';
+import fondoWallImage from '../imagenes/fondo-cel.png';
 
 
 export const wall = () => {
@@ -58,10 +58,10 @@ export const wall = () => {
   buttonSend.textContent = 'Send';
   buttonSingOff.textContent = 'Cerrar Sesión';
 
-  buttonSend.className = 'send';
+  buttonSend.className = 'send icons';
   buttonxIcon.className = 'buttonX';
-  likeEmptyIcon.className = 'likeEmptyIcon';
-  likeFullIcon.className = 'likeFullIcon';
+  likeEmptyIcon.className = 'likeEmptyIcon icons';
+  likeFullIcon.className = 'likeFullIcon icons';
   buttonSingOff.className = 'buttonSingOff';
   buttonsShowModal.className = 'ButtonsShowModal';
 
@@ -78,25 +78,27 @@ export const wall = () => {
     taskContainer.innerHTML = '';
     querySnapshot.forEach((doc) => {
       // console.log(doc.data());
-      const span = document.createElement('span');
-      const spanButtons = document.createElement('span');
+      const span = document.createElement('div');
+
+      const spanButtons = document.createElement('div');
       spanButtons.classList = 'span-buttons';
 
       const postContent = document.createElement('textarea');
       postContent.textContent = doc.data().contenido;
-      const buttonDeleteIcon = document.createElement('img');
       const buttonEditIcon = document.createElement('img');
+      const buttonDeleteIcon = document.createElement('img');
 
-      buttonDeleteIcon.setAttribute('data-id', doc.id);
       buttonEditIcon.setAttribute('data-id', doc.id);
+      buttonDeleteIcon.setAttribute('data-id', doc.id);
+
       postContent.id = 'comments';
-      buttonEditIcon.className = 'edit';
+      buttonEditIcon.className = 'edit icons';
       buttonEditIcon.id = `edit${doc.id}`;
       buttonEditIcon.src = buttonEditImage;
       buttonEditIcon.alt = 'Edit';
       buttonDeleteIcon.src = buttonDeleteImage;
       buttonDeleteIcon.alt = 'Delete';
-      buttonDeleteIcon.className = 'delete';
+      buttonDeleteIcon.className = 'delete icons';
 
       const likeEmptyIconClone = likeEmptyIcon.cloneNode(true);
       const likeFullIconClone = likeFullIcon.cloneNode(true);
@@ -122,15 +124,15 @@ export const wall = () => {
           // console.log('no liked');
         }
       });
-
-      span.append(
-        postContent,
+      spanButtons.append(
+        buttonEditIcon,
+        buttonDeleteIcon,
         likeEmptyIconClone,
         likeFullIconClone,
-        buttonDeleteIcon,
-        buttonEditIcon,
-        buttonDeleteIcon,
-        buttonEditIcon,
+      );
+      span.append(
+        postContent,
+        spanButtons,
       );
       listPost.appendChild(span);
       taskContainer.append(listPost);
