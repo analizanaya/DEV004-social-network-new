@@ -39,6 +39,18 @@ export const register = () => {
   fondo.src = fondoImage;
   fondo.alt = 'Fondo';
 
+  buttonRegister.addEventListener('click', () => {
+    if (inputCreate.value === '' || inputPass.value === '') {
+      swal('Ingresa tus datos');
+    } else {
+      logincreateUserWithEmailAndPassword(inputPass.value, inputCreate.value).then(
+        () => {
+          onNavigate('/wall');
+        },
+      );
+    }
+  });
+
   const auth = getAuth();
   buttonRegister.addEventListener('click', () => {
     logincreateUserWithEmailAndPassword(inputEmail.value, inputPass.value)
@@ -54,7 +66,19 @@ export const register = () => {
 
     inputEmail.after(emailError); // agregar el elemento después del input
     emailError.style.display = 'none'; // ocultar el mensaje por defecto
+
+    /* const datosRegister = document.createElement('div');
+    datosRegister.classList = 'datosRegister';
+
+    datosRegister.append(
+      inputCreate,
+      inputEmail,
+      inputPass,
+      buttonRegister,
+    ); */
+
   });
+
 
   section.append(
     title,
@@ -66,5 +90,6 @@ export const register = () => {
     buttonRegister,
   );
 
-  return section;
+  return section
+
 };

@@ -12,8 +12,6 @@ export const onNavigate = (pathname, updateHistory = true) => {
   // Clear the root section and render the new component
   const rootSection = document.getElementById('root');
   rootSection.innerHTML = '';
-  console.log(ROUTES);
-  console.log(pathname);
   rootSection.append(ROUTES[pathname]());
 };
 
