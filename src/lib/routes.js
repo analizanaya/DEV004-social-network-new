@@ -5,5 +5,5 @@ import { register } from '../components/Register.js';
 export const ROUTES = {
   '/': welcome,
   '/wall': wall,
-  '/Register': register,
+  '/register': register,
 };

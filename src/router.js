@@ -1,7 +1,8 @@
-const LOCAL_ROUTES = {};
+import { loginGoogle } from './Firebase/authentication';
+import { ROUTES } from './lib/routes';
 
 export const onNavigate = (pathname, updateHistory = true) => {
-  const path = typeof LOCAL_ROUTES[pathname] !== 'function' ? pathname : '/';
+  const path = typeof ROUTES[pathname] !== 'function' ? pathname : '/';
 
   // Update the history
   if (updateHistory) {
@@ -11,16 +12,18 @@ export const onNavigate = (pathname, updateHistory = true) => {
   // Clear the root section and render the new component
   const rootSection = document.getElementById('root');
   rootSection.innerHTML = '';
-  rootSection.append(LOCAL_ROUTES[pathname]());
+  console.log(ROUTES);
+  console.log(pathname);
+  rootSection.append(ROUTES[pathname]());
 };
 
 // Initialize the router with the routes
 export const initRouter = (routes) => {
-  // Add routes to LOCAL_ROUTES
+  // Add routes to ROUTES
   Object.keys(routes).reduce((currentRoutes, pathname) => {
     currentRoutes[pathname] = routes[pathname];
     return currentRoutes;
-  }, LOCAL_ROUTES);
+  }, ROUTES);
 
   window.addEventListener('popstate', () => {
     onNavigate(window.location.pathname, false);
